@@ -1,0 +1,27 @@
+http:
+  routers:
+    myweb:
+      service: webSite
+      rule: "Host(`oom1.local`) && Path(`/`)" 
+    myapp1:
+      service: app1
+      rule: "Host(`oom1.local`) && Path(`/app1`)" 
+    myapp3:
+      service: app3
+      rule: "Host(`oom2.local`) && Path(`/app3`)" 
+  services:
+    webSite:
+      loadBalancer:  
+        servers:
+        - url: 'http://127.0.0.1:1001'
+        - url: 'http://127.0.0.1:1002'
+    app1:
+      loadBalancer:  
+        servers:
+        - url: 'http://127.0.0.1:1001'
+        - url: 'http://127.0.0.1:1003'
+    app3:
+      loadBalancer:  
+        servers:
+        - url: 'http://127.0.0.1:1002'
+        - url: 'http://127.0.0.1:1003'
