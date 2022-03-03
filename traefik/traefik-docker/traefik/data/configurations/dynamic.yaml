@@ -1,0 +1,29 @@
+# Dynamic configuration
+http:
+  routers:
+    blog:
+      service: blogService
+      rule: "Host(`www.oom.lan`)"
+  services:
+    blogService:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.35:8082"
+#          - url: "http://simple-web"
+  middlewares:
+    secureHeaders:
+      headers:
+        sslRedirect: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 31536000       
+    user-auth: # UserName:admin Password: admin123 
+      basicAuth: 
+        users: #create from htpasswd
+          - "admin:$apr1$rKaNOONw$vJXI83by5aEK4xdtiov3W1"
+
+tls:
+  certificates:
+    - certFile: /ssl/_wildcard.pem
+      keyFile: /ssl/_wildcard-key.pem
