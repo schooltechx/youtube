@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  whoami:
+    image: traefik/whoami
+    ports:
+      - "8081:80"
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.entrypoints=websecure"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.oom.lan`)"
+networks:
+  proxy:
+    external: true
