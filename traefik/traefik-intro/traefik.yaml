@@ -1,0 +1,9 @@
+entrypoints:
+  unsecure:
+    address: :80
+providers:
+  file:
+    filename: routes.yaml
+api:  # enable dashboard
+  dashboard: true
+  insecure: true
