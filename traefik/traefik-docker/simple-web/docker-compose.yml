@@ -1,0 +1,17 @@
+version: "3"
+services:
+  simple-web:
+    image: nginx
+    volumes:
+     - ./html:/usr/share/nginx/html:ro
+    ports:
+      - "8082:80"
+    # labels:
+    #   - traefik.enable=true
+    #   - traefik.http.routers.simple-web.entrypoints=websecure
+    #   - traefik.http.routers.simple-web.rule=Host(`www.oom.lan`)
+    networks:
+     - proxy
+networks:
+  proxy:
+    external: true
