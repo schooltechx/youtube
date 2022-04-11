@@ -3,9 +3,9 @@
 [วีดีโอประกอบการสอน]: https://youtu.be/k6OCzi_npTI
 
 ## ในตัวอย่างจะใช้ API สองตัวนี้ 
-GET อ่านค่ายูสเซอร์ที่ login โดยแนบ JWT
++ GET อ่านค่ายูสเซอร์ที่ login โดยแนบ JWT
 http://localhost:1337/api/users/me
-POST ทำการ login เข้าระบบ จะได้ JWT กลับมา
++ POST ทำการ login เข้าระบบ จะได้ JWT กลับมา
 http://localhost:1337/api/auth/local
 
 
