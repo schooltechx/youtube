@@ -10,7 +10,7 @@
 
 ## keyclock 
 
-- สร้าง realm ชื่อ frappet ใน Realm Setting เก็บค่า RS256 kid เก็บไว้ 
+- สร้าง realm ชื่อ frappet ใน Realm Setting เก็บค่า RS256 kid เก็บไว้ (Public Key)
 
  ![Realm Setting](./realm-setting.png)
 
@@ -19,8 +19,8 @@
 Access Type : confidential  
 Service Account Enabled : On  
 Access Token Lifespan : 20  
-Browser Flow: borwser
-Direct Grant Flow : direct grant 
+Browser Flow: borwser  
+Direct Grant Flow : direct grant  
 
 ![Client Setting](./client-setting.png)
 
@@ -38,7 +38,7 @@ Direct Grant Flow : direct grant
     code .
 
 
-## appsetting.json
+## appsetting.json (Key เป็น Public Key จาก Realm)
 
     {
     "Jwt": {    
@@ -86,7 +86,7 @@ Direct Grant Flow : direct grant
 
 ## Postman
 
-- POST ทำการ Authen ด้วย Sercret จะได้ access token มา
+- POST ทำการ Authen ด้วย Sercret (จาก client)จะได้ access token มา
 
 ![Client Setting](./access-token.png)
 
