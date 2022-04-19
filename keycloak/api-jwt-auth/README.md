@@ -33,7 +33,6 @@ Direct Grant Flow : direct grant
     6.0.202
     dotnet new web -o dotnet6-demo
     cd .\dotnet6-demo\
-    dotnet new nugetconfig
     dotnet restore
     dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 6.0.4
     code .
