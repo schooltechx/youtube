@@ -22,7 +22,7 @@ Access Token Lifespan : 20
 Browser Flow: borwser
 Direct Grant Flow : direct grant 
 
-![Client Setting](./client-settingg.png)
+![Client Setting](./client-setting.png)
 
 - ในแทป Credentials  ก็อปค่า Secret เก็บไว้
 ![Client Secret](./client-secret.png)
