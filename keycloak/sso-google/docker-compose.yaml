@@ -1,0 +1,38 @@
+version: "3.1"
+services:
+  keycloak:
+    image: jboss/keycloak
+    ports:
+      - 7700:8080
+    volumes:
+      - ./data:/opt/jboss/keycloak/standalone/data
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=changeme
+      - PROXY_ADDRESS_FORWARDING=true
+  js-client:
+    image: nginx
+    volumes:
+      - ./js-client:/usr/share/nginx/html:ro
+    ports:
+      - 7701:80
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+      - 7702:1025 # smtp server
+      - 7703:8025 # web ui
+  jitsi-keycloak:
+    image: d3473r/jitsi-keycloak
+    container_name: jisi-keycloak
+    restart: unless-stopped
+    environment:
+      JITSI_SECRET: 83D8F671657020295CBBE977E90FB313
+      DEFAULT_ROOM: TeamMeeting
+      JITSI_URL: https://meet.xxx.com/
+      JITSI_SUB: meet.xxx.com
+    volumes:
+    - ./jitsi-config:/config
+    ports:
+    - 7704:3000
