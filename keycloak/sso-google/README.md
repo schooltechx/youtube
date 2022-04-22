@@ -88,7 +88,7 @@ https://keycloak-js-console.xxx.com
 
         {
             "realm" : "frappet",
-            "auth-server-url" : "https://keycloak.frappet.synology.me/auth",
+            "auth-server-url" : "https://keycloak.xxx.com/auth",
             "ssl-required" : "external",
             "resource" : "js-console",
             "public-client" : true
