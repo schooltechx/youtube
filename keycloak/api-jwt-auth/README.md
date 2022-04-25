@@ -1,10 +1,12 @@
 # ทำการ JWT Authentication APIs ด้วย Keycloak
 
-ตัวอย่างการทำใช้ Dotnet 6 Minimal สร้าง Web API เพื่อทำการ Authentication กับ Keycloak แบ่งเป็นสองกรณี
+ตัวอย่างการทำใช้ Dotnet 6 Minimal สร้าง Web API เพื่อทำการ Authentication กับ Keycloak 
+มีประโยชน์ในการทำ Single Sign On (SSO) ระหว่าง Frontend กับ Backend หรือระหว่าง Backend ด้วยกัน
+ทำให้แยก Microservice ได้ง่ายแบ่งเป็นสองกรณี
 
 ## กรณี 1 ใช้ แชร์ secret 
 
-จะมี secret ที่รู้กันระหว่าง keycloak client และ ผู้ที่จะใช้ API  
+จะมี secret ที่รู้กันระหว่าง keycloak และ ผู้ที่จะใช้ API  
 เมื่อทำ Authentication กับ Keycloak ด้วย secret จะได้ Access key กลับมา ให้เอาไปแนบตอนเรียก API
 วิธีนี้เหมาะกับการคุยกันระหว่าง Microservice ตัวอย่างนี้เอามาจาก  
 
@@ -14,11 +16,11 @@
 
 ### วิธีตั้งค่า
 
-- สร้าง realm ชื่อ frappet ใน Realm Setting เก็บค่า RS256 kid ไว้ เป็น Public key ที่จะใช้ Verify token ใน appsetting.json
+- สร้าง realm (ตัวอย่างชื่อ frappet) ใน Realm Setting เก็บค่า RS256 kid ไว้ เป็น Public key ที่จะใช้ Verify token ใน appsetting.json
 
  ![Realm Setting Keys](./realm-setting.png)
 
-- สร้าง client ชื่อ dotnet6-demo โดยมี root url เป็น https://keycloak.xxx.xxx 
+- สร้าง client ชื่อ dotnet6-demo โดยมี root url เป็น https://keycloak.xxx.com 
 - เซ็ตค่าดังนี้  
 Access Type : confidential  
 Service Account Enabled : On  
@@ -28,7 +30,7 @@ Direct Grant Flow : direct grant
 
 ![Client Setting](./client-setting.png)
 
-- ในแทป Credentials  ก็อปค่า Secret เก็บไว้
+- ในแทป Credentials  ก็อปค่า Secret เก็บไว้ (ถ้ายังไม่มี หรือต้องการเปลี่ยนให้กดปุ่มเพื่อสร้างใหม่)
 ![Client Secret](./client-secret.png)
 
 ## กรณี 2 Frontend ทำ Authentication ด้วย User/Password 
@@ -36,8 +38,6 @@ Direct Grant Flow : direct grant
 กรณีนี้เราสามารถใช้ JavaScript Framework(Vue,React,Svelte) สร้างฟอร์มรับ ชื่อยูสซอร์ และรหัสผ่าน เพื่อ authen กับ keycloak client เก็บ token ใน storage ควรใช้ keycloak-js ในการทำเพราะจะจัดการ refresh token, cookie ให้ด้วย  
 - Realm frappet สร้าง keycloak client ชื่อ js-console 
 ![Client Secret](https://github.com/schooltechx/youtube/raw/main/keycloak/sso-google/js-console-setting.png)
-
-
 
 
 ## สร้าง API .NET
@@ -60,7 +60,7 @@ Direct Grant Flow : direct grant
     {
     "Jwt": {    
         "Key": "UHLdOu32L5TVCRF8AWRgu220joK3-acaDv6iAdUHC6k",    
-        "Issuer": "https://keycloak.xxx.xxx/auth/realms/frappet"    
+        "Issuer": "https://keycloak.xxx.com/auth/realms/frappet"    
     },      
     "Logging": {
         "LogLevel": {
@@ -119,17 +119,37 @@ Direct Grant Flow : direct grant
 
         {
         "realm" : "frappet",
-        "auth-server-url" : "https://keycloak.xxx.xxx/auth",
+        "auth-server-url" : "https://keycloak.xxx.com/auth",
         "ssl-required" : "external",
         "resource" : "js-console",
         "public-client" : true
         }
 
-- เข้าหน้า https://keycloak-js-console.xxx.xxx/ จะทำการ redirect ไปหน้า login
+- เข้าหน้า https://keycloak-js-console.xxx.com/ จะทำการ redirect ไปหน้า login
 
 - เอา Token ที่ได้หลัง login มาใส่ใน Postman เพื่อเรียก API ได้เหมือนกรณี 1
 ![Token from js-console](./js-console-show-detail.png)
 
+JavaScript Frontend ควรใช้ [keycloak-js](https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/oidc/javascript-adapter.adoc) จัดการจะทำให้ง่ายและปลอดภัยกว่า ดูโค้ดของ [js-console](https://github.com/keycloak/keycloak/tree/main/examples/js-console/src/main/webapp) เป็นตัวอย่างได้
+
 ## Note
 
-กรณี mobile มันจะ redirect กลับมาที่ App  ยังไม่ได้ทดสอบ แต่น่าจะทำเหมือนกรณี 2 จะทดสอบภายหลัง
+### ข้อมูลของ Realm
+จะอยู่ในลิงค์นี้
+<https://keycloak.xxx.com/auth/realms/frappet/.well-known/openid-configuration>
+
+### Endpoint
+- /protocol/openid-connect/auth  
+- /protocol/openid-connect/token  
+- /protocol/openid-connect/userinfo
+
+### Mobile
+กรณี mobile มันจะ redirect กลับมาที่ App  ยังไม่ได้ทดสอบ แต่น่าจะทำเหมือนกรณี 2 
+
+### อ่านเพิ่มเติม
+- [Vue with keycloak](https://medium.com/keycloak/secure-vue-js-app-with-keycloak-94814181e344)
+- [การใช้งาน Keycloak เบื้องต้น](https://dev.to/mossnana/keycloak-2kl6)  
+- [Integrating OpenID Connect to your application stack (Asp.Net Core, Angular)](https://dev.to/kayesislam/integrating-openid-connect-to-your-application-stack-25ch)
+- [ASP.Net Core & Angular OpenID Connect using Keycloak](https://medium.com/@xavier.hahn/asp-net-core-angular-openid-connect-using-keycloak-6437948c008)
+- [Keycloak and Express](https://medium.com/keycloak/keycloak-and-express-7c71693d507a)
+
