@@ -48,11 +48,10 @@ Direct Grant Flow : direct grant
 
     dotnet --version
     6.0.202
-    dotnet new web -o dotnet6-demo
+    dotnet new webapi -minimal -o dotnet6-demo
     cd .\dotnet6-demo\
-    dotnet new nugetconfig
+    dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer  
     dotnet restore
-    dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 6.0.4
     code .
 
 ### ไฟล์ appsetting.json
@@ -135,18 +134,24 @@ JavaScript Frontend ควรใช้ [keycloak-js](https://github.com/keycloak
 ## Note
 
 ### ข้อมูลของ Realm
+
 จะอยู่ในลิงค์นี้
 <https://keycloak.xxx.com/auth/realms/frappet/.well-known/openid-configuration>
 
 ### Endpoint
+
 - /protocol/openid-connect/auth  
 - /protocol/openid-connect/token  
 - /protocol/openid-connect/userinfo
 
 ### Mobile
+
 กรณี mobile มันจะ redirect กลับมาที่ App  ยังไม่ได้ทดสอบ แต่น่าจะทำเหมือนกรณี 2 
+มีตัวอย่างของ Flutter ที่ยังไม่ได้ลองเหมือนจะใช้ Flow คนละแบบ  
+<https://iabhishek3.medium.com/keycloak-integration-flutter-7af4088ff7a>
 
 ### อ่านเพิ่มเติม
+
 - [Vue with keycloak](https://medium.com/keycloak/secure-vue-js-app-with-keycloak-94814181e344)
 - [การใช้งาน Keycloak เบื้องต้น](https://dev.to/mossnana/keycloak-2kl6)  
 - [Integrating OpenID Connect to your application stack (Asp.Net Core, Angular)](https://dev.to/kayesislam/integrating-openid-connect-to-your-application-stack-25ch)
