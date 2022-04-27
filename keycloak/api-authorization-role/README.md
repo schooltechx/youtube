@@ -26,8 +26,9 @@ Roles จาก Realm กดปุ่ม "Add Role" เพิ่ม admin, dev
 ![Client Roles](./img/client_role.png)
 
 ดังนั้นการ Map Roles มาที่ Token Clame เลือกได้ว่าจะเอา Role จาก Realm หรือ Client ในตัวอย่างต่อไปทั้งหมดจะใช้จาก Roles ของ Realm  ให้สร้าง Mapper ใหม่ (เราสามารถแก้จาก mapper ตัวที่มีอยู่ก็ได้ ถ้าเข้าใจการทำงาน) .NET จะใช้ role(ไม่มี s)
-ต้องทำการ Map Role ของ Keycloak ให้อยู่ในรูปแบบ .NET เข้าใจ เราสามารถใช้ Roles ของ Realm หรือ Client ก็ได้ ในภาพ admin มันจะเป็น realm_access:roles:admin จะถูกเอามาอยู่ตื้นขึ้นเป็นรูปแบบที่ .NET ใช้ใน Token role:admin
-![Realm Roles](./img/mapp_admin_role.png)
+ต้องทำการ Map Role ของ Keycloak ให้อยู่ในรูปแบบ .NET เข้าใจ เราสามารถใช้ Roles ของ Realm หรือ Client ก็ได้ ในภาพ admin มันจะเป็น realm_access:roles:admin จะถูกเอามาอยู่ตื้นขึ้นเป็นรูปแบบที่ .NET ใช้ใน Token role:admin  
+
+![Realm Roles](./img/mapp_admin_role.png)  
 
 Client Scopes/roles/Mappers แล้วกดปุ่ม Create  
 - Name: root roles(ชื่ออะไรก็ได้)
@@ -172,8 +173,9 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
 ## Frontend Authentication 
  
 - เอา index.html กับ keycloak.json จาก [js-console](https://github.com/keycloak/keycloak/tree/main/examples/js-console/src/main/webapp) ใส่ในโฟลเดอร์ wwwroot ของ .NET
-- แก้ keycloak.json ให้ "auth-server-url" : "http://localhost:8080/auth"
-- รันโปรแกรม .NET แนะนำให้ใช้แบบ IIS ถ้าใช้  Docker ตั้งแก้เป็น IP Address เพราะ localhost ใน container มันเป็นคนละตัวกับ localhost เครื่องโฮส ซึ่งต้องใช้ IP Address แทน
+- index.html แก้ path ของ keycloak.js ให้ถูก 
+- keycloak.json ให้ "auth-server-url" : "http://localhost:8080/auth" 
+- รันโปรแกรม .NET แนะนำให้ใช้แบบ IIS Express ถ้าใช้  Docker ตั้งแก้เป็น IP Address เพราะ localhost ใน container มันเป็นคนละตัวกับ localhost เครื่องโฮส ซึ่งต้องใช้ IP Address แทน
 - http://localhost:28851/swagger/index.html เปิดไว้เพื่อทดสอบ API 
 - เข้าหน้า http://localhost:28851/ กดปุ่ม Login จะทำการ redirect ไปหน้า login ของ Keycloak ใช้ยูสเซอร์ super
 ![ID Token](./img/id_token.png)
@@ -182,6 +184,8 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
 - ทดสอบ API ด้วย Token ของยูสเซอร์ super
 ![Test API](./img/admin_dev_api.png)
 - เปลี่ยนเป็น developer แล้วทำการทดสอบ API อีกรอบเทียบกัน 
+- 401 Unauthorized แสดงว่าไม่ได้แนบ Token
+- 403 Forbidden เพราะ Role นั้นไม่มีสิทธ์เข้าถึง API ที่กำหนด
 
 ## API ที่ใช้งาน
 - /helth ไว้ตรวจสอบว่า API ใช้งานได้อยู่
