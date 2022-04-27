@@ -1,13 +1,13 @@
 # SchoolTech
 เนื่องจากผมทำงานหลักเป็นสองงาน คือเป็นครูสอนวิชาคอมพิวเตอร์ และ Software Engineer ทำงานในบริษัทเอกชน ผมทำวีดีโอเพื่อสอนนักเรียนหรือพนักในบริษัท บางทีก็เป็นบันทึกการเรียนรู้ของผมเอง ผมชอบเรียนรู้สิ่งใหม่ๆ แค่ดูหรือฟังมาก็จะจำได้เพียงบางส่วน พอลงมือทำก็หมายความว่าเราใช้งานมันได้จริงๆ การลงมือสอนคนอื่นได้แสดงว่าเราเริ่มเชี่ยวชาญ ผมอยากแบ่งปันความรู้และประสบการ์เพื่อที่เราจะได้เรียนไปด้วยกัน ใน Repo นี้จะมีโค้ดกับไฟล์คอนฟิกตัวอย่างที่ใช้ใน Youtube ช่อง [SchoolTech](https://www.youtube.com/channel/UC4Lawkh4KMANb1JdSi6F90A) ฝากกด Like กดแชร์ และ subscribe ด้วยนะครับ
 
-## Fullstack Dev (https://www.youtube.com/watch?v=c49Y5VKKW34&list=PLWMbTFbTi55ODjx2GXM_PCEh5sMgEo8nq)
+## [Fullstack Dev](https://www.youtube.com/watch?v=c49Y5VKKW34&list=PLWMbTFbTi55ODjx2GXM_PCEh5sMgEo8nq)
 
 สอนการพัฒนาแอปพลิเคชั้นโดยเน้นไปทางสิ่งที่ Full Stack Devloper ควรรู้ เป็นมากว่าแค่เขียน Backend/Frontend เป็น ซึ่งก็จะอ้างอิงหัวข้ออื่นๆด้านล่างนี้ด้วย
 
-## [Docker VM K8s](https://github.com/schooltechx/youtube/tree/main/Docker%20VM%20K8s)
+## [Linux VM Container K8s](https://github.com/schooltechx/youtube/tree/main/Docker%20VM%20K8s)
 
-เพลย์ลิสต์ว่ากันด้วยการใช้งานเครื่องเสมือน Visualization หรือ Virtual Machine,  Docker , Kubernetes เพื่อการพัฒนาโปรแกรมหรือระะบบในองค์กร
+เพลย์ลิสต์ว่ากันด้วยการใช้งาน Linux เน้นแนวทางสมัยใหม่ ทำพวก เครื่องเสมือน (Visualization ) Container (Docker) , Kubernetes เพื่อการพัฒนาโปรแกรมหรือระะบบในองค์กร
 
 ## [Flutter](https://www.youtube.com/watch?v=wFedUqgfcCs&list=PLWMbTFbTi55O26BxgYCDZS9Vbvyw_eYKf)
 
@@ -37,10 +37,6 @@
 
 เพลย์ลิสต์สำหรับผู้ปกครองในการทำอินเตอร์เน็ตให้ปลอดภัยสำหรับลูกหลาน
 
-## [Internet](https://www.youtube.com/watch?v=F5IuhLEb0t0&list=PLWMbTFbTi55MOrm0bqg8Bwd1grCUiIY6g)
-
-เพลย์ลิสต์เกร็ดความรู้ในการใช้งานอินเตอร์เน็ตเรื่องต่างๆ
-
 ## [Google Workspace](https://www.youtube.com/watch?v=cXAnaT4u-2M&list=PLWMbTFbTi55P_FID-cAO3Boas5PAYli8k)
 
 การใช้งาน Google Workspace และโปรแกรมที่เกี่ยวข้องเพื่อให้ใช้งานได้เต็มประสิทธิ์ภาพ สำหรับโรงเรียนหรือหน่วยงาน
@@ -48,3 +44,7 @@
 ## [Blender 2.8-3.x Tutorial](https://www.youtube.com/watch?v=kqykWk1otRQ&list=PLWMbTFbTi55OokUh9KqL9VRbVRAH0yT1A)
 
 เพลย์ลิสต์สอนการใช้งานโปรแกรม Blender เบื้องต้น
+
+## [Misc](https://www.youtube.com/watch?v=F5IuhLEb0t0&list=PLWMbTFbTi55MOrm0bqg8Bwd1grCUiIY6g)
+
+เพลย์ลิสต์เกร็ดความรู้ทั่วไปด้าสน IT ต่างๆ ที่ไม่รู้ว่าจะใส่ Play List ไหนดี
