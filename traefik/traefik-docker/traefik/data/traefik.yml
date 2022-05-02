@@ -1,0 +1,25 @@
+api:
+  dashboard: true
+entryPoints:
+  web:
+    address: :80
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+  websecure:
+    address: :443
+    http:
+      middlewares:
+        - secureHeaders@file
+      tls: {}
+serversTransport:
+  insecureSkipVerify: true # for selfsign cert backend        
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+  file:
+    directory: /configurations
+    watch: true
