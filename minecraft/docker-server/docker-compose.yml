@@ -1,0 +1,27 @@
+# https://github.com/itzg/docker-minecraft-server
+# https://files.minecraftforge.net/net/minecraftforge/forge/
+version: "3"
+services:
+  dad-craft:
+    container_name: dad-craft
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - 40000:25565
+      - 40001:25575
+    environment:
+      TYPE: "FORGE"
+      VERSION: "1.18.2" 
+      FORGEVERSION: "40.1.0"
+      MOTD: "Dad Minecraft Server"
+      MODE: "survival"
+      MEMORY: "1G"
+      LEVEL_TYPE: "DEFAULT"
+      EULA: "TRUE"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "dad-craft"
+      ONLINE_MODE: "false"
+    restart: unless-stopped
+    volumes:
+      - ./data/dad-craft:/data
