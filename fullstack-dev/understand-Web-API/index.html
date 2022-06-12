@@ -1,0 +1,10 @@
+<script>
+    async function load(){
+        const res = await fetch("https://jsonplaceholder.typicode.com/users")
+        const data = await res.json()
+        document.getElementById("msg").innerText = JSON.stringify(data,null,4)
+    }
+</script>
+<body onload="load()">
+    <pre id="msg"></pre>
+</body>
