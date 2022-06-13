@@ -1,10 +1,10 @@
 # ทำการ Role base Authorization APIs ด้วย Keycloak และ .NET6
 
-ตัวอย่างการทำใช้ Dotnet 6 Minimal สร้าง Web API กำหนดสิทธิ์การใช้งานผ่าน Role ที่กำหนดไว้ใน Keycloak แนะนำให้ไปดูหัวข้อก่อนหน้า [JWT Authentication](https://github.com/schooltechx/youtube/blob/main/keycloak/api-jwt-auth/README.md) ห้วข้อนี้มีการเพิ่ม Authorization ด้วย Role เข้ามา
+ตัวอย่างการทำใช้ Dotnet 6 Minimal API ที่จำกัดสิทธิ์ผ่าน Role ที่กำหนดไว้ใน Keycloak แนะนำให้ไปดูหัวข้อก่อนหน้า [JWT Authentication](https://github.com/schooltechx/youtube/blob/main/keycloak/api-jwt-auth/README.md) ห้วข้อนี้มีการเพิ่ม Authorization ด้วย Role เข้ามา
 
 ## Keycloak รันด้วย docker
 
-ในตัวอย่างนี้จะแสดงการพัฒนาโปรแกรมทั้งหมดใน localhost สำหรับนักพัฒนา จะไม่ได้ใช้ https  
+ในตัวอย่างนี้จะแสดงการพัฒนาโปรแกรมทั้งหมดใน localhost สำหรับนักพัฒนา จะไม่ได้ใช้ https (ดู docker-compose.yml)
 
     docker run --name keycloak -p 8080:8080 -e KEYCLOAK_USER=<USERNAME> -e KEYCLOAK_PASSWORD=<PASSWORD> jboss/keycloak
 
@@ -17,7 +17,6 @@
 - Access Type: public 
 
 ![Realm Key](./img/add_js-console.png)
-
 
 Roles จาก Realm กดปุ่ม "Add Role" เพิ่ม admin, dev
 ![Realm Roles](./img/realm_role.png)
