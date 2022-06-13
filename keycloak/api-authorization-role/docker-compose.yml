@@ -1,0 +1,13 @@
+version: "3.1"
+services:
+  keycloak:
+    image: jboss/keycloak
+    ports:
+      - 7700:8080
+    volumes:
+      - ./data:/opt/jboss/keycloak/standalone/data
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+#      uncomment when use with reverse proxy
+#      - PROXY_ADDRESS_FORWARDING=true
