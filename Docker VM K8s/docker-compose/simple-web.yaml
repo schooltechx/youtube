@@ -3,6 +3,6 @@ services:
   web:
     image: nginx
     volumes:
-     - /html:/usr/share/nginx/html:ro
+     - ./html:/usr/share/nginx/html:ro
     ports:
      - "9080:80"
