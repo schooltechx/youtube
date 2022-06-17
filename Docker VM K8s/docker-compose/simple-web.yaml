@@ -6,3 +6,4 @@ services:
      - ./html:/usr/share/nginx/html:ro
     ports:
      - "9080:80"
+    restart: unless-stopped
