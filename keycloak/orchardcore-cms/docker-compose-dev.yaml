@@ -10,6 +10,15 @@ services:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
 #      - PROXY_ADDRESS_FORWARDING=true # for reverse proxy setting
+  orchard-cms:
+    container_name: orchardcms
+    image: orchardproject/orchardcore-cms-linux:latest
+    ports:
+      - 22080:80
+    restart: unless-stopped
+    volumes:
+      - ./App_Data:/app/App_Data
+      
   js-client: # test frontend for keycloak
     image: nginx
     volumes:
