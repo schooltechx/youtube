@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  keycloak:
+    image: jboss/keycloak
+    ports:
+      - 7700:8080
+    volumes:
+      - ./data:/opt/jboss/keycloak/standalone/data
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+#      - PROXY_ADDRESS_FORWARDING=true # for reverse proxy setting
+  js-client: # test frontend for keycloak
+    image: nginx
+    volumes:
+      - ./js-client:/usr/share/nginx/html:ro
+    ports:
+      - 7701:80
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'  # disable saving logs
+    ports:
+      - 7702:1025 # smtp server
+      - 7703:8025 # web ui
