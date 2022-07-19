@@ -13,8 +13,10 @@
 สร้าง Realm ชื่อ test  
 สร้าง Client ใช้ค่าตั้งต้น
 - Client-ID: js-console แล้วมี Root URL
-- Root URL: http://localhsot:28851 (ค่าพอร์ตจะเปลี่ยนอีกทีหลังรัน .NET)
+- Root URL: http://localhost:28851 (ค่าพอร์ตจะเปลี่ยนอีกทีหลังรัน .NET)
 - Access Type: public 
+
+** ระวังคำว่า localhost ใน docker ให้ดีมันจะหมายถึงตัว container เอง กรณีนี้เราใช้งานผ่าน browser คำว่า localhost จะหมายถึงเครื่องโฮสต์ กรณีอ้างชื่อจาก service ใน docker-compose ควรใช้พอร์ตภายใน container ด้วย
 
 ![Realm Key](./img/add_js-console.png)
 
