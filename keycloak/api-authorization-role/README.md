@@ -163,7 +163,15 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
 
         app.MapHealthChecks("/health");
         app.MapGet("/hello", () => "Hello");
-        app.MapGet("/auth", () => "Auth").RequireAuthorization();
+        app.MapGet("/auth", (HttpContext context) => {
+            var id = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var n = context.User.FindFirst(ClaimTypes.Name)?.Value;
+            var g = context.User.FindFirst(ClaimTypes.GivenName)?.Value;
+            var sn = context.User.FindFirst(ClaimTypes.Surname)?.Value;
+            var p = context.User.FindFirst("preferred_username")?.Value;
+            return $"{id}:{n}:{sn}:{p}";
+        }).RequireAuthorization();
+        
         app.MapGet("/admin", [Authorize(Roles = "admin")] () => "Admin ");
         app.MapGet("/admin_dev", [Authorize(Roles = "admin,dev")] () => "Dev or Admin");
         app.MapGet("/dev", [Authorize(Roles = "dev")] () => "Dev ");
@@ -226,6 +234,5 @@ TBD
 
 - <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0>
 - <https://stackoverflow.com/questions/56327794/role-based-authorization-using-keycloak-and-net-core>
-
 - <https://medium.com/@xavier.hahn/adding-authorization-to-asp-net-core-app-using-keycloak-c6c96ee0e655>
-
+- <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0#special-types>
