@@ -4,7 +4,9 @@
 ## Package
 
 dotnet new webapi -minimal -n jwt
+
 cd jwt
+
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 
 
