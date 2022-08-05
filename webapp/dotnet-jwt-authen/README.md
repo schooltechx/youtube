@@ -1,5 +1,8 @@
 # .NET minimal API with JWT Authentication and Authorization
 
+โค้ดการ Authentication แบบ JWT และการใช้ Role บน .NET 6 minimal API สามารถใช้ เป็นแนวทางการสร้างระบบ Authentication ของตัวเอง หรือทำการผนวกรวมกับ Authentication แบบอื่นๆที่ไม่เป็นมาตรฐานได้ และเป็นพื้นฐานในการทำระบบ Microservice สามารถดูคำอธิบายในวีดีโอข้างล่างนี้ครับ
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/MjvBoLVZxnY/0.jpg)](https://youtu.be/MjvBoLVZxnY "เข้าใจ .NET Role base JWT authorization ใน 15 นาที")
 
 ## Package
 
