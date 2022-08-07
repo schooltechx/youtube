@@ -53,8 +53,6 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true
     };
 });
-
-//builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -63,7 +61,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -80,7 +77,6 @@ app.MapGet("/auth", [Authorize] (HttpContext context) =>
 app.MapGet("/admin1", [Authorize(Roles = "admin")] () => "Administrator");
 app.MapGet("/dev1", [Authorize(Roles = "dev")] () => "Developer");
 app.MapGet("/dev2", [Authorize(Roles = "admin,dev")] () => "Administrator or Developer");
-
 app.MapPost("/login", [AllowAnonymous] (LoginRequest user) =>
 {
     //Get user info, check password, create claims from info
@@ -122,4 +118,3 @@ app.Run();
 
 record LoginRequest(string username, string password);
 record LoginRespose(string userId, string username, string token);
-record RegisterRequest(string email, string password, string name, string surname);
