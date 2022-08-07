@@ -5,6 +5,14 @@ ASP.NET Core Identity ใช้ในการจัดการยูสเซ�
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/WmIQOfjn6B4/0.jpg)](https://www.youtube.com/watch?v=WmIQOfjn6B4 ".NET minimal API+JWT+Entity+Identity within 15 minutes")
 
+## ตอนก่อนหน้า
+
+ก่อนดูวีดีโอนี้ต้องเข้าใจการใช้ .NET กับ Web API(minimal), ฐานข้อมูลด้วย Entity Framework, Json Web Token มาก่อนครับ
+
+[.NET minimal API with JWT Authentication and Authorization](https://github.com/schooltechx/youtube/tree/main/webapp/dotnet-jwt-authen)
+
+[.NET6 Minimal API with in 15 Minutes](https://github.com/schooltechx/youtube/tree/main/webapp/dotnet-minimal-api-ef-15m)
+
 ## command
 
   dotnet new webapi -minimal -n jwt_identity -f net6.0
