@@ -21,6 +21,6 @@ async function updateUser(){
         body: JSON.stringify({email,name})
     })
 }
-async function deleteUser{
+async function deleteUser(){
     const res = await fetch('/api/users/' + id, {method: 'DELETE'})
 }
