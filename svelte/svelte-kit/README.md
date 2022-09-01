@@ -21,6 +21,14 @@ SvelteKit ใกล้ออกเวอร์ชั่นจริงแล้�
     npm install
     npm run dev -- --open
 
+## [Carbon Components Svelte](https://carbon-components-svelte.onrender.com/)
+
+    npm i -D carbon-components-svelte
+
+ใส่ไว้ใน +layout.svelte 
+
+    import "carbon-components-svelte/css/white.css";
+
 ## [Prisma](https://www.prisma.io/docs/getting-started/quickstart) 
 
     npm install prisma --save-dev
