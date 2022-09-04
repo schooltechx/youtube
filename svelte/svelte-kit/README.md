@@ -1,10 +1,9 @@
 # SvelteKit
 SvelteKit ใกล้ออกเวอร์ชั่นจริงแล้ว มีการเปลี่ยนแปลมากพอสมควร โดยเฉพาะการ routing การ load() แต่ก็ทำให้ใช้ง่าย และชัดเจนขึ้นกว่าเวอร์ชั่นก่อนหน้ามาก เอกสารนี้จะทำเพื่อแสดงวิธีใช้ sveltekit เบื้องต้น ครอบคลุมการใช้งานหลักๆที่จำเป็น เดี๋ยวผมจะอัปเดตเอกสารถ้ามีการเปลี่ยนแปลงนะครับ 
+
 ## อ่านเพิ่มเติม
 - [Major Svelte Kit API Change - Fixing `load`, and tightening up SvelteKit's design before 1.0](https://youtu.be/OUGn7VifUCg)
 - [Migration guide](https://github.com/sveltejs/kit/discussions/5774?fbclid=IwAR0WN2uJxcNGaugWCsSkyFw0cUzrgOgVkPz1jFhry_YjTaF3WNSw-_uOrSw)
-
-
 
 # Setup
 โค้ดตัวอย่างนี้จะติดตั้งสิ่ง Extension และ module ที่จำเป็นดังข้างล่า ถ้าติดตั้ง Vite มันจะรันโปรเจ็กให้ไม่ต้อง npm run dev
@@ -21,7 +20,13 @@ SvelteKit ใกล้ออกเวอร์ชั่นจริงแล้�
     npm install
     npm run dev -- --open
 
-## [Carbon Components Svelte](https://carbon-components-svelte.onrender.com/)
+## SvelteKit Fullstack
+
+Play List สอนการใช้งานตั้งแต่เบื้องต้นจนเป็นนักพัฒนาแบบ Full Stack 
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/P5aJrzlK3ZM/0.jpg)](https://www.youtube.com/watch?v=0KENjveIbt0&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=8 "SvelteKit Full Stack Part0 - Intro")
+
+## [ติดตั้ง Carbon Components Svelte](https://carbon-components-svelte.onrender.com/)
 
     npm i -D carbon-components-svelte
 
@@ -29,7 +34,7 @@ SvelteKit ใกล้ออกเวอร์ชั่นจริงแล้�
 
     import "carbon-components-svelte/css/white.css";
 
-## [Prisma](https://www.prisma.io/docs/getting-started/quickstart) 
+## [ติดตั้ง Prisma](https://www.prisma.io/docs/getting-started/quickstart) 
 
     npm install prisma --save-dev
     npx prisma init --datasource-provider sqlite
