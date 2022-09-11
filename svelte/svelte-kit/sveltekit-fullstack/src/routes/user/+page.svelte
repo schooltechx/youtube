@@ -1,4 +1,10 @@
 <script>
+/* function POST not work with +page.server.js anymore (New update of SvelteKit)
+   Please use Form Actions instead
+   https://kit.svelte.dev/docs/form-actions
+   update of this code
+   src/routes/actions/+page.svelte
+*/
 import { error } from "@sveltejs/kit";
 
     import {Form,TextInput,Button} from "carbon-components-svelte";
