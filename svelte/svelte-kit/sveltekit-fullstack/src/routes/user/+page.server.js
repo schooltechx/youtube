@@ -1,3 +1,9 @@
+/* function POST not work with +page.server.js anymore (New update of SvelteKit)
+   Please use Form Actions instead
+   https://kit.svelte.dev/docs/form-actions
+   new version if this code.
+   src/routes/actions/+page.server.js
+*/
 import { PrismaClient,Prisma } from '@prisma/client'
 const prisma = new PrismaClient()
 /** @type {import('./$types').PageServerLoad} */
