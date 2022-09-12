@@ -1,30 +1,12 @@
-# SvelteKit
-SvelteKit ใกล้ออกเวอร์ชั่นจริงแล้ว มีการเปลี่ยนแปลมากพอสมควร โดยเฉพาะการ routing การ load() แต่ก็ทำให้ใช้ง่าย และชัดเจนขึ้นกว่าเวอร์ชั่นก่อนหน้ามาก เอกสารนี้จะทำเพื่อแสดงวิธีใช้ sveltekit เบื้องต้น ครอบคลุมการใช้งานหลักๆที่จำเป็น เดี๋ยวผมจะอัปเดตเอกสารถ้ามีการเปลี่ยนแปลงนะครับ 
+# [SvelteKit](https://kit.svelte.dev/)
+SvelteKit ใกล้ออกเวอร์ชั่นจริงแล้ว มีการเปลี่ยนแปลงมากพอสมควร โดยเฉพาะการ routing การ load() Form Actions แต่ก็ทำให้ใช้ง่าย และชัดเจนขึ้นกว่าเวอร์ชั่นก่อนหน้ามาก เอกสารนี้จะทำเพื่อแสดงวิธีใช้ SvelteKit เบื้องต้นจนทำงานได้ครบทุกส่วนแบบ Full Stack Developer ครอบคลุมการใช้งานหลักๆที่จำเป็น เอกสารกำลังอัปเดตตลอดเวลา  
 
 ## อ่านเพิ่มเติม
+
+SvelteKit มี Break Change ช่วงก่อนหน้านี้ค่อนข้างเยอะเพราะจะทำให้ทันออกเวอร์ชั้น 1.0 ตอนนี้เป็นรุ่น RC แล้วการเปลี่ยนแปลงจะน้อยลงเน้นการแก้บัก
+
 - [Major Svelte Kit API Change - Fixing `load`, and tightening up SvelteKit's design before 1.0](https://youtu.be/OUGn7VifUCg)
 - [Migration guide](https://github.com/sveltejs/kit/discussions/5774?fbclid=IwAR0WN2uJxcNGaugWCsSkyFw0cUzrgOgVkPz1jFhry_YjTaF3WNSw-_uOrSw)
-
-# Setup
-โค้ดตัวอย่างนี้จะติดตั้งสิ่ง Extension และ module ที่จำเป็นดังข้างล่า ถ้าติดตั้ง Vite มันจะรันโปรเจ็กให้ไม่ต้อง npm run dev
-
-## VS Code Extensions
-
-- Svelte for VS Code
-- Vite by Anthony Fu
-
-## [SvelteKit](https://kit.svelte.dev/)
-
-    npm create svelte@latest my-app
-    cd my-app
-    npm install
-    npm run dev -- --open
-## อัปเดต SvelteKit กรณีสร้างโปรเจ็กแล้ว
-
-    npm install npm@latest -g
-    cd /path/to/project
-    npm update
-    npm outdated
 
 ## SvelteKit Fullstack
 
@@ -32,26 +14,46 @@ Play List สอนการใช้งานตั้งแต่เบื้�
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/P5aJrzlK3ZM/0.jpg)](https://www.youtube.com/watch?v=0KENjveIbt0&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=8 "SvelteKit Full Stack Part0 - Intro")
 
-## [ติดตั้ง Carbon Components Svelte](https://carbon-components-svelte.onrender.com/)
 
+# Setup
+
+ก่อนทำตามในวีดีโอสอนควรติดตั้ง Visual Studio Code และ Extension ที่เกี่ยวข้องจะได้ทำได้เหมือนในวีดีโอ ให้ติดตั้ง node.js เป็นรุ่นล่าสุด (LTS) ด้วย เนื่องจาก SveltKit มีอัปเตดอยู่ให้พยายามอัปเดตเป็นรุ่นล่าสุดด้วย
+
+## VS Code Extensions
+
+- Svelte for VS Code
+- Vite by Anthony Fu
+- Prettier - Code formatter
+- Thunder Client
+- vscode-icons
+
+## คำสั่งอัปเดตและติดตั้ง module ต่างๆ
+
+ในวีดีโอสอนจะใช้ SvelteKit, ใช้ [Prisma](https://www.prisma.io/docs/getting-started/quickstart) 
+เพื่อติดต่อฐานข้อมูล, ใช้ [Carbon Components Svelte](https://carbon-components-svelte.onrender.com/) 
+เพื่อทำ UI รายการคำสั่งที่ใช้ติดตั้ง ทำตามนี้ครับ อาจจะมีบางขั้นตอนต้องทำก่อนใน VS Code ศึกษาจากในวีดีโอด้วยครับ
+
+    # อัปเดต npm รุ่นล่าสุด
+    npm install npm@latest -g
+    # สร้างโปรเจ็ก sveltekit
+    npm create svelte@latest sveltekit-fullstack
+    cd sveltekit-fullstack
+    npm install
+    # ติดตั้ง Carbon Components Svelte
     npm i -D carbon-components-svelte
-
-ใส่ไว้ใน +layout.svelte 
-
-    import "carbon-components-svelte/css/white.css";
-
-## [ติดตั้ง Prisma](https://www.prisma.io/docs/getting-started/quickstart) 
-
-    npm install prisma --save-dev
+    # ติดตั้ง Prisma, ใช้ฐานข้อมูลเป็น sqlite
+    npm install prisma --save-dev 
     npx prisma init --datasource-provider sqlite
+    # แก้ไฟล์ prisma/schema.prisma ก่อนทำ migrate
     npx prisma migrate dev --name init
+    # โปรแกรมสำหรับป้อนข้อมูลลงในฐานข้อมูล
     npx prisma studio
 
 # อธิบายการทำงาน
 
 ## Folder base routing
 
-[`Routing`](https://kit.svelte.dev/docs/routing). คือการเปลี่ยนหน้าเวป รวมถึง path สำหรับหน้าต่างๆ จะใช้ โครงสร้างขอโฟลเดอร์ในการทำ Routing ซึ่งง่ายตรงไปตรงมา ภายในโฟลเดอร์จะมีไฟล์ที่ขึ้นต้นด้วย + สำหรับการประมวลผลเพื่อแสดงหน้านั้น สำหรับชื่อโฟลเดอร์เป็นปีกกา จะเป็นตัวแปร ส่งให้ไฟล์โปรแกรมประมวลผลได้
+[`Routing`](https://kit.svelte.dev/docs/routing). คือการเปลี่ยนหน้าเวป รวมถึง path สำหรับหน้าต่างๆ จะใช้ โครงสร้างของโฟลเดอร์ในการทำ Routing ซึ่งง่ายตรงไปตรงมา ภายในโฟลเดอร์จะมีไฟล์ที่ขึ้นต้นด้วย + สำหรับการประมวลผลเพื่อแสดงหน้านั้น สำหรับชื่อโฟลเดอร์เป็นปีกกา จะเป็นตัวแปร ส่งให้ไฟล์โปรแกรมประมวลผลได้
 
 | หน้าเวป                  |  โครงสร้างโค้ด                  |
 | -----------------------|---------------------------------|
@@ -72,7 +74,7 @@ Play List สอนการใช้งานตั้งแต่เบื้�
 environment variable สามารถใส่ในไฟล์ .env ไว้ในโฟลเดอร์ของโปรเจ็ก 
 
 
-| File                  |  โครงสร้างโค้ด                  |
+| File                |  โครงสร้างโค้ด                  |
 | --------------------|---------------------------------|
 | +page.svelte        | หน้าเวปทั่วๆไปทำงานคู่กับ +page.js หรือ +page.server.js 
 | +page.js            | ทำงานก่อนเรนเดอร์หน้า แล้วส่งค่าให้ +page.svelte เพื่อเรนเดอร์หน้าต่อไป ทำการเรนเอร์หน้าเวปเช่นใช้ดึงข้อมูลจาก Storage, API 
@@ -81,8 +83,7 @@ environment variable สามารถใส่ในไฟล์ .env ไว�
 | +layout.svelte      | เป็นโครงหน้าเวปเช่นส่วนหัวหรือเมนู กับส่วนล่างของหน้า 
 | +layout.server.js   | รัน load ฝังเซิร์ฟเวอร์ 
 | +error.svelte       | แสดงหน้า Error ของตัวเองได้เช่น 404 ก็แสดงว่าหน้านี้ค้นหาไม่พบ ให้ติดต่อ Web master
-| 
-| 
+|
 
 ## ฟังก์ชัน load() 
 
@@ -107,39 +108,8 @@ environment variable สามารถใส่ในไฟล์ .env ไว�
     <h1>{data.title}</h1>
     <div>{@html data.content}</div>
 
-
-## POST, PATCH, PUT และ DELETE
-
-POST, PUT และ PATCH จะไม่ส่ง data กลับแต่จะส่ง error และ status กลับได้ (ถ้าส่ง error กลับ status จะมีค่า default เป็น 400) ฝั่ง UI ควรดูค่า status ที่กลับมาเป็นหลัก
-
-POST ถ้าทำสำเร็จสามารถ location 
-
-DELETE จะไม่ส่งค่าใดๆกลับ.
-
-+page.server.js ไม่สามารถรับค่าจากฟอร์มผ่านฟังก์ชัน POST ได้อีกต่อไปแล้ว ให้ใช้ Form Actions แทน
-
-+server.js ส่งค่ากลับผ่าน Response(...)
-
-    export function GET() {
-    return new Response(JSON.stringify({ answer: 42 }), {
-        headers: {
-        'content-type': 'application/json; charset=utf-8'
-        'x-foo': 'bar'
-        }
-    });
-    }
-
-ถ้า set-cookie มีหลายตัว ให้ใช้ออปเจ็ก Headers จัดการ
-
-    const headers = new Headers();
-    headers.append('set-cookie', a);
-    headers.append('set-cookie', b);
-    return new Response('blah', { headers });
-
-+page.server.js, server.js สามารถดัก POST, PATCH, PUT และ DELETE ได้ 
-
-
 ## Error 
+
 load() ที่อยู่ใน +page.js ถ้าพบปัญหาให้ใช้การ throw error ออกมา
 
     import { error } from '@sveltejs/kit';
@@ -149,8 +119,126 @@ load() ที่อยู่ใน +page.js ถ้าพบปัญหาให
     }
 
 ## Redirect ก็ใช้การ throw เหมือน error
+
     import { redirect } from '@sveltejs/kit';
     export function load() {
     throw redirect(307, '/login');
     }
+
+
+## [Form Action](https://kit.svelte.dev/docs/form-actions)
+เป็นการส่งข้อมูลจากฟอร์ม(POST) ไปยัง Backend โดยจะมีฟังก์ชั้นของ actions ทำหน้าที่รับข้อมูล ตัวอย่างโค้ดเป็นดังข้างล่างแนะนำให้ดูในเอกสารด้วย
+
+ตัวอย่างไฟล์ +page.svelte
+
+    <form method="POST">
+      <input name="email" type="email">
+      <input name="password" type="password">
+      <button>Log in</button>
+      <button formaction="?/register">Register</button>
+    </form>
+
+ตัวอย่างไฟล์ +page.server.js
+
+    export const actions = {
+      login: async ({ cookies, request }) => {
+        const data = await request.formData();
+        const email = data.get('email');
+        const password = data.get('password');
+        // ถึงข้อมูลจากฐานข้อมูลตรวจสอบรหัสผ่าน
+        return { success: true };
+      },
+      register: async (event) => {
+        // TODO โค้ดสำหรับลงทะเบียนยุสเซอร์ในฐานข้อมุล
+      }
+    };
+
+
+## POST, PATCH, PUT และ DELETE
+
+หัวข้อนี้เหมาะกับการทำ Web API POST, PUT และ PATCH จะไม่ส่ง data กลับแต่จะส่ง error และ status กลับได้ (ถ้าส่ง error กลับ status จะมีค่า default เป็น 400) ฝั่ง UI ควรดูค่า status ที่กลับมาเป็นหลัก
+
++page.server.js ไม่สามารถรับค่าจากฟอร์มผ่านฟังก์ชัน POST,PUT,DELETE ได้อีกต่อไปแล้ว ให้ใช้ Form Actions แทน
+
+api/user/+server.js
+
+    /** @type {import('./$types').RequestHandler} */
+    export async function GET({}) {
+        const users = await prisma.user.findMany()
+        return new Response(JSON.stringify(users))    
+    }
+    /** @type {import('./$types').RequestHandler} */
+    export async function POST({request}) {
+        let data = await request.json()
+        let user
+        try{
+            user = await prisma.user.create({data})
+        }catch(e){
+            if (e instanceof Prisma.PrismaClientKnownRequestError) {
+                return new Response("",{status:500,statusText:e.message})
+              }else{
+                return new Response("",{status:500,statusText:'Create user fail'})
+              }    
+        }
+        return new Response(JSON.stringify(user),{status:201,statusText:"Create Success"})
+    }
+
+api/user/[id]/+server.js
+
+    /** @type {import('./$types').RequestHandler} */
+    export async function GET({ params }) {
+        let id = Number(params.id)
+        if(!id)
+            return new Response("",{status:400,statusText:'Invalid user id, number is required'})
+        const user = await prisma.user.findUnique({
+            where:{id:id}
+        })
+        await prisma.$disconnect()
+        if(user){
+            return new Response(JSON.stringify(user))
+        }
+        else{
+            return new Response("",{status:404,statusText:`User ${id} not found`})
+        }
+    }
+    /** @type {import('./$types').RequestHandler} */
+    export async function PUT({ params,request }) {
+        let data = await request.json();
+        let user
+        try{
+            user = await prisma.user.update({
+                where:{id:Number(params.id)},data
+            })
+        }catch(e){
+            if (e instanceof Prisma.PrismaClientKnownRequestError) {
+                return new Response("",{status:500,statusText:e.message})
+              }else{
+                return new Response("",{status:500,statusText:'Update user fail'})
+              }    
+        }
+        await prisma.$disconnect() 
+        return new Response(JSON.stringify(user),{status:200})
+    }
+    /** @type {import('./$types').RequestHandler} */
+    export async function DELETE({ params }) {
+        const user = await prisma.user.findUnique({
+            where:{id:Number(params.id)}
+        })
+        if(!user){
+            return new Response("",{status:404,statusText:"User not found"})
+        }
+        await prisma.user.delete ({
+            where:{id:Number(params.id)}
+        })
+        await prisma.$disconnect() 
+        return new Response()
+    }
+
+ถ้า set-cookie มีหลายตัว ให้ใช้ออปเจ็ก Headers จัดการ
+
+    const headers = new Headers();
+    headers.append('set-cookie', a);
+    headers.append('set-cookie', b);
+    return new Response('blah', { headers });
+
 
