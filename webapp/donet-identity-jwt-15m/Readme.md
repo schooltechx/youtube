@@ -15,17 +15,17 @@ ASP.NET Core Identity ใช้ในการจัดการยูสเซ�
 
 ## command
 
-  dotnet new webapi -minimal -n jwt_identity -f net6.0
-  cd .\jwt_identity
-  code .
+    dotnet new webapi -minimal -n jwt_identity -f net6.0
+    cd .\jwt_identity
+    code .
 
-  dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
-  dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-  dotnet add package Microsoft.EntityFrameworkCore.Sqlite
-  dotnet add package Microsoft.EntityFrameworkCore.Design
+    dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+    dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+    dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+    dotnet add package Microsoft.EntityFrameworkCore.Design
 
-  dotnet ef migrations add InitiaHeroDb
-  dotnet ef database update
+    dotnet ef migrations add InitiaHeroDb
+    dotnet ef database update
    
 ## เวปที่เกี่ยวข้อง
 
