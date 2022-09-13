@@ -22,6 +22,7 @@ ASP.NET Core Identity ใช้ในการจัดการยูสเซ�
     dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
     dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
     dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+    dotnet tool install --global dotnet-ef
     dotnet add package Microsoft.EntityFrameworkCore.Design
 
     dotnet ef migrations add InitiaHeroDb
