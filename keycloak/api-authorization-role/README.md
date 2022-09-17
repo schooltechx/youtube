@@ -182,7 +182,7 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
 ## Frontend Authentication 
  
 - เอา index.html กับ keycloak.json จาก [js-console](https://github.com/keycloak/keycloak/tree/main/examples/js-console/src/main/webapp) ใส่ในโฟลเดอร์ wwwroot ของ .NET
-- index.html แก้ path ของ keycloak.js ให้ถูก 
+- index.html แก้ path ของ keycloak.js ให้ถูกเช่น http://localhost:8080/auth/js/keycloak.js
 - keycloak.json ให้ "auth-server-url" : "http://localhost:8080/auth" 
 - รันโปรแกรม .NET แนะนำให้ใช้แบบ IIS Express ถ้าใช้  Docker ตั้งแก้เป็น IP Address เพราะ localhost ใน container มันเป็นคนละตัวกับ localhost เครื่องโฮส ซึ่งต้องใช้ IP Address แทน
 - http://localhost:28851/swagger/index.html เปิดไว้เพื่อทดสอบ API 
