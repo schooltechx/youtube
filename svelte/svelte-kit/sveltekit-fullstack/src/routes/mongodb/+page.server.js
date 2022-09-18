@@ -1,3 +1,6 @@
+// ก่อนใช้งานให้ ติดตั้ง mongoose(npm) และ mongo (docker) 
+// npm install mongoose
+// docker-compose up -d mongo
 import mongoose from 'mongoose'
 import Product from './product'
 import { error } from '@sveltejs/kit';
