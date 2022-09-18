@@ -1,47 +1,47 @@
-<script>
-/** @type {import('./$types').PageData} */
-export let data
-//console.log(JSON.stringify(data))
-//console.log(data)
-//const products = data.products 
-let id="",op = "", name="",category="drink",price=50,tags=""
-$: disable_update = (name=="" || id=="" || price<1 )
-$: disable_create = (name=="" || price<1 )
-$: disable_delete = (id == "")
+// ก่อนใช้งานให้ ติดตั้ง mongoose(npm) และ mongo (docker) 
+// npm install mongoose
+// docker-compose up -d mongo
+import mongoose from 'mongoose'
+import Product from './product'
+import { error } from '@sveltejs/kit';
+try{
+    await mongoose.connect('mongodb://localhost:27017/example')
+}catch(e){
+    console.log(e)
+    throw error(500, 'Connect MongoDB fail');
+}
+/** @type {import('./$types').PageServerLoad} */
+export async function load({ url }) {
+    const s = url.searchParams
+    let id = s.get("id")??""
+    let op = s.get("operation")??""
+    let name = s.get("name")??"Unknown product"
+    let category = s.get("category")??"drink"
+    let price = Number(s.get("price")??0)
+    let tags = (s.get("tags")??"").split(",")
+    let p = {name,category,price,tags}
+    let message=""
 
-
-</script>
-<h2>Product</h2>
-<h3>{data.message}</h3>
-<form method="GET">
-    <input type="hidden" name="operation" bind:value={op}>
-    <input type="hidden" name="id" bind:value={id}>
-    <input type="text" name="name" bind:value={name} placeholder="Product name.">
-    <select name="category" bind:value={category}>
-        <option value="food" >Foods</option>
-        <option value="drink" >Drinks</option>
-        <option value="toy" >Toys</option>
-    </select>
-    <input type="number" name="price" bind:value={price} size="2">
-    <input type="text" name="tags" bind:value={tags} placeholder="cheap,sales,new"><br>
-    <input type="submit" disabled={disable_create} 
-        value="Create" on:click={()=>{op='create';id=""}}>
-    <input type="submit" disabled={disable_update} 
-        value="Update" on:click={()=>{op='update'}}>
-    <input type="submit" disabled={disable_delete} 
-        value="Delete" on:click={()=>{op='delete'}}>
-    <input type="submit" 
-        value="Search" on:click={()=>{op='search'}}>
-</form>
-
-{#each data.products as p}
-    <div><b on:click={ ()=>{
-        id = p._id.toString()
-        name = p.name??""
-        price = p.price??0
-        category = p.category??""
-        tags = String(p.tags??[])
-    } }>
-        {p.name} {p.price} </b>
-    </div>
-{/each}
+    switch(op){
+        case "update":
+            await Product.findByIdAndUpdate(id, { $set: p });
+            message=`Product ${id} update`
+            break
+        case "delete": 
+            await Product.findByIdAndDelete(id)
+            message=`Product ${id} Deleted`
+            break
+        case "create":
+            const pro = new Product(p)      
+            await pro.save();
+            message="Product created "+pro.id??""
+            break
+    }
+    //search products have part of string name
+    const searchFilter = { $regex: '.*' + name + '.*' }
+    const pros = (op=="search" && name!= "")? 
+        await Product.find({name:searchFilter}):await Product.find({})
+    //fix unserialize objectID
+    const products = pros.map((e)=>e.toObject())
+    return {products,message}
+}
