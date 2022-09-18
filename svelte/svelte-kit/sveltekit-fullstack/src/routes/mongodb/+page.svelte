@@ -1,14 +1,13 @@
 <script>
-  import { json } from '@sveltejs/kit'
 /** @type {import('./$types').PageData} */
 export let data
-///console.log(data) 
+//console.log(JSON.stringify(data))
+//console.log(data) 
 let id="",op = "", name="",category="drink",price=50,tags=""
 $: disable_update = (name=="" || id=="" || price<1 )
 $: disable_create = (name=="" || price<1 )
 $: disable_delete = (id == "")
 </script>
-
 <h2>Product</h2>
 <h3>{data.message}</h3>
 <form method="GET">
@@ -21,7 +20,7 @@ $: disable_delete = (id == "")
         <option value="toy" >Toys</option>
     </select>
     <input type="number" name="price" bind:value={price} size="2">
-    <input type="text" name="tags" placeholder="low price,sales,new"><br>
+    <input type="text" name="tags" bind:value={tags} placeholder="cheap,sales,new"><br>
     <input type="submit" disabled={disable_create} 
         value="Create" on:click={()=>{op='create';id=""}}>
     <input type="submit" disabled={disable_update} 
