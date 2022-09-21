@@ -1,7 +1,11 @@
-# SvelteKit with SQLite (power by [Prisma](https://www.prisma.io/)
+# SvelteKit with SQLite (power by [Prisma](https://www.prisma.io/) )
 
-This is CRUD in one page. I use docker to database server.  
-You have to copy files to correct location to run this demo
+This is simple CRUD in one page. I use sqlite database. 
+It will be created after migration . 
+You have to copy files to correct location of svelte project for running this demo
+
+![Product UI](../../../asset/product-ui.png)
+
 ## Prisma
 
 Prisma is Object–relational mapping 
