@@ -1,7 +1,9 @@
 # SvelteKit with Mongodb 
 
-This is CRUD in one page. I use docker to database server.  
-You have to copy files to correct location to run this demo
+This is simple CRUD in one page. I use docker for database server. 
+You have to copy files to correct location of svelte project for running this demo
+
+![Product UI](../../../asset/product-ui.png)
 
 ## File
 - docker-compose.yml
