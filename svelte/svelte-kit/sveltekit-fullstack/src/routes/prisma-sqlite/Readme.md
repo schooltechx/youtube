@@ -31,19 +31,18 @@ to code and database schema
 ## prisma/schema.prisma
 
     generator client {
-    
-    provider = "prisma-client-js"
+        provider = "prisma-client-js"
     }
     datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+        provider = "sqlite"
+        url      = env("DATABASE_URL")
     }
     model Product {
-    id   String @id @default(cuid())
-    name String
-    category String
-    price Int
-    tags String
+        id   String @id @default(cuid())
+        name String
+        category String
+        price Int
+        tags String
     }
 
 ## note
