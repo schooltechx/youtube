@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
     /** @type {import('./$types').PageData} */
     export let data
     let id="",op = "", name="",category="drink",price=50,tags=""
@@ -11,7 +13,7 @@
     <form method="GET">
         <input type="hidden" name="operation" bind:value={op}>
         <input type="hidden" name="id" bind:value={id}>
-        <input type="text" name="name" bind:value={name} placeholder="Product name or search">
+        <input type="text" name="name" bind:value={name} placeholder="Product name.">
         <select name="category" bind:value={category}>
             <option value="food" >Foods</option>
             <option value="drink" >Drinks</option>
@@ -30,7 +32,7 @@
     </form>
     {#each data.products as p}
         <div><b on:click={ ()=>{
-            id = p._id??"Unknow product"
+            id = p.id??"Unknow product"
             name = p.name??""
             price = p.price??0
             category = p.category??""
@@ -42,7 +44,6 @@
     <hr>
     <div>{data.message}</div>
 </div>
-
 <style>
 #product-form {
   width: 280px;
