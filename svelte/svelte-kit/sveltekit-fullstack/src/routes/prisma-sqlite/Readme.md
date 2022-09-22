@@ -14,6 +14,8 @@ tools. Convert from [model](https://www.prisma.io/docs/concepts/components/prism
 to code and database schema
 
 I don't want to make complex demo so I use similar schema for most of database demo. 
+you can use prisma studio to add edit delete data in databae
+
 ## File
 - src/routes/prisma-sqlite/+page.server.js
 - src/routes/prisma-sqlite/+page.sevelte.js
