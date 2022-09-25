@@ -1,4 +1,3 @@
-
 /**
  * @typedef { import("./types").Product } Product
  * @typedef { import("./types").Products } Products
@@ -9,7 +8,7 @@ import { initializeApp } from "firebase/app";
 import {
     getFirestore, doc, collection,
     addDoc, deleteDoc, getDocs, setDoc,
-    query, where 
+    query, where //,startAt, endAt, orderBy
 } from 'firebase/firestore';
 const firebaseConfig = {
     apiKey: "AIzaSyC6iD5hFTM-lWoQhNnd6rlesWk5VHOziOo",

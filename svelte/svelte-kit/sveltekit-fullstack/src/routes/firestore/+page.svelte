@@ -54,7 +54,7 @@
 </script>
 
 <div id="product-form">
-  <h2>Product</h2>
+  <h2>Firebase Firestore</h2>
   <form method="GET" on:submit|preventDefault>
     <input type="hidden" name="operation" bind:value={op} />
     <input type="hidden" name="id" bind:value={id} />

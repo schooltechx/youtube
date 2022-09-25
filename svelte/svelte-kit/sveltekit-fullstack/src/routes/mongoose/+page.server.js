@@ -22,16 +22,16 @@ export async function load({ url }) {
     switch(op){
         case "update":
             await Product.findByIdAndUpdate(id, { $set: p });
-            message=`Product ${id} update`
+            message=`Updated ${id} update`
             break
         case "delete": 
             await Product.findByIdAndDelete(id)
-            console.log(`Delete$ product id=${id}` )
+            console.log(`Delete$ id=${id}` )
             throw redirect(303, url.pathname)//avoid reload and delete again
         case "create":
             const pro = new Product(p)    
             await pro.save();
-            message="Product created "+pro._id
+            message="Created "+pro._id
             break
     }
     //search reegex match(search) part of name

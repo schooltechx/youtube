@@ -21,15 +21,15 @@ export async function load({ url }) {
         switch (op) {
             case "update":
                 await prisma.product.update({ where: { id:id},data})
-                message = `Product ${id} update`
+                message = `Updated ${id} update`
                 break
             case "delete":
                 await prisma.product.delete({ where: { id:id } })
-                message = `Product ${id} deleted`
+                message = `Deleted ${id} `
                 break
             case "create":
-                await prisma.product.create({data})
-                message = `Product created`
+                let pro = await prisma.product.create({data})
+                message = `Created ${pro.id}`
                 break
         }
     } catch (e) {

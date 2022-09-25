@@ -26,15 +26,16 @@ export async function load({ url }) {
     switch(op){
         case "update":
             const u = await Product.updateOne({_id:new ObjectId(id)}, { $set: p });
-            message=`${u.upsertedId} Product update`
+            message=`Update ${u.upsertedId}`
             break
         case "delete": 
             const d = await Product.deleteOne({_id:new ObjectId(id)});
-            console.log(`Delete$ ${d.deletedCount} product id=${id}` )
+            console.log(`Delete$ ${d.deletedCount}, id=${id}` )
             throw redirect(303, url.pathname)//avoid reload and delete again
         case "create":
             const c = await Product.insertOne(p)
-            message="Product created "+c.insertedId
+            message="Created "+c.insertedId
+            //console.log(c)
             break
     }
     //regex search name of product (*search text*)

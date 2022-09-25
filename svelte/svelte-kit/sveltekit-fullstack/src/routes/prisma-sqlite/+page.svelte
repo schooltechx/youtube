@@ -9,7 +9,7 @@
     $: disable_delete = (id == "")
 </script>
 <div id="product-form">
-    <h2>Product</h2>
+    <h2>Prisma SQLite</h2>
     <form method="GET">
         <input type="hidden" name="operation" bind:value={op}>
         <input type="hidden" name="id" bind:value={id}>
