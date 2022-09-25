@@ -31,7 +31,6 @@ const proColRef = collection(db, 'Product');
 async function createProduct(p, data) {
     let snapShot = await addDoc(proColRef, p)
     data.message = `Created ${snapShot.id}`
-    data=data
 }
 /**
 * @param {Product} p
@@ -59,7 +58,9 @@ async function updateProduct({ id, name, category, price, tags }, data) {
 * @param {Data} data
 */
 async function searchProduct(stext, data) {
-    const q = query(proColRef, where("name","==",stext))
+    const q = (stext=="")?
+        query(proColRef):
+        query(proColRef, where("name","==",stext))
     const snapshot = await getDocs(q)
     data.products = []
     snapshot.forEach((p) => {

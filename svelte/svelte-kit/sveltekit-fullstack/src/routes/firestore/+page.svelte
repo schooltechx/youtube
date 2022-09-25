@@ -1,13 +1,11 @@
 <script>
   import {proColRef,createProduct,updateProduct, 
     deleteProduct,searchProduct} from "./Firebase"
-  import {
-    onSnapshot
-  } from "firebase/firestore"
+  import {onSnapshot} from "firebase/firestore"
 
-/**
- * @typedef { import("./types").Data } Data
-*/
+  /**
+   * @typedef { import("./types").Data } Data
+  */
 
   /** @type {Data} data */
   let data = {products:[],message:""}
@@ -58,26 +56,17 @@
   <form method="GET" on:submit|preventDefault>
     <input type="hidden" name="operation" bind:value={op} />
     <input type="hidden" name="id" bind:value={id} />
-    <input type="text" 
-      name="name"
-      bind:value={name}
-      placeholder="Product name."
-    />
+    <input type="text" name="name" bind:value={name}
+      placeholder="Product name." />
     <select name="category" bind:value={category}>
       <option value="food">Foods</option>
       <option value="drink">Drinks</option>
       <option value="toy">Toys</option>
     </select>
     <input type="number" name="price" bind:value={price} size="2" />
-    <input type="text" 
-      name="tags"
-      bind:value={tags}
-      placeholder="cheap,sales,new"
-    />
-    <input
-      type="submit"
-      disabled={disable_create}
-      value="Create"
+    <input type="text" name="tags" bind:value={tags} 
+    placeholder="cheap,sales,new" />
+    <input type="submit" disabled={disable_create} value="Create"
       on:click={async() => {
         let atags = tags.split(",").map(e => e.trim())
         await createProduct({name, category, price, tags:atags}, data)
@@ -85,10 +74,7 @@
         cl()
       }}
     />
-    <input
-      type="submit"
-      disabled={disable_update}
-      value="Update"
+    <input type="submit" disabled={disable_update} value="Update"
       on:click={async() => {
         let atags = tags.split(",").map(e => e.trim())
         await updateProduct({id, name, category, price, tags:atags}, data)
@@ -96,19 +82,14 @@
         cl()
       }}
     />
-    <input
-      type="submit"
-      disabled={disable_delete}
-      value="Delete"
+    <input type="submit" disabled={disable_delete} value="Delete"
       on:click={async () => {
         await deleteProduct(id,data)
         data=data
         cl()
       }}
     />
-    <input
-      type="submit"
-      value="Search"
+    <input type="submit" value="Search"
       on:click={async() => {
         await searchProduct(name, data)
         data=data

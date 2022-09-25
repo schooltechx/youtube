@@ -22,8 +22,9 @@ you can use prisma studio to add edit delete data in database
 ## File
 
 - src/routes/prisma-sqlite/+page.server.js
-- src/routes/prisma-sqlite/+page.sevelte.js
+- src/routes/prisma-sqlite/+page.sevelte
 - prisma/schema.prisma
+- .env
 
 ## install
     npm create svelte@latest my-app

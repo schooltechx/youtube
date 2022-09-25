@@ -14,7 +14,7 @@ I don't want to make complex demo so I use similar UI and schema for most of dat
 
 - docker-compose.yml
 - src/routes/mongodb/+page.server.js
-- src/routes/mongodb/+page.sevelte.js
+- src/routes/mongodb/+page.sevelte
 
 ## install
 

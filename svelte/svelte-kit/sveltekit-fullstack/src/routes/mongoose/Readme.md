@@ -15,7 +15,7 @@ I don't want to make complex demo so I use similar UI and schema for most of dat
 - docker-compose.yml
 - src/routes/mongoose/product.js
 - src/routes/mongoose/+page.server.js
-- src/routes/mongoose/+page.sevelte.js
+- src/routes/mongoose/+page.sevelte
 
 ## install
     npm create svelte@latest my-app

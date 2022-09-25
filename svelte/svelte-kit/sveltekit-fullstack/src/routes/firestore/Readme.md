@@ -20,7 +20,8 @@ Firebase did not create javascript code so I have to define type for data.
 Please check types.d.ts. Please check [JSDoc](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
 
 ## File
-- src/routes/firestore/+page.server.js
+
+- src/routes/firestore/+page.svelte
 - src/routes/firestore/Firebase.js
 - src/routes/firestore/types.d.ts
 
