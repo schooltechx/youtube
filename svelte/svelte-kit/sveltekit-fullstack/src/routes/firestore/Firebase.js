@@ -36,11 +36,10 @@ async function createProduct(p, data) {
 * @param {Product} p
 * @param {Data} data
  */
-async function updateProduct({ id, name, category, price, tags }, data) {
-    const docRef = doc(db, 'Product', id ?? "")
-    let p = { name, category, price, tags }
+async function updateProduct(p, data) {
+    const docRef = doc(db, 'Product', p.id ?? "")
     await setDoc(docRef, p)
-    data.message = `Update ${id}`
+    data.message = `Update ${p.id}`
 }
 
 /**
@@ -66,7 +65,6 @@ async function searchProduct(stext, data) {
     snapshot.forEach((p) => {
         data.products.push({ ...p.data(), id: p.id })
     })
-    data.products = data.products
     data.message = "Search " + stext
 }
 export {

@@ -32,8 +32,6 @@
         if(data.message==loading)
             data.message = ""
     })
-
-//monitorProduct(data)
   function cl(){
     name = "",
     category = "drink",
@@ -106,7 +104,6 @@
           price = p.price ?? 0
           category = p.category ?? ""
           tags = String(p.tags ?? [])
-          //console.log(data.message)
         }}
       >
         {p.name}
