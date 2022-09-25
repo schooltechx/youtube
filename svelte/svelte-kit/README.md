@@ -42,27 +42,47 @@ Play List สอนการใช้งานตั้งแต่เบื้�
 - ใช้ [Form Actions](https://kit.svelte.dev/docs/form-actions) เพื่อรับข้อมูลจากฟอร์มผ่าน POST ซึ่งต่างไปจากเดิม
 ดูโค้ดใน [route/actions](sveltekit-fullstack/src/routes/actions)
 
-รายการคำสั่งที่ใช้ติดตั้ง ทำตามนี้ครับ อาจจะมีบางขั้นตอนต้องทำก่อนใน VS Code ศึกษาจากในวีดีโอด้วยครับ
+รายการคำสั่งที่ใช้ติดตั้ง ทำตามนี้ครับ อาจจะมีบางขั้นตอนต้องทำก่อนใน VS Code ศึกษาจากในวีดีโอด้วยครับ 
 
     # อัปเดต npm รุ่นล่าสุด
     npm install npm@latest -g
+
+## ติดตั้ง ตัวอย่างคำสั่งสำหรับวีดีโอ Part 2-3
+
     # สร้างโปรเจ็ก sveltekit
     npm create svelte@latest sveltekit-fullstack
     cd sveltekit-fullstack
     npm install
     # ติดตั้ง Carbon Components Svelte
     npm i -D carbon-components-svelte
-    # ติดตั้ง Prisma, ใช้ฐานข้อมูลเป็น sqlite
-    npm install prisma --save-dev 
-    npx prisma init --datasource-provider sqlite
-    # แก้ไฟล์ prisma/schema.prisma ก่อนทำ migrate
-    npx prisma migrate dev --name init
-    # โปรแกรมสำหรับป้อนข้อมูลลงในฐานข้อมูล
-    npx prisma studio
-    # ติดตั้ง mongoose เพื่อต่อ ฐานข้อมูล mongodb (ดู )
-    npm install mongoose
-    เรียกใช้ mongo (ดู sveltekit-fullstack/docker-compose.yml)
-    docker-compose up -d mongo
+
+## ไฟล์สำหรับวีดีโอ Part 2-3 พื้นฐานการใช้งาน Carbon Component
+ตัวอย่างการคอนฟิก การใช้ route เข้าใจการทำงานฝั่ง Server/Client ตัวแปร environment ซึ่งจะเป็นพื้นฐานการใช้งนต่อไป ในส่วนที่ 3 แสดงการใช้งาน Carbon Component ร่วมกับ layout 
+
+- .sveltekit/tsconfig.json
+- src/lib/asset/logo.png
+- src/lib/Nav.svelte
+- src/routes/about/[slug]/+page.svelte
+- src/routes/+error.svelte
+- src/routes/+layout.svelte
+- src/routes/+page.server.js
+- src/routes/+page.svelte
+- .env
+## ไฟล์สำหรับวีดีโอ Part ต่อไป
+
+เนื่องจาก SvelteKit มีการอัปเดตอย่างต่อเนื่อง วีดีโอจำเป็นต้องแก้ไขให้เหมาะกับเวอร์ชั่นใหม่ ตอนนี้มี มีโค้ดตัวอย่างการใช้ฐานข้อมูลสามารถก็อปทั้งโฟลเดอร์ไปใช้งานได้เลย
+Firebase Firestore. ให้อ่านวิธีการใช้งานจาก Readme.me ของแต่ละตัว
+
+ตัวอย่างของ SvelteKit ทำ CRUD ฐานข้อมูล ส่วนใหญ่ก็อปไปใช้ได้เลยมี 
+- [mongodb](https://github.com/schooltechx/youtube/tree/main/svelte/svelte-kit/sveltekit-fullstack/src/routes/mongodb)
+- [mongoose](https://github.com/schooltechx/youtube/tree/main/svelte/svelte-kit/sveltekit-fullstack/src/routes/mongoose)
+- [Prisma sqlite](https://github.com/schooltechx/youtube/tree/main/svelte/svelte-kit/sveltekit-fullstack/src/routes/prisma-sqlite)
+- [Firebase Firestore](https://github.com/schooltechx/youtube/tree/main/svelte/svelte-kit/sveltekit-fullstack/src/routes/firestore)
+
+
+
+
+
 
 # อธิบายการทำงาน
 
@@ -256,6 +276,8 @@ api/user/[id]/+server.js
     headers.append('set-cookie', b);
     return new Response('blah', { headers });
 
+## Backend component
 
+SvelteKit เพียงแค่เข้าใจการทำงาของ load(),Form Actions และการทำงาน API ของ server.js ก็สามารใช้ component ในส่วน Backend ได้เหมือนกับ Node.js เลย 
 ## อ่านเพิ่มเติม
 [เข้าใจฐานข้อมูลแบบต่างๆ](https://www.youtube.com/watch?v=W2Z7fbCLSTw)

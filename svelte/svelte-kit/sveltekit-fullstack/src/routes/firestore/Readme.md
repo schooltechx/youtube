@@ -15,7 +15,7 @@ I don't want to make complex demo so I use similar UI and schema for most of dat
 update all client with less effort. 
 I don't want to make complex demo so I use similar schema for most of database demo. Code is simple enough for study but not for production.
 I will make proper tutorial for Firebase soon (Firebase, Realtime Database, etc).
-Please use [Firebase console](https://console.firebase.google.com/) for manage data.
+Please use [Firebase console](https://console.firebase.google.com/) for manage data. Firebase 9 quite difference from 8 please check [this tutorial](https://www.youtube.com/watch?v=gEaY2GZMino&list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb&index=7)
 Firebase did not create javascript code so I have to define type for data. 
 Please check types.d.ts. Please check [JSDoc](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
 
