@@ -1,6 +1,8 @@
 <script>
     /** @type {import('./$types').PageData} */
     export let data
+    let {products,message}=data
+    
     let id="",op = "", name="",category="drink",price=50,tags=""
     $: disable_update = (name=="" || id=="" || price<1 )
     $: disable_create = (name=="" || price<1 )
@@ -28,19 +30,19 @@
         <input type="submit" 
             value="Search" on:click={()=>{op='search'}}>
     </form>
-    {#each data.products as p}
+    {#each products as p}
         <div><b on:click={ ()=>{
-            id = p._id??"Unknow product"
-            name = p.name??""
-            price = p.price??0
-            category = p.category??""
-            tags = String(p.tags??[])
+            id = p._id
+            name = p.name
+            price = p.price
+            category = p.category
+            tags = String(p.tags)
         } }>
             {p.name} {p.price} </b>
         </div>
     {/each}
     <hr>
-    <div>{data.message}</div>
+    <div>{message}</div>
 </div>
 
 <style>

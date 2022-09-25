@@ -1,6 +1,10 @@
+
 import { error, redirect } from '@sveltejs/kit';
-import { PrismaClient, Prisma } from '@prisma/client'
+import { PrismaClient, Prisma  } from '@prisma/client'
 const prisma = new PrismaClient()
+/** @typedef {{id:string,name:string,price:number,category:string,tags:string}[]} Products */
+/** @type {Products}*/
+const emptyProduct = []
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
     const s = url.searchParams
@@ -12,6 +16,7 @@ export async function load({ url }) {
     let tags = String(s.get("tags")).trim()
     let data = {name,category,price,tags}
     let message=""
+
     try {
         switch (op) {
             case "update":
@@ -35,18 +40,18 @@ export async function load({ url }) {
             console.log(e)
         }
         message = op+" Fail, check console logs"
-        return { products:[], message }
+        return { products:emptyProduct, message }
 
     }
     if(op=="delete") //avoid reload and delete again
         throw redirect(303, url.pathname)
 
     try{   
-        const products = (op=="search"&&name!="")?
+        const p = (op=="search"&&name!="")?
             await prisma.product.findMany({where:{name:{contains:name}}}):
             await prisma.product.findMany()
         await prisma.$disconnect()
-        return { products, message }
+        return { products:p, message }
 
     } catch (e) {
         if (e instanceof Prisma.PrismaClientKnownRequestError) {
@@ -57,6 +62,6 @@ export async function load({ url }) {
             console.log(e)
         }
         message = "findMany() Fail, check console logs"
-        return { product:[], message }
+        return { products:emptyProduct, message }
     }
 }

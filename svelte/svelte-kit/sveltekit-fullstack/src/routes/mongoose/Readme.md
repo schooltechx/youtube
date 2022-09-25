@@ -1,7 +1,13 @@
 # SvelteKit with Mongodb (power by [Mongoose](https://mongoosejs.com/) )
 
-This is simple CRUD in one page. I use docker for database server. 
-You have to copy files to correct location of svelte project for running this demo
+This is simple CRUD in one page. 
+You have to copy files to correct location of svelte project 
+for running this demo.  
+SvelteKit make some change for POST method. 
+I use GET method for avoiding break change and remake tutorial.
+You can check Form Actions tutorial for POST method.
+I don't want to make complex demo so I use similar UI and schema for most of database demo. You can learn another dabase in few minute.
+
 
 ![Product UI](../../../asset/product-ui.png)
 

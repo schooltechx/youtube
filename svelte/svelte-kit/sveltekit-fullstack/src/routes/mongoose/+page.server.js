@@ -10,7 +10,7 @@ try{
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
     const s = url.searchParams
-    let id = s.get("id")??""
+    let id = s.get("id")??"unknown"
     let op = s.get("operation")??""
     let name = s.get("name")??"Unknown product"
     let category = s.get("category")??"drink"
@@ -31,15 +31,14 @@ export async function load({ url }) {
         case "create":
             const pro = new Product(p)    
             await pro.save();
-            message="Product created "+pro.toJSON().id??""
+            message="Product created "+pro._id
             break
     }
-    //search products have part of string name
+    //search reegex match(search) part of name
     const filter = (op=="search" && name!= "")?
         {name:{ $regex: '.*' + name + '.*' }}:{}
 
     const pros = await Product.find(filter)
     const products =  JSON.parse(JSON.stringify(pros))
-    //console.log(products)
     return {products,message}
 }
