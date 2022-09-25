@@ -1,8 +1,13 @@
 # SvelteKit with SQLite (power by [Prisma](https://www.prisma.io/) )
 
-This is simple CRUD in one page. I use sqlite database. 
-It will be created after migration . 
-You have to copy files to correct location of svelte project for running this demo
+This is simple CRUD in one page. 
+You have to copy files to correct location of svelte project 
+for running this demo.  
+SvelteKit make some change for POST method. 
+I use GET method for avoiding break change and remake tutorial.
+You can check Form Actions tutorial for POST method.
+I don't want to make complex demo so I use similar UI and schema for most of database demo. You can learn another dabase in few minute.
+
 
 ![Product UI](../../../asset/product-ui.png)
 
@@ -12,13 +17,14 @@ Prisma is Object–relational mapping
 ([ORM](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping)) 
 tools. Convert from [model](https://www.prisma.io/docs/concepts/components/prisma-schema/data-model) 
 to code and database schema
-
-I don't want to make complex demo so I use similar schema for most of database demo. 
-you can use prisma studio to add edit delete data in databae
+you can use prisma studio to add edit delete data in database
 
 ## File
+
 - src/routes/prisma-sqlite/+page.server.js
 - src/routes/prisma-sqlite/+page.sevelte.js
+- prisma/schema.prisma
+
 ## install
     npm create svelte@latest my-app
     cd my-app
@@ -31,6 +37,7 @@ you can use prisma studio to add edit delete data in databae
     docker compose up -d mongo
     code .
     npm prisma studio
+
 ## prisma/schema.prisma
 
     generator client {
