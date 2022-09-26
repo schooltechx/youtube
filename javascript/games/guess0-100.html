@@ -1,0 +1,47 @@
+<html>
+<body>
+    <h2> Guess Number between 0-100: </h2>
+    <div id="display">I will hint, more or less. Press Enter to submit number</div>
+    <input type="text" id="input" maxlength="3" placeholder="number 0-100" onkeyup="enter(event)" >
+    <button onclick="guess()" id="button">Check</button>
+    <div id="last"></div>
+    <script>
+        let i = document.getElementById("input")
+        let d= document.getElementById("display")
+        let l = document.getElementById("last")
+        // Random 0-100
+        let r = Math.floor(Math.random() * 101);
+        let t = 0; //Number of try
+        function guess() {
+            t += 1;
+            if (i.value == r) {
+                d.innerHTML = "Good Job, try " + t + " round(s). Play with me again!";
+                setTimeout(function () {
+                    window.location.reload(1);
+                }, 5000);
+            }
+            l.innerHTML = "Last value:" + i.value;
+            if (i.value > r) {
+                i.select();
+                d.innerHTML = " &darr; Less &darr;";
+            }
+            if (i.value < r) {
+                i.select();
+                d.innerHTML = " &uarr; More &uarr;";
+            }
+        }
+        function enter(event){
+            event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("button").click();
+                }            
+        }
+        function enter (event) {
+                if (event.keyCode === 13) {
+                    document.getElementById("button").click();
+                }
+            }
+    </script>
+    
+</body>
+</html>
