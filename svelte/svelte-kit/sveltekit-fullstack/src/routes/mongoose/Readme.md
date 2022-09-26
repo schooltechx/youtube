@@ -15,7 +15,7 @@ I don't want to make complex demo so I use similar UI and schema for most of dat
 - docker-compose.yml
 - src/routes/mongoose/product.js
 - src/routes/mongoose/+page.server.js
-- src/routes/mongoose/+page.sevelte
+- src/routes/mongoose/+page.svelte
 
 ## install
     npm create svelte@latest my-app
@@ -25,6 +25,8 @@ I don't want to make complex demo so I use similar UI and schema for most of dat
     # copy file to project
     docker compose up -d mongo
     code .
+
+Browse to [http://localhost:4000](http://localhost:4000)
 
 ## note
 I found error mongo not found error some time. I don't know how to fix it yet. Some annoy problem can fix by. 

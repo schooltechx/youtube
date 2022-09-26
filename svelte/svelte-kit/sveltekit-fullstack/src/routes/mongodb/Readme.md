@@ -14,7 +14,7 @@ I don't want to make complex demo so I use similar UI and schema for most of dat
 
 - docker-compose.yml
 - src/routes/mongodb/+page.server.js
-- src/routes/mongodb/+page.sevelte
+- src/routes/mongodb/+page.svelte
 
 ## install
 
@@ -26,6 +26,7 @@ I don't want to make complex demo so I use similar UI and schema for most of dat
     docker compose up -d mongo
     code .
 
+Browse to [http://localhost:4000](http://localhost:4000)
 ## note
 
 I found mongo not found error sometime. I don't know how to fix it yet. Some annoy problem can fix by. 

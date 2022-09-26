@@ -20,9 +20,10 @@ to code and database schema
 you can use prisma studio to add edit delete data in database
 
 ## File
+ไฟล์ .env และ schema.prisma ถูกสร้างเองหลังเรียกคำสั่ง สร้างเองหลังจากเรียกคำสั่ง "npx prisma init" เราจำเป็นต้องเพิ่ม model Product สำหรับทำตัวอย่างนี้ ให้ดูจากตัวอย่างด้านล่าง
 
 - src/routes/prisma-sqlite/+page.server.js
-- src/routes/prisma-sqlite/+page.sevelte
+- src/routes/prisma-sqlite/+page.svelte
 - prisma/schema.prisma
 - .env
 
@@ -38,6 +39,9 @@ you can use prisma studio to add edit delete data in database
     docker compose up -d mongo
     code .
     npm prisma studio
+
+
+Browse to [http://localhost:4000](http://localhost:4000)
 
 ## prisma/schema.prisma
 
