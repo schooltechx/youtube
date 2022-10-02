@@ -34,3 +34,42 @@ I found mongo not found error sometime. I don't know how to fix it yet. Some ann
 - reload visual studio code
 
 please check [main document](https://github.com/schooltechx/youtube/tree/main/svelte/svelte-kit) for other tutorial
+
+
+[Program]
+
+[Mongodb]
+
+
+[Mongoose]
+แยก +page.svelte/+page.js คือ FE/BE
+เปลี่ยน DB หรือ business logic แก้แค่ BE
+FE เหมือนเดิม
+
+
+[prisma sqlite]
+FE ค่อนข้างเหมือนเดิม
+มี error เพราะยังไม่ได้ npx prisma init
+schema.prisma สร้าง Schema Product
+migrate แล้วจะเห็น .db, sql
+เทียบ Schema กับ .sql ดู
+tags เป็น string ไม่ใช่ array ทำแค่ table เดียวก่อน
+Type Product,Products
+Search ของ Prisma มันไม่มี like 
+prisma.$disconnect
+
+[firebase firestore]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
