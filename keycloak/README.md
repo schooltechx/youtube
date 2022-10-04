@@ -9,7 +9,7 @@ Integration กับระบบ Login ที่มีอยู่เดิม 
 
 ## Identity Brokering and Social Login
 
-รองรับ OpenID Connect และ SAML 2.0 ทำให้ต่อ social networks อย่าง google , Facebook , Github, 
+รองรับ OpenID Connect และ SAML 2.0 ทำให้ต่อ social networks อย่าง [google](sso-google/) , Facebook , Github, 
 
 ## User Federation
 
@@ -25,3 +25,8 @@ Integration กับระบบ Login ที่มีอยู่เดิม 
 
 ## Authorization Services
 
+# ตัวอย่างการใช้งาน
+- [พื้นฐานการใช้ร่วมกับ .NET](api-jwt-auth/)
+- [การใช้ Roles กับ .NET](api-authorization-role/)
+- [การใช้งานร่วมกับ Google](sso-google/)
+- [การใช้งานกับ Flutter](https://www.youtube.com/watch?v=xs6GRuj_MBs)
