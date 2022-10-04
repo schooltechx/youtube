@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  database:
+    image: mongo:4.4
+    ports:
+      - 27017:27017
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=root
+    #   - MONGO_INITDB_ROOT_PASSWORD=P@ssw0rd
+    #   - MONGO_INITDB_DATABASE=example
+    #   - MONGO_INITDB_USERNAME=oom
+    #   - MONGO_INITDB_PASSWORD=oomja
+    volumes:
+      # - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+      - ./db:/data/db

@@ -284,7 +284,8 @@ api/user/[id]/+server.js
 
 ## Backend component
 
-SvelteKit เพียงแค่เข้าใจการทำงาของ load(),Form Actions และการทำงาน API ของ server.js ก็สามารใช้ component ในส่วน Backend ได้เหมือนกับ Node.js เลย 
+SvelteKit เพียงแค่เข้าใจการทำงาของ load(),Form Actions และการทำงาน API ของ server.js ก็สามารถใช้ component ในส่วน Backend ได้เหมือนกับ Node.js เลย 
 
 ## อ่านเพิ่มเติม
-[เข้าใจฐานข้อมูลแบบต่างๆ(วีดีโอภาษาอังกฤษ)](https://www.youtube.com/watch?v=W2Z7fbCLSTw)
+- [เข้าใจฐานข้อมูลแบบต่างๆ(วีดีโอภาษาอังกฤษ)](https://www.youtube.com/watch?v=W2Z7fbCLSTw)
+- [hyperui](https://www.hyperui.dev/)
