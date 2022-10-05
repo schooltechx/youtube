@@ -1,17 +1,34 @@
-# SvelteKit Authentication with cookies
+# SvelteKit Create cookies Authentication
 
-Dear English developer. I modify [this document](https://joyofcode.xyz/sveltekit-authentication-using-cookies) for Thai developer. Below content was written in Thai.
+Dear English developer. I modify from [this document](https://joyofcode.xyz/sveltekit-authentication-using-cookies) for Thai developer. Below content was written in Thai. The modifyed source code have 2 version, [JavaScript](js/) and [TypeScript](ts/) 
 
-เรียนรู้การสร้างระบบ login ด้วยตัวเอง ใช้แบบ cookies โค้ดใช้แบบ TypeScript
+เรียนรู้การสร้างระบบ login ด้วยตัวเองโดยใช้ cookies เมื่อเข้าใจการทำงานแล้ว ก็จะเข้าใจการ authentication แบบอื่นๆได้ง่ายขึ้น
+
+- เวปแอป มีฟอร์ม login เก็บ session เป็น cookies ไม่มี javascript ก็ทำงานได้
+- ระบบมีฟังก์ชั้น register, login,logout, profile, protect page, ตรวจสอบสิทธ์จาก roles ได้  
+- โค้ดเพื่อเรียนรู้พื้นฐานเรื่องระบบ Authentication แต่ก็ค่อนข้างปลอดภัย บน production ต้องใช้คู่กับ HTTPS (NODE_ENV === 'production')
+- cookies เป็นแบบ sameSite, httpOnly ตัว JavaScript อ่านไม่ได้ ปลอดภัยกว่า Session Storage.
+- มีการ hash รหัสผ่านก่อนเก็บลงฐานข้อมูล ไม่สามารถแกะออกมาดูได้
+- token เป็นการ สุ่มขึ้นมา สามารถเดาไปเรื่อยๆเพื่อหา token ได้แต่ใช้เวลานานเพราะค่อนข้างยาว อาจจะเพิ่มการตรวจสอบการใช้ token ผิดซ้ำๆ หรือทำให้ token หมดอายุเร็วขึ้นก็จะปลอดภัยขึ้น
+- ตัวอย่างไม่ได้กันการเดารหัสผ่านซ้ำๆ ถ้าไปใช้จริงน่าจะเพิ่มตรงนี้ด้วย
+- มีการตรวจสอบฐานข้อมูลทุกครั้งที่มีการ request ถ้าใช้งานหนักๆ ควรมี cache session ของยูสเซอร์ไว้ด้วย 
+- ผมมีโค้ดให้สองแบบคือ  [JavaScript](js/) และ [TypeScript](ts/)
+- ยังไม่ได้เพิ่ม enhance เข้าไป
 
 ## Install
-ให้ติดตั้ง node.js รุ่นล่าสุด
-- สร้างโปรเจ็ก SvelteKit แล้วติดตั้ง modules ที่จำเป็น
-- bcrypt ใช้ hash รหัสผ่าน ทำให้แกะรหัสผ่านออกมาดูไม่ได้
-- prisma ORM ติดต่อฐานข้อมูล SQLite 
+- ให้ติดตั้ง node.js รุ่นล่าสุด
+- สร้างโปรเจ็ก SvelteKit โค้ดตัวอย่างที่มีให้จะมีแบบ TypeScript กับ JSDoc ตอนสร้างโปรเจ็กแล้วเลือกมาให้ถูกนะ
+- ติดตั้ง modules ที่จำเป็น bcrypt, prisma
+- bcrypt ใช้ hash รหัสผ่าน ทำให้ย้อนรอยแกะรหัสผ่านในฐานข้อมูลออกมาดูไม่ได้
+- prisma ORM ติดต่อฐานข้อมูล SQLite, ให้แก้ prisma.schema เพื่อให้มีตาราง User, Roles
+- คำสั่ง db push เพื่อสร้างตารางรางตาม schema 
+- เรียก studio เป็นเครื่องมือจัดการฐานข้อมูลอย่างง่าย ให้เพิ่ม USER และ ADMIN ในโมเดล Roles
+- ทำตามวีดีโอ ก็อปโค้ดให้ถูกตำแหน่ง แล้วแต่ว่าตอนสร้างโปรเจ็กเป็น TypeScript หรือ ๋JavaScript  เลือกโฟลเดอร์ [js](js/) หรือ [ts](ts/) 
+ให้ก็อปโฟลเดอร์ที่อยู่กับเอกสารนี้ .svelte-kit/tsconfig.json, src/*, prisma/scheme.prisma  ไปใส่ในโปรเจ็กที่สร้างก็จะใช้งานได้
+
 
 ``` sh
-# create svelte project with TypeScript support
+# create svelte project with TypeScript or JSDoc support
 npm create svelte@latest sveltekit-fullstack-cookie-auth
 cd sveltekit-fullstack-cookie-auth
 npm install
@@ -25,8 +42,6 @@ npx prisma db push
 npx prisma studio
 # add roles USER and ADMIN
 ```
-ให้ก็อปโฟลเดอร์ที่อยู่กับเอกสารนี้ src/*, prisma/scheme.prisma  ไปใส่ในโปรเจ็กที่สร้างก็จะใช้งานได้
-
 
 ## Pages
 การทำงานของหน้าต่างๆ
