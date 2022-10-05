@@ -4,6 +4,16 @@ Dear English developer. I modify from [this document](https://joyofcode.xyz/svel
 
 เรียนรู้การสร้างระบบ login ด้วยตัวเองโดยใช้ cookies เมื่อเข้าใจการทำงานแล้ว ก็จะเข้าใจการ authentication แบบอื่นๆได้ง่ายขึ้น
 
+## ตัวอย่างหน้าจอ
+![Login](img/login.png)
+![Register](img/register.png)
+![User Profile](img/oom.png)
+![Admin Profile](img/admin.png)
+
+![Prisma Studio Roles](img/roles.png)
+![Prisma Studio User](img/user.png)
+
+## ลักษณะโปรแกรม
 - เวปแอป มีฟอร์ม login เก็บ session เป็น cookies ไม่มี javascript ก็ทำงานได้
 - ระบบมีฟังก์ชั้น register, login,logout, profile, protect page, ตรวจสอบสิทธ์จาก roles ได้  
 - โค้ดเพื่อเรียนรู้พื้นฐานเรื่องระบบ Authentication แต่ก็ค่อนข้างปลอดภัย บน production ต้องใช้คู่กับ HTTPS (NODE_ENV === 'production')
