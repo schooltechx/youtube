@@ -1,7 +1,7 @@
 # ห้องเรียน กำลังพัฒนา(ตนเอง)
 สำหรับผู้มีพื้นฐานเขียนโปรแกรมได้นิดหน่อย ยังไม่สามารถสร้างเวปแอปออกมาได้ เมื่อเรียนแล้วสามารถทำเวปแอปออกมาเป็นชิ้นเป็นอันได้
 
-การเรียนการสอนจะเริ่มที่ Play list [นี้ครับ](https://www.youtube.com/watch?v=4CpTCmHZyvw&list=PLWMbTFbTi55OgahSw6T78TTWClgXWpDy9) งาน พิมพ์ดีดให้จับหน้าจอมาส่ง
+การเรียนการสอนจะเริ่มที่ Play list [นี้ครับ](https://www.youtube.com/watch?v=4CpTCmHZyvw&list=PLWMbTFbTi55OgahSw6T78TTWClgXWpDy9) 
 
 # ตั้งค่าเครื่องสำหรับการพัฒนา 
 เช็ตอัปเครื่องสำหรับการพัฒนาโปรแกรม แล้วลองสร้างโปรเจ็ก svelte/sveltekit ด้วย NPM เป็น
@@ -14,6 +14,7 @@
 - สร้างโปรเจ็ก SvelteKit (นาทีที่ 10:00)
 
 คำสั่งที่ใช้ก็ดูในลิงค์ svelte/sveltekit ได้เลย ยังไม่มีการเขียนโปรแกรมอะไรแค่ก็อปแปะทำตามตัวอย่าง เราจะเรียนรู้การใช้เครื่องมือพื้นฐานกันก่อน ทำถึงแค่ npm install แล้วเปิด VS Code ยังไม่ต้องแก้ไขโค้ด เมื่อทำได้ครบทุกขั้นแจ้งกลับมาครับ 
+
 - https://www.youtube.com/watch?v=Xd8x8ahuIDs
 - https://svelte.dev/
 - https://kit.svelte.dev/
@@ -46,7 +47,7 @@
 - ให้ใช้รายการ components ดังนี้ Styles,Button,Input,ListGroup,ListGroupItem,InputGroup ดูวิธีใช้จากตัวอย่างในเวป
 - ทำโปรแกรมแค่หน้าเดียวไม่ต้องแยก component โค้ดทั้งหมดอยู่ในไฟล์ App.svelte แล้วเอาไฟล์นี้มาส่ง (ส่งแค่ 1 ไฟล์)
 ## ศึกษาเพิ่มเติม 
-https://www.w3schools.com/js/js_objects.asp
-https://www.w3schools.com/js/js_arrays.asp
-https://www.youtube.com/watch?v=-jzu5YH6OMQ
-https://www.youtube.com/watch?v=HrbQMxZ2Ucs&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=2
+- https://www.w3schools.com/js/js_objects.asp
+- https://www.w3schools.com/js/js_arrays.asp
+- https://www.youtube.com/watch?v=-jzu5YH6OMQ
+- https://www.youtube.com/watch?v=HrbQMxZ2Ucs&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=2
