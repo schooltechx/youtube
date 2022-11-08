@@ -17,7 +17,7 @@
 
 ## Ansi C
 
-### ctype
+### [ctype](./ANSI/toupper-tolower-isxxx.md)
 isalnum, isalpha, iscntrl, isdigit, isgraph, islower, isprint, ispunct, isspace, isupper, isxdigit, tolower, toupper 
 
 ฟังก์ชันในกลุ่มของ isXXX() ใช้สำหรับเปรียบเทียบตัวอักษรว่าเป็น ตัวอักษร ตัวเลข ตัวอักขระควบคุม ฯลฯ หรือไม่ ส่วนฟังก์ชันในกลุ่ม toXXX() ใช้สำหรับแปลงตัวอักษรเช่น  จากตัวอักษรตัวใหญ่เป็นตัวเล็กหรือกลับกัน
@@ -31,7 +31,7 @@ acos, asin, atan, atan2, ceil, cos, cosh, exp, fabs, floor, fmod, frexp, ldexp, 
   การติดต่อสื่อสารระหว่างโพรเซส วิธีที่ง่ายและไม่ซับซ้อนคือการส่งซิกแนล การทำงานจะคล้ายๆการทำอินเตอร์รับของฮาร์ดแวร์ 
   โพรเซสที่สามารถตอบสนองซิกแนลได้จำเป็นต้องมีฟังก์ชันที่ถูกรีจิสเตอร์ด้วยฟังก์ชัน signal() ฟังก์ชั่นที่เกี่ยวข้องได้แก่
   
-raise,signal,sleep,pause 
+[raise](./ANSI/raise.md),[signal,sleep,pause](./ANSI/signal-sleep-pause.md) 
 
 ## POSIX C
 POSIX ย่อมาจาก Portable Operating System Interface เป็นข้อตกลงมาตรฐานที่ถูกระบุโดย IEEE Computer Society
@@ -41,13 +41,11 @@ POSIX ย่อมาจาก Portable Operating System Interface เป็น�
 ส่วน Windows รองรับบางส่วน ผ่านทาง “Windows Subsystem for Linux” หรือ Third-party project อื่นเช่น ใช้ Cygwin
 
 ### Process Primitives (Section 3)
-pthread_atfork,sigwait,sigwaitinfo,sigtimedwait,sigqueue,pthread_kill
-pthread_sigmask,  sigpending, wait, waitpid, kill
-sigemptyset, sigfillset, sigaddset, sigdelset, sigismember, sigaction,sigprocmask,sigsuspend,
-pause, sleep (ดู ANSI),alarm
-
-,execl, execle, execlp, execv, execve, execvp (execx.txt)
-fork,_exit(ดู standlib)
+[execl, execle, execlp, execv, execve, execvp,](execx.md)
+[alarm,](alarm.md)
+[fork](fork.md)
+[sigemptyset, sigfillset, sigaddset, sigdelset, sigismember, sigaction,sigprocmask,sigsuspend,](sigxx.md)
+[wait, waitpid,](wait-waitpid.md)
 
 ###Process Environment (Section 4)
 setsid, setpgid, getgroups, getlogin,getlogin_r
@@ -57,23 +55,12 @@ times, getenv,putenv,getpid, getppid, getpgrp,
 ttyname,ttyname_r, isatty,ctermid
 sysconf
 ### Files and Directories (Section 5)
-ftruncate, mkfifo(cygnus defect POSIX2),
-chown,pathconf, fpathconf,umask,open, creat,read,write,close
-rename,chdir, getcwd,
-opendir, readdir, rewinddir, closedir,readdir_r,
-link, unlink,
-mkdir, rmdir,
-stat, fstat,
-access,chmod, fchmod,utime
+
+[stat,fstat,lstat,](./POSIX/stat-fstat-lstat.md)
+[open,read,write,](./POSIX/open-read-write.md)
+[opendir,readdir,teldir,seekdir,rewinddir,](./POSIX/opendir-readdir-teldir-seekdir-rewinddir.md)
 
 ### Input and Output Primitives (Section 6)
-fdatasync, aio_read, aio_write, lio_listio, aio_error, aio_return, aio_cancel, aio_suspend, aio_fsync
-fcntl,
-fsync,
-lseek,
-*dup, dup2,
-pipe,)
-close,read, write,(see Files and Directories (Section 5))
 
 ### Device- and Class-Specific Functions (Section 7)
 cfgetispeed, cfgetospeed, cfsetispeed, cfsetospeed, tcdrain, tcflow, tcflush, , tcgetpgrp, tcsendbreak, tcsetpgrp 
