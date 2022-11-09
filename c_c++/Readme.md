@@ -1,8 +1,9 @@
 # การเขียนโปรแกรมบน UNIX/Linux ด้วย C และ C++
 ผมไปเจอไฟล์ที่ผมเขียนสอนการเขียนภาษา C ไว้นานมากแล้ว ราวๆปี 2000 ตอนนั้นอยู่ต่างประเทศเขียนโปรแกรมบน UNIX (HPUX, Solaris,Linux ฯลฯ)
-เขียนโดยอิงมาตรฐาน ANSI C และ POSIC C สามารถนำมาใช้กับวินโดว์ได้ด้วย ตอนนั้นไม่มีข้อมูลภาษาไทย และ ไม่มี google ให้หาง่ายๆด้วย 
-ก็เลยเขียนภาษาไทยเก็บไว้เผื่อเขียนหนังสือ ผมในตอนนั้นก็เด็กมากพึงเรียนจบ เนื้อหาไม่ได้ตรวจอะไรมากนักอาจจะมีข้อผิดพลาดต้องขออภัยด้วย 
-เนื้อหาเป็นการพัฒนาแบบดังเดิมแต่ก็น่าจะใช้ได้อยู่ หวังว่าจะเป็นประโยชน์กับคนอื่นๆ แล้วจะหาโอกาสอัปเดตเนื้อหาและทำวีดีโอสอนนะครับ
+เขียนโดยอิงมาตรฐาน ANSI C และ POSIX C สามารถนำมาใช้กับวินโดว์ได้ด้วย ตอนนั้นไม่มีข้อมูลภาษาไทย และ ไม่มี google ให้หาง่ายๆด้วย 
+ก็เลยเขียนภาษาไทยเก็บไว้ เพื่อดูเอง หรือเผื่อเขียนหนังสือ เนื่องจาก POSIX มันกว้างมากเลยไม่สามารถทำให้เสร็จได้
+ผมในตอนนั้นก็เด็กมาก พึงเรียนจบ เอามาใส่ใน Github แต่ก็ยังไม่มีเวลาตรวจเนื้อหา แค่ก็อปแปะแล้วแก้เป็น Markdown ก็แทบแย่แล้ว 
+เนื้อหาเป็นการพัฒนาแบบดังเดิม อาจจะมีข้อผิดพลาดต้องขออภัยด้วย หวังว่าจะเป็นประโยชน์กับคนอื่นๆ แล้วจะหาโอกาสอัปเดตเนื้อหาและทำวีดีโอสอนนะครับ
 
 ## Quick Start (Draft)
 แนะนำการเขียนโปรแกรมด้วยภาษา C บน UNIX ไม่คำนึงถึงรายละเอียด หรือหลัการมากมาย 
@@ -15,10 +16,37 @@
 - [Make](./quickC/make.md)
 - [C For UNIX/Linux เบื้องต้น](basicC.md)
 
-## Ansi C
+## ANSI C
+ฟังก์ชั่นในกลุ่มนี้จะรองรับระบบปฎิบัติการหลายตัว (DOS, Windows, macOS, UNIX, Linux ฯลฯ)
 
-### [ctype](./ANSI/toupper-tolower-isxxx.md)
-isalnum, isalpha, iscntrl, isdigit, isgraph, islower, isprint, ispunct, isspace, isupper, isxdigit, tolower, toupper 
+### stdio
+[fflush](./ANSI/fflush.md),
+[fopen, freopen, fdopen, fclose,fwrite, fread,ferror,feof,clearerr](./ANSI/files.md),
+[gets,fgets,puts,fputs](./ANSI/gets-fgets-puts-fputs.md),
+[perror,strerror](./ANSI/perror-strerror.md),
+[printf,fprintf,sprintf](./ANSI/printf-fprintf-sprintf.md),
+[putc,putchar,fgetc,fputc,getc,getchar](./ANSI/putc-putchar-fgetc-fputc-getc-getchar.md),
+[remove](./ANSI/remove),
+[rename](./ANSI/rename.md),
+[setbuf](./ANSI/setbuf.md),
+[tmpfile,tmpnam](./ANSI/tmpfile-tmpnam.md),
+[scanf,fscanf,sscanf](./ANSI/xscanf.md),
+
+### stdlib
+[abort](./ANSI/abort.md),
+[assert](./ANSI/assert.md),
+[exit,_exit,atexit](./ANSI/exit_exit-atexit.md)
+
+### string, memory
+[memccpy,memchrmemcmp,memcpy,memmove,memset,bcmp,bcopy,bzero,ffs](./ANSI/memorys.md),
+[str](./ANSI/str.md),
+[strcat,strncat](./ANSI/strcat-strncat.md),
+[strcpy,strncpy](./ANSI/strcpy-strncpy.md),
+[strtok](./ANSI/strtok.md),
+[strxcmp](./ANSI/strxcmp.md)
+
+### ctype
+[isalnum, isalpha, iscntrl, isdigit, isgraph, islower, isprint, ispunct, isspace, isupper, isxdigit, tolower, toupper](./ANSI/toupper-tolower-isxxx.md) 
 
 ฟังก์ชันในกลุ่มของ isXXX() ใช้สำหรับเปรียบเทียบตัวอักษรว่าเป็น ตัวอักษร ตัวเลข ตัวอักขระควบคุม ฯลฯ หรือไม่ ส่วนฟังก์ชันในกลุ่ม toXXX() ใช้สำหรับแปลงตัวอักษรเช่น  จากตัวอักษรตัวใหญ่เป็นตัวเล็กหรือกลับกัน
 
@@ -33,12 +61,18 @@ acos, asin, atan, atan2, ceil, cos, cosh, exp, fabs, floor, fmod, frexp, ldexp, 
   
 [raise](./ANSI/raise.md),[signal,sleep,pause](./ANSI/signal-sleep-pause.md) 
 
+
+
 ## POSIX C
 POSIX ย่อมาจาก Portable Operating System Interface เป็นข้อตกลงมาตรฐานที่ถูกระบุโดย IEEE Computer Society
 ซึ่งมาตรฐานเหล่านั้นประกอบไปด้วย กลุ่มของ API (application programming interfaces) สำหรับ 
 ระบบปฏิบัติการ Unix และ Unix-like ต่างๆ เช่น Solaris (Oracle), AIX (IBM), HP-UX (HP), OS X (Apple) 
-และ Linux distros ต่างๆ (Linux distros ส่วนใหญ่ คลอบคลุมตาม POSIX เกือบทั้งหมด แต่ไม่ได้ มีการตรวจสอบอย่างเป็นทางการ เพราะต้องจ่ายเงินสำหรับการทดสอบนั้นเอง) 
-ส่วน Windows รองรับบางส่วน ผ่านทาง “Windows Subsystem for Linux” หรือ Third-party project อื่นเช่น ใช้ Cygwin
+และ Linux distros ต่างๆ (Linux distros ส่วนใหญ่ คลอบคลุมตาม POSIX เกือบทั้งหมด) และคำสั่ง(comman line) ที่จำเป็น
+
+Windows รองรับ function บางส่วน command line และ ฟังชั่นไม่ได้รองรับจริงๆต้องทำผ่านทาง 
+- "Windows Subsystem for Linux"
+- Cygwin  
+- WSL2 ซึ่งเป็น kernel Linux ที่ทำงานบน Windows ได้
 
 ### Process Primitives (Section 3)
 [execl, execle, execlp, execv, execve, execvp,](execx.md)
@@ -47,13 +81,21 @@ POSIX ย่อมาจาก Portable Operating System Interface เป็น�
 [sigemptyset, sigfillset, sigaddset, sigdelset, sigismember, sigaction,sigprocmask,sigsuspend,](sigxx.md)
 [wait, waitpid,](wait-waitpid.md)
 
-###Process Environment (Section 4)
-setsid, setpgid, getgroups, getlogin,getlogin_r
-uname,time (ดู ANSI time),
-getuid, geteuid, getgid, getegid,setuid, setgid
-times, getenv,putenv,getpid, getppid, getpgrp,
-ttyname,ttyname_r, isatty,ctermid
-sysconf
+### Process Environment (Section 4)
+setsid, setpgid, getgroups, getlogin,getlogin_r,
+setuid, setgid,
+time (ดู ANSI time),
+ttyname_r,ctermid,
+
+[getenv,putenv](./POSIX/getenv-putenv.md),
+[getgroups,getlogin](./POSIX/getgroups-getlogin.md),
+[getuid,geteuid,getgid,getegid](./POSIX/getuid-geteuid-getgid-getegid.md),
+[istty-ttyname](./POSIX/istty-ttyname.md),
+[sysconf](./POSIX/sysconf.md),
+[times](./POSIX/times.md),
+[uname](./POSIX/uname.md),
+[getpgid,getpgrp,getpgrp2 ,getpid, getppid](./POSIX/fork-pid.md), 
+
 ### Files and Directories (Section 5)
 
 [stat,fstat,lstat,](./POSIX/stat-fstat-lstat.md)
@@ -61,17 +103,21 @@ sysconf
 [opendir,readdir,teldir,seekdir,rewinddir,](./POSIX/opendir-readdir-teldir-seekdir-rewinddir.md)
 
 ### Input and Output Primitives (Section 6)
+[dup,dup2](./POSIX/dupx.md),
+[fcntl](./POSIX/fcntl.md),
+[fsync](./POSIX/fsync.md),
+[lseek](./POSIX/lseek.md),
+[pipe](./POSIX/pipe.md),
 
 ### Device- and Class-Specific Functions (Section 7)
 cfgetispeed, cfgetospeed, cfsetispeed, cfsetospeed, tcdrain, tcflow, tcflush, , tcgetpgrp, tcsendbreak, tcsetpgrp 
 tcgetattr, tcsetattr
 
-
 ### Language-Specific Services for the C Programming Language (Section 8)
 asctime_r ctime_r flockfile ftrylockfile funlockfile getc_unlocked getchar_unlocked gmtime_r localtime_r putc_unlocked putchar_unlocked rand_r strtok_r
 setlocale, siglongjmp, sigsetjmp, 
 fseek, ftell  (see ANSI),
-fileno,
+[fileno](./POSIX/fileno.md),
 tmpfile, tmpnam (see ANSI),
 tzset (see ANSI),
 perror(see ANSI),
@@ -121,7 +167,7 @@ pthread_cancel pthread_cleanup_pop pthread_cleanup_push pthread_setcancelstate p
 accept bind connect getdomainname gethostbyaddr gethostbyname getpeername getprotobyname getprotobynumber getservbyname getservbyport getsockname getsockopt herror htonl htons inet_addr inet_makeaddr inet_netof inet_ntoa listen ntohl ntohs rcmd recv recvfrom rexec rresvport send sendto setsockopt shutdown socket socketpair 
 Of these networking calls, rexec, rcmd and rresvport are implemented in MS IP stack but may not be implemented in other vendors' stacks. 
 ### Other
-chroot (stub, sets ENOSYS, returns -1) closelog cwait cygwin_conv_to_full_posix_path cygwin_conv_to_full_win32_path cygwin_conv_to_posix_path, cygwin_conv_to_win32_path, cygwin_posix_path_list_p, cygwin_posix_to_win32_path_list, cygwin_posix_to_win32_path_list_buf_size, cygwin_split_path, cygwin_win32_to_posix_path_list, cygwin_win32_to_posix_path_list_buf_size, cygwin_winpid_to_pid dlclose, dlerror dlfork dlopen dlsym endgrent endhostent ffs fstatfs ftime get_osfhandle getdtablesize getgrent gethostname getitimer getmntent getpagesize getpgid getpwent gettimeofday: BSD grantpt initgroups (stub) ioctl killpg login logout lstat mknod (stub, sets ENOSYS, returns -1) memccpy nice openlog pclose popen ptsname putenv random readv realpath regfree rexec select setegid: SVR4 (stub, sets ENOSYS, returns zero)@item endpwent setenv seterrno seteuid (stub, sets ENOSYS, returns zero) sethostent setitimer setmntent setmode setpassent setpgrp setpwent 
+chroot (stub, sets ENOSYS, returns -1) closelog cwait cygwin_conv_to_full_posix_path cygwin_conv_to_full_win32_path cygwin_conv_to_posix_path, cygwin_conv_to_win32_path, cygwin_posix_path_list_p, cygwin_posix_to_win32_path_list, cygwin_posix_to_win32_path_list_buf_size, cygwin_split_path, cygwin_win32_to_posix_path_list, cygwin_win32_to_posix_path_list_buf_size, cygwin_winpid_to_pid dlclose, dlerror dlfork dlopen dlsym endgrent endhostent ffs fstatfs ftime get_osfhandle getdtablesize getgrent gethostname getitimer getmntent getpagesize getpwent gettimeofday: BSD grantpt initgroups (stub) ioctl killpg login logout lstat mknod (stub, sets ENOSYS, returns -1) memccpy nice openlog pclose popen ptsname putenv random readv realpath regfree rexec select setegid: SVR4 (stub, sets ENOSYS, returns zero)@item endpwent setenv seterrno seteuid (stub, sets ENOSYS, returns zero) sethostent setitimer setmntent setmode setpassent setpgrp setpwent 
 settimeofday: BSD (stub, set ENOSYS, return -1) sexecl sexecle sexeclp sexeclpe sexeclpe sexecp sexecv sexecve sexecvpe sigpause spawnl (spawn calls are from Windows C library) spawnle spawnlp spawnlpe spawnv spawnve spawnvp spawnvpe srandom statfs strsignal strtosigno swab syslog timezone truncate (SVR4/4.3+BSD) ttyslot unlockpt unsetenv usleep utimes vfork: stub that calls fork vhangup (stub, sets ENOSYS, returns -1) wait3 wait4 wcscmp wcslen wprintf writev 
 
 
