@@ -1,6 +1,7 @@
-# execx
+# execl execle execlp execv execve execvp  
 
-execl(), execle(), execlp(), execv(), execve(), execvp() - รันโปรแกรมบนโพรเซสปัจจุบัน
+รันโปรแกรมบนโพรเซสปัจจุบัน
+
 ``` c
 #include <unistd.h>
 extern char **environ;
@@ -11,7 +12,6 @@ int execv(const char *path, char * const argv[]);
 int execve(const char *path, char * const argv[], char * const envp[]);
 int execvp(const char *file, char * const argv[]);      
 ```
-
 
 ``` c
 #include <stdio.h>
