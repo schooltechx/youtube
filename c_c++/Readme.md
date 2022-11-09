@@ -2,8 +2,8 @@
 ผมไปเจอไฟล์ที่ผมเขียนสอนการเขียนภาษา C ไว้นานมากแล้ว ราวๆปี 2000 ตอนนั้นอยู่ต่างประเทศเขียนโปรแกรมบน UNIX (HPUX, Solaris,Linux ฯลฯ)
 เขียนโดยอิงมาตรฐาน ANSI C และ POSIX C สามารถนำมาใช้กับวินโดว์ได้ด้วย ตอนนั้นไม่มีข้อมูลภาษาไทย และ ไม่มี google ให้หาง่ายๆด้วย 
 ก็เลยเขียนภาษาไทยเก็บไว้ เพื่อดูเอง หรือเผื่อเขียนหนังสือ เนื่องจาก POSIX มันกว้างมากเลยไม่สามารถทำให้เสร็จได้
-ผมในตอนนั้นก็เด็กมาก พึงเรียนจบ เอามาใส่ใน Github แต่ก็ยังไม่มีเวลาตรวจเนื้อหา แค่ก็อปแปะแล้วแก้เป็น Markdown ก็แทบแย่แล้ว 
-เนื้อหาเป็นการพัฒนาแบบดังเดิม อาจจะมีข้อผิดพลาดต้องขออภัยด้วย หวังว่าจะเป็นประโยชน์กับคนอื่นๆ แล้วจะหาโอกาสอัปเดตเนื้อหาและทำวีดีโอสอนนะครับ
+ผมในตอนนั้นก็เด็กมาก พึงเรียนจบ ตอนแรกแค่เป็นโน้ตสำหรับอ่านเอง ผมเอามาใส่ใน Github โดยการก็อปแปะแล้วแก้เป็น Markdown ก็แทบแย่แล้ว 
+แต่ก็ยังไม่มีเวลาตรวจเนื้อหา การพัฒนาแบบดังเดิม อาจจะมีข้อผิดพลาดหรือคลาดเคลื่อนต้องขออภัยด้วย หวังว่าโค้ดตัวอย่างและคำอธิบายจะเป็นประโยชน์กับคนอื่นๆ แล้วจะหาโอกาสอัปเดตเนื้อหาและทำวีดีโอสอนนะครับ
 
 ## Quick Start (Draft)
 แนะนำการเขียนโปรแกรมด้วยภาษา C บน UNIX ไม่คำนึงถึงรายละเอียด หรือหลัการมากมาย 
@@ -11,10 +11,10 @@
 และ การเขียน Makefile เบื้องต้นเท่านั้น ผมขอสรุปเอาดื้อๆ ว่าผู้อ่านรู้จัก UNIX หรือ Linux พอสมควร สามารถใช้คำสั่งเบื้องต้นได้ 
 ใช้ editor บน UNIX ได้ เขียนโปรแกรมพอเป็นบ้างแล้ว และ ระบบทีใช้มี gcc, gdb, make(GNU)
 - [การเขียนโปรแกรมบน Unix](./quickC/intro.md)
-- [GCC ฉบับย่อ](./quickC/intro.md)
+- [GCC ฉบับย่อ](./quickC/gcc.md)
 - [GDB ฉบับย่อ](./quickC/gdb.md)
 - [Make](./quickC/make.md)
-- [C For UNIX/Linux เบื้องต้น](basicC.md)
+- [C For UNIX/Linux เบื้องต้น](./quickC/basicC.md)
 
 ## ANSI C
 ฟังก์ชั่นในกลุ่มนี้จะรองรับระบบปฎิบัติการหลายตัว (DOS, Windows, macOS, UNIX, Linux ฯลฯ)
@@ -26,7 +26,7 @@
 [perror,strerror](./ANSI/perror-strerror.md),
 [printf,fprintf,sprintf](./ANSI/printf-fprintf-sprintf.md),
 [putc,putchar,fgetc,fputc,getc,getchar](./ANSI/putc-putchar-fgetc-fputc-getc-getchar.md),
-[remove](./ANSI/remove),
+[remove](./ANSI/remove.md),
 [rename](./ANSI/rename.md),
 [setbuf](./ANSI/setbuf.md),
 [tmpfile,tmpnam](./ANSI/tmpfile-tmpnam.md),
@@ -35,15 +35,15 @@
 ### stdlib
 [abort](./ANSI/abort.md),
 [assert](./ANSI/assert.md),
-[exit,_exit,atexit](./ANSI/exit_exit-atexit.md)
+[exit,_exit,atexit](./ANSI/exit-exit-atexit.md)
 
 ### string, memory
-[memccpy,memchrmemcmp,memcpy,memmove,memset,bcmp,bcopy,bzero,ffs](./ANSI/memorys.md),
+[memccpy,memchrmemcmp,memcpy,memmove,memset,bcmp,bcopy,bzero,ffs](./ANSI/memory.md),
 [str](./ANSI/str.md),
 [strcat,strncat](./ANSI/strcat-strncat.md),
 [strcpy,strncpy](./ANSI/strcpy-strncpy.md),
 [strtok](./ANSI/strtok.md),
-[strxcmp](./ANSI/strxcmp.md)
+[strcmp,strncmp](./ANSI/strxcmp.md)
 
 ### ctype
 [isalnum, isalpha, iscntrl, isdigit, isgraph, islower, isprint, ispunct, isspace, isupper, isxdigit, tolower, toupper](./ANSI/toupper-tolower-isxxx.md) 
@@ -59,9 +59,8 @@ acos, asin, atan, atan2, ceil, cos, cosh, exp, fabs, floor, fmod, frexp, ldexp, 
   การติดต่อสื่อสารระหว่างโพรเซส วิธีที่ง่ายและไม่ซับซ้อนคือการส่งซิกแนล การทำงานจะคล้ายๆการทำอินเตอร์รับของฮาร์ดแวร์ 
   โพรเซสที่สามารถตอบสนองซิกแนลได้จำเป็นต้องมีฟังก์ชันที่ถูกรีจิสเตอร์ด้วยฟังก์ชัน signal() ฟังก์ชั่นที่เกี่ยวข้องได้แก่
   
-[raise](./ANSI/raise.md),[signal,sleep,pause](./ANSI/signal-sleep-pause.md) 
-
-
+[raise,kill](./ANSI/raise.md),
+[signal,sleep,pause](./ANSI/signal-sleep-pause.md) 
 
 ## POSIX C
 POSIX ย่อมาจาก Portable Operating System Interface เป็นข้อตกลงมาตรฐานที่ถูกระบุโดย IEEE Computer Society
@@ -75,11 +74,11 @@ Windows รองรับ function บางส่วน command line และ
 - WSL2 ซึ่งเป็น kernel Linux ที่ทำงานบน Windows ได้
 
 ### Process Primitives (Section 3)
-[execl, execle, execlp, execv, execve, execvp,](execx.md)
-[alarm,](alarm.md)
-[fork](fork.md)
-[sigemptyset, sigfillset, sigaddset, sigdelset, sigismember, sigaction,sigprocmask,sigsuspend,](sigxx.md)
-[wait, waitpid,](wait-waitpid.md)
+[execl, execle, execlp, execv, execve, execvp,](./POSIX/execx.md)
+[alarm,](./POSIX/alarm.md)
+[fork](./POSIX/fork.md)
+[sigemptyset, sigfillset, sigaddset, sigdelset, sigismember, sigaction,sigprocmask,sigsuspend,](./POSIX/sigxxx.md)
+[wait, waitpid,](./POSIX/wait-waitpid.md)
 
 ### Process Environment (Section 4)
 setsid, setpgid, getgroups, getlogin,getlogin_r,
@@ -99,7 +98,7 @@ ttyname_r,ctermid,
 ### Files and Directories (Section 5)
 
 [stat,fstat,lstat,](./POSIX/stat-fstat-lstat.md)
-[open,read,write,](./POSIX/open-read-write.md)
+[create,open,read,write,](./POSIX/open-read-write.md)
 [opendir,readdir,teldir,seekdir,rewinddir,](./POSIX/opendir-readdir-teldir-seekdir-rewinddir.md)
 
 ### Input and Output Primitives (Section 6)
