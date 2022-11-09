@@ -1,4 +1,4 @@
-# dupx
+# dup dup2
 ฟังก์ชันสำหรับทำการสำเนาไฟล์  descriptor 
 ``` c
 #include <unistd.h>
