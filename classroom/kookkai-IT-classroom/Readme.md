@@ -40,3 +40,6 @@
 - touching mouse pointer
 - wait 1 seconds
 - change ? by 1
+
+# My Web
+หลังจากเรียนรู้ HTML ในชั้นเรียนแล้ว อยากให้ลองสร้างเวปส่วนตัวให้ทำ[ตามคำสั่งนี้](./my-web/)
