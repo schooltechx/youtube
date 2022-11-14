@@ -20,6 +20,16 @@
 - ต้อง[สามัคร Github](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home)ก่อน
 - ทำการสร้าง Repositories กดปุ่ม New
 - ตั้งชื่อของ repo ให้เหมือนชื่อที่สมัคร github แล้วตามด้วย .github.io ยกตัวอย่างผมใช้ชื่อ schooltechx ก็จะตั้งชื่อ schooltechx.github.io
+
+ย้ำนะครับถ้าตั้งชื่อไม่ถูก เวปจะใช้งานไม่ได้(404 Not found) ทำ repo แล้ว มันจะได้หน้าตาแบบนี้นะครับ ชื่อที่ใช้ใน github ต้องสอดคล้องกับชื่อ repo
+
+schooltechx/schooltechx.github.io
+
+เวลาเข้าเวปก็จะใช้ URL แบบนี้
+
+https://schooltechx.github.io
+
+
 ![New Repo](img/new-repo.png)
 - ทดลองสร้างไฟล์เลือก creating a new file
 ![add file](img/add-file.png)
@@ -30,4 +40,8 @@
 - นำหน้าเวปที่แก้ไขจาก template มาอัปโหลดทับไฟล์เดิม หน้าเวปที่ถูกต้องต้องมี index.html อยู่นอกสุด แล้วมีโฟลเดอร์ต่างๆในโครงสร้างเดิม การย้ายตำแหน่ง ไฟล์หรือโฟลเดอร์อาจจะทำให้หน้าเวปมีความผิดพลาดได้
 ![Upload](img/upload-file.png)
 - github ใช้เก็บโค้ดโปรแกรม ถ้าเราใส่ใน repo ฟอร์แม็ตชื่อตามที่กำหนดของ Github Page เราก็จะได้หน้าเวปเราฟรีๆแล้ว นอกจากนี้โค้ดโปรแกรมที่เราเขียนขึ้นมา สามารถนำไปสร้างหน้าเวปอัตโนมัติเมื่อมีการแก้ไขได้ซึ่งจะได้เรียนในโอกาสต่อๆไป
+
+## นำขึ้น Firebase
+เป็นอีกที่ที่ขึ้นได้ฟรี ลองทำตาม[วีดีโอนี้](https://www.youtube.com/watch?v=tH-V9R8SM_Y&t=0s
+)ได้ครับ
 
