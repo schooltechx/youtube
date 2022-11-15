@@ -16,7 +16,7 @@
 ![Inspect](img/inspect.png)
 
 ## นำขึ้นเวป Github Page
-เป็นบริการฟรีของ Github 
+เป็นบริการฟรีของ Github  
 - ต้อง[สามัคร Github](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home)ก่อน
 - ทำการสร้าง Repositories กดปุ่ม New
 - ตั้งชื่อของ repo ให้เหมือนชื่อที่สมัคร github แล้วตามด้วย .github.io ยกตัวอย่างผมใช้ชื่อ schooltechx ก็จะตั้งชื่อ schooltechx.github.io
@@ -44,4 +44,10 @@ https://schooltechx.github.io
 ## นำขึ้น Firebase
 เป็นอีกที่ที่ขึ้นได้ฟรี ลองทำตาม[วีดีโอนี้](https://www.youtube.com/watch?v=tH-V9R8SM_Y&t=0s
 )ได้ครับ
+
+## การลบ Repo 
+
+จะทำยากหน่อยเพื่อการลบโดยไม่ตั้งใจ ให้ทำตามหน้านี้ครับ
+
+https://docs.github.com/en/repositories/creating-and-managing-repositories/deleting-a-repository
 
