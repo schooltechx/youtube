@@ -53,6 +53,8 @@ New keys: Home row,New key drill 1,New key drill 2,New key drill 3
 - ใช้ SvelteStrap เพื่อตบแต่งหน้าโปรแกรม (บน VS Code อย่าลืมติดตั้ง npm install sveltestrap svelte )
 - ให้ใช้รายการ components ดังนี้ Styles,Button,Input,ListGroup,ListGroupItem,InputGroup ดูวิธีใช้จากตัวอย่างในเวป
 - ทำโปรแกรมแค่หน้าเดียวไม่ต้องแยก component โค้ดทั้งหมดอยู่ในไฟล์ App.svelte แล้วเอาไฟล์นี้มาส่ง (ส่งแค่ 1 ไฟล์)
+## CRUD สำหรับ Frontend เบื้องต้น
+ทำตามใบงานใน[หน้านี้ครับ](./fetch/)
 ## ศึกษาเพิ่มเติม 
 - https://www.w3schools.com/js/js_objects.asp
 - https://www.w3schools.com/js/js_arrays.asp
