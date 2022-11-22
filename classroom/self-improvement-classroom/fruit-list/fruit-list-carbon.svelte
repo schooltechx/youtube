@@ -1,5 +1,6 @@
 <script>
   //You can delete all style in app.css
+  // npm i -D carbon-components-svelte
   import {Button,TextInput,Grid,Row,Column,OrderedList,
     ListItem,} from "carbon-components-svelte"
   let name = ""
