@@ -19,9 +19,10 @@
 	async function createUser() {
 		const res = await fetch('/api/users', {
 			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({ email, name })
 		});
-		if (res.status != 201) {
+		if (!res.ok) {
 			msg = 'create user fail';
 			return;
 		}
@@ -30,9 +31,10 @@
 	async function updateUser() {
 		const res = await fetch('/api/users/' + id, {
 			method: 'PUT',
+			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({ email, name })
 		});
-		if (res.status != 200) {
+		if (!res.ok) {
 			msg = 'update user fail';
 			return;
 		}
@@ -40,7 +42,7 @@
 	}
 	async function deleteUser() {
 		const res = await fetch('/api/users/' + id, { method: 'DELETE' });
-		if (res.status != 200) {
+		if (!res.ok) {
 			msg = 'delete user fail';
 			return;
 		}
