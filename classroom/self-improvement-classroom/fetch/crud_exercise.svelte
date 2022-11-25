@@ -1,6 +1,11 @@
 <script>
-  //code for App.svelte
-  // json-server --watch db.json
+  //code for App.svelte, impliment function del() and update
+  // npx json-server --watch db.json
+  // https://svelte.dev/tutorial/onmount
+  // https://svelte.dev/tutorial/group-inputs
+  // https://www.w3schools.com/jsref/jsref_find.asp
+  // https://www.youtube.com/watch?v=Q_fN0MQiBs4
+
   import { onMount } from 'svelte';
    let posts=[],title="",author="",id=0,msg=""
    onMount(load);
