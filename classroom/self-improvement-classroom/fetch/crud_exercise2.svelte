@@ -58,9 +58,7 @@
   <input placeholder="Title" bind:value={title} />
   <input placeholder="Author" bind:value={author} />
   <button on:click={create} disabled={!title || !author}>Create</button>
-  <button on:click={update} disabled={!title || !author || !id}
-    >Update</button
-  >
+  <button on:click={update} disabled={!title || !author || !id}>Update</button>
   <button on:click={del} disabled={!id}>Delete</button>
 
 </div>

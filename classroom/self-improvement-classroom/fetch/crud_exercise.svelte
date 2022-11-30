@@ -5,7 +5,6 @@
   // https://svelte.dev/tutorial/group-inputs
   // https://www.w3schools.com/jsref/jsref_find.asp
   // https://www.youtube.com/watch?v=Q_fN0MQiBs4
-
   import { onMount } from "svelte"
   let posts = [],
     title = "",
@@ -28,17 +27,17 @@
       body: JSON.stringify({ title, author }),
     })
     if (!res.ok) {
-      msg = "create user fail " + res.status
+      msg = "create post fail " + res.status
     }
     load()
   }
-  // implement Update(PUT)
+  // TODO: implement Update(PUT)
   async function update() {
-    msg = "I want to update user id " + id
+    msg = "I want to update post " + id
   }
-  // implement Delete(DELETE)
+  // TODO: implement Delete(DELETE)
   async function del(sel_id) {
-    msg = "I want to delete user id " + sel_id
+    msg = "I want to delete post " + sel_id
   }
   async function sel(sel_id) {
     let p = posts.find((o) => o.id == sel_id)
@@ -50,14 +49,11 @@
     }
   }
 </script>
-
 <div>
   <input placeholder="Title" bind:value={title} />
   <input placeholder="Author" bind:value={author} />
   <button on:click={create} disabled={!title || !author}>Create</button>
-  <button on:click={update} disabled={!title || !author || id == 0}
-    >Update {id}</button
-  >
+  <button on:click={update} disabled={!title || !author || id == 0}>Update {id}</button>
 </div>
 {#each posts as post}
   <div>
