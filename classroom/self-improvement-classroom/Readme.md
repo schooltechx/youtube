@@ -46,7 +46,11 @@ New keys: Home row,New key drill 1,New key drill 2,New key drill 3
 # Simple Web App with Svelte
 ดูใบสั่งงานได้[ที่นี้](./fruit-list/)
 ## CRUD สำหรับ Frontend เบื้องต้น
-ทำตามใบงานใน[หน้านี้ครับ](./fetch/)
+ทำแบบฝึกหัดสองงานตามใบงานใน[หน้านี้ครับ](./fetch/)
+- Exercise CRUD
+- Exercise Todo List 
+## Line Notify
+ให้ศึกษาการใช้งาน [Line Notify](./line/) แสดงการใช้ API และจะมีโค้ดตัวอย่างให้ศึกษา
 ## ศึกษาเพิ่มเติม 
 - https://www.w3schools.com/js/js_objects.asp
 - https://www.w3schools.com/js/js_arrays.asp
