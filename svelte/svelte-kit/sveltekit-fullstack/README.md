@@ -2,8 +2,6 @@
 
 Dear English developer. The [basic routing](https://kit.svelte.dev/docs/routing) can be read from oficial document. Thai developer please check video below (นักพัฒนาคนไทยให้ดูวีดีโอด้านล่าง). 
 
-## Note
-[Form Actions](src/routes/actions/) change the way to POST data back to server. I will update video about database and form actions soon 
 
 ## Setup Sveltekit and carbon component svelte
 ``` sh
@@ -46,6 +44,9 @@ Click link below document for each topics. You don't need +layout.svelte, +error
 ### [Prisma SQLite](src/routes/prisma-sqlite/)
 ### [Firestore](src/routes/firestore/)
 
+## Form Actions
+copy sample code folder [actions ](src/routes/actions/) to src/routes. 
+Form Action is basic send data to backend by POST method, no javascript required.
 ## Web API
 soon...
 
@@ -53,7 +54,7 @@ soon...
 
 SvelteKit ใกล้ออกเวอร์ชั่นจริงแล้ว การใช้ [Route](https://kit.svelte.dev/docs/routing) เปลี่ยนไปจากเดิมพอสมควร แต่ก็ทำให้ใช้งานง่าย และชัดเจนขึ้นกว่าเวอร์ชั่นก่อนหน้ามาก. การประมวลผลก่อนแสดงหน้าจะทำในฟังก์ชั้น load() สามารถเรียนรู้การก้าวสู่นักพัฒนาสาย Full Stack โดยใช้ SvelteKit ได้จากวีดีโอนี้ครับ
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/P5aJrzlK3ZM/0.jpg)](https://www.youtube.com/watch?v=0KENjveIbt0&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=8 "SvelteKit Full Stack Part0 - Intro")
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/P5aJrzlK3ZM/0.jpg)](https://www.youtube.com/watch?v=0KENjveIbt0&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=8 "SvelteKit Full Stack Part0 - Intro")
 
 
 ## ตัวอย่างโค้ดสำหรับการใช้งานพื้นฐาน
@@ -85,8 +86,9 @@ Share component in +layut.svelte
 ### [Prisma SQLite](src/routes/prisma-sqlite/)
 ### [Firestore](src/routes/firestore/)
 
-##  ตัวอย่างโค้ดสำหรับหัวข้อ [Form Actions](src/routes/actions/)
-การ POST ข้อความกลับไป Backend เปลี่ยนจากเดิม วีดีโอเดิมเลยมีปัญหาเดี๋ยวผมกำลังทำวีดีโอใหม่ครับ
+##  ตัวอย่างโค้ดสำหรับ Form Actions 
+ก็อปปี้โฟลเดอร์โค้ดตัวอย่าง [actions](src/routes/actions/) ไปไว้ที่ src/routes
+Form Action เป็นการส่งข้อมูลจากฟอร์มกลับไปที่ Backend ผ่าน method POST เป็นวิธีแบบดั้งเดิมโดยไม่ต้องใช้ JavaScript แต่จะมีการเปลี่ยนหน้าตอนส่งข้อมูล
 
 ## Web API
 soon...
@@ -288,4 +290,3 @@ SvelteKit เพียงแค่เข้าใจการทำงาขอ�
 
 ## อ่านเพิ่มเติม
 - [เข้าใจฐานข้อมูลแบบต่างๆ(วีดีโอภาษาอังกฤษ)](https://www.youtube.com/watch?v=W2Z7fbCLSTw)
-- [hyperui](https://www.hyperui.dev/)
