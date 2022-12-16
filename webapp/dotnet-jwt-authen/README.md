@@ -4,6 +4,7 @@
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/MjvBoLVZxnY/0.jpg)](https://youtu.be/MjvBoLVZxnY "เข้าใจ .NET Role base JWT authorization ใน 15 นาที")
 
+โค้ดของวีดีโอให้ดูในไฟล์ [Program.cs](./Program.cs) และ [appsettings.json](./appsettings.json)
 ## Command
 
     dotnet new webapi -minimal -n jwt
@@ -38,3 +39,5 @@ eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJzdWIiOiJhZG1pbiIsImp0aSI6ImN
         "aud": "localhost"
     }
     
+## อ่านเพิ่มเติม
+- [How to implement JWT authentication in ASP.NET Core 6](https://www.infoworld.com/article/3669188/how-to-implement-jwt-authentication-in-aspnet-core-6.html)
