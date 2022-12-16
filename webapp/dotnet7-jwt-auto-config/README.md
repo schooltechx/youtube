@@ -2,7 +2,7 @@
 
 ฟีเจอร์ที่น่าสนใจของ JWT Authentication .NET 7 ลดการเขียนโค้ดลงไปเยอะทำให้ง่ายขึ้นมาก ทำคอนฟิกให้ด้วย และ เก็บ secret key ไว้ใน dotnet secret ให้ด้วย ในวีดีโอตัวอย่างจะใช้โค้ดจาก[โปรเจ็ก JWT ที่แล้วของ .NET6 ](../dotnet-jwt-authen/) มาแก้ไขเล็กน้อย ตัดการสร้าง Token ออก และใช้ donet user-jwts ในการบริหารจัดการ JWT Token วีดีโอนี้เหมาะเป็นพื้นฐานการตรวจสอบ JWT Token ใน Microservice 
 
-[![IMAGE ALT TEXT](https://img.youtube.com/vi/R_gf0kjqqxI/0.jpg)](https://youtu.be/R_gf0kjqqxI .NET 7 minimal API และ JWT Authentication แบบปรับปรุงสร้างคอนฟิกอัตโนมัติให้ด้วย")
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/R_gf0kjqqxI/0.jpg)](https://youtu.be/R_gf0kjqqxI ".NET 7 Authentication Improvements & Automatic Configuration")
 
 ## Note
 โค้ด [Program.cs](./Program.cs) ผมได้เพิ่มจากในวีดีโอ โดยเพิ่ม /auth1 แสดงการดึงค่ายูสเซอร์จาก ClaimsPrincipal ,/auth2 สำหรับการตรวจค่า Claim ซึ่งเป็นอีกทางเลือกนอกจาก Role  
