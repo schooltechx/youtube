@@ -5,7 +5,7 @@
 minimal API ทำให้ .NET ใช้งานได้ง่ายขึ้นเหมือนใช้พวก Express.js เรียนรู้ได้รวดเร็ว วีดีโอนี้เน้นง่ายไม่ซับซ้อน เหมาะสำหรับผู้เริ่มต้นศึกษา 
 ไม่ได้ใช้ design pattern ไม่ได้พูดถึงเรื่องความปลอดภัย ฯลฯ เมื่อผู้เรียนทำความเข้าใจแล้ว ควรทำการศึกษาเพิ่มเติมในหัวข้อที่ขาดไป ดูคำอธิบายในวีดีโอด้านล่างนี้เลยครับ
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/2xlRaRrwutI/0.jpg)](https://www.youtube.com/watch?v=2xlRaRrwutI ".NET minimal API + Entity Framework within 15 min.")
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/2xlRaRrwutI/0.jpg)](https://www.youtube.com/watch?v=2xlRaRrwutI ".NET minimal API + Entity Framework within 15 min.")
 
 ## ลิงค์ที่เกี่ยวข้อง
 

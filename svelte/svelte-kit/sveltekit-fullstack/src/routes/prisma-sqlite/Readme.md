@@ -20,14 +20,14 @@ to code and database schema
 you can use prisma studio to add edit delete data in database
 
 ## File
-ไฟล์ .env และ schema.prisma ถูกสร้างเองหลังเรียกคำสั่ง สร้างเองหลังจากเรียกคำสั่ง "npx prisma init" เราจำเป็นต้องเพิ่ม model Product สำหรับทำตัวอย่างนี้ ให้ดูจากตัวอย่างด้านล่าง
+.env and schema.prisma will create after run command "npx prisma init" You have to add model "Product" in file schema.prisma
 
 - src/routes/prisma-sqlite/+page.server.js
 - src/routes/prisma-sqlite/+page.svelte
 - prisma/schema.prisma
 - .env
 
-## install
+## Set up command 
     npm create svelte@latest my-app
     cd my-app
     npm install
@@ -35,8 +35,6 @@ you can use prisma studio to add edit delete data in database
     npx prisma init --datasource-provider sqlite
     # modify prisma/schema.prisma before migrate
     npx prisma migrate dev --name init
-    # copy file to project
-    docker compose up -d mongo
     code .
     npm prisma studio
 
