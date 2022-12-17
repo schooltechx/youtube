@@ -1,79 +1,56 @@
-import { invalid } from '@sveltejs/kit'
-import { PrismaClient,Prisma } from '@prisma/client'
+import { PrismaClient, Prisma } from '@prisma/client'
+import { fail } from '@sveltejs/kit'
 const prisma = new PrismaClient()
+let msg = ""
+let success = true
+
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ url }) {
-    let del= Number(url.searchParams.get("del"))
-    if(del>0){
-        try{
-            await prisma.user.delete({where:{id:del}})
-        }catch{
-            console.log("Delete fail")
-        }
-    }
+export async function load() {
     const users = await prisma.user.findMany()
     await prisma.$disconnect()
-    return{users}
+    return { users };
+}
+/** @type {import('./$types').Action} */
+const create = async ({ request }) => {
+    const fdata = await request.formData()
+    const email = String(fdata.get('email'))
+    const name = String(fdata.get('name'))
+    const data = { name, email }
+    try {
+        await prisma.user.create({ data })
+    } catch (e) {
+        success = false
+        if (e instanceof Prisma.PrismaClientKnownRequestError) {
+            msg = `${e.code}:${e.message} `
+            return fail(400, { success, msg })
+        }
+        msg = "Create Fail " //none prisma error
+        return fail(400, { success, msg })
+    }
+    await prisma.$disconnect()
+    msg = `Created ${email} ${name} `
+    return { success, msg }
+}
+/** @type {import('./$types').Action} */
+const update = async ({ request }) => {
+    const fdata = await request.formData()
+    const email = String(fdata.get('email'))
+    const name = String(fdata.get('name'))
+    const id = Number(fdata.get('id'))
+    const data = { name, email }
+    await prisma.user.update({ where: { id: id }, data })
+    await prisma.$disconnect()
+    msg = `Updated ${email} ${name} `
+    return { success, msg }
+}
+/** @type {import('./$types').Action} */
+const del = async ({ request }) => {
+    const fdata = await request.formData()
+    const id = Number(fdata.get('id'))
+    await prisma.user.delete({ where: { id: id } })
+    await prisma.$disconnect()
+    msg = `Delete ${id}`
+    return { success, msg }
 }
 /** @type {import('./$types').Actions} */
-export const actions = {
-    create: async ({ request}) => {
-        let message = ""
-        const values = await request.formData();
-        const name = values.get('name')?.toString()??""
-        const email = values.get('email')?.toString()??""
-        //const id = Number(values.get('id'))
-        if(email==""||name==""){
-            message = "Require Name and Email"
-            return invalid(400, { message, missing: true })
-        }
-        const data = {email,name}
-        try{
-            await prisma.user.create({data})
-        }catch(e){
-            if (e instanceof Prisma.PrismaClientKnownRequestError) {
-                message=e.message
-              }else{
-                message='Create or Update user fail '
-              }
-              await prisma.$disconnect()
-              console.log(message)
-              return invalid(500, { message, incorrect: true });
-
-
-        }
-        await prisma.$disconnect()
-        message="Create user success"
-        return {message, success: true };
-    
-    },
-    update: async ({ request}) => {
-        let message = ""
-        const values = await request.formData();
-        const name = values.get('name')?.toString()??""
-        const email = values.get('email')?.toString()??""
-        const id = Number(values.get('id'))
-        if(email==""||name==""||id<1){
-            message = "Require ID Name and Email"
-            return invalid(400, { message, missing: true })
-        }
-        const data = {email,name}
-        try{
-            await prisma.user.update({where:{id:id},data})
-        }catch(e){
-            if (e instanceof Prisma.PrismaClientKnownRequestError) {
-                message=e.message + " "+ id
-              }else{
-                message='Create or Update user fail '+id
-              }
-              await prisma.$disconnect()
-              console.log(message)
-              return invalid(500, { message, incorrect: true });
-
-                  
-        }
-        await prisma.$disconnect()
-        message="Update user success"
-        return {message, success: true };
-      }
-  };
+export const actions = { create, update, del }
