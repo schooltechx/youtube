@@ -45,14 +45,18 @@ New keys: Home row,New key drill 1,New key drill 2,New key drill 3
 
 # Simple Web App with Svelte
 ดูใบสั่งงานได้[ที่นี้](./fruit-list/)
-## CRUD สำหรับ Frontend เบื้องต้น
+# CRUD สำหรับ Frontend เบื้องต้น
 ทำแบบฝึกหัดสองงานตามใบงานใน[หน้านี้ครับ](./fetch/)
 - Exercise CRUD
 - Exercise Todo List 
-## Line Notify
-ให้ศึกษาการใช้งาน [Line Notify](./line/) แสดงการใช้ API และจะมีโค้ดตัวอย่างให้ศึกษา
+# Line Notify
+ใช้ Form Action เพื่อรใช้งาน [Line Notify](./line/) แสดงการใช้ API และจะมีโค้ดตัวอย่างให้ศึกษา
+
 ## ศึกษาเพิ่มเติม 
 - https://www.w3schools.com/js/js_objects.asp
 - https://www.w3schools.com/js/js_arrays.asp
 - https://www.youtube.com/watch?v=-jzu5YH6OMQ
 - https://www.youtube.com/watch?v=HrbQMxZ2Ucs&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=2
+
+# การใช้ฐานข้อมูล 
+ให้ทำงาน [Form Actions + Prisma ORM](./prisma-actions/) ให้สมบูรณ์(Update และ Delete ได้)
