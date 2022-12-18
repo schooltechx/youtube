@@ -1,6 +1,6 @@
-# SvelteKit Form Actions
+# SvelteKit Web API
 
-[![IMAGE ALT TEXT](https://img.youtube.com/vi/pGsCDl4GJJU/0.jpg)](https://youtu.be/pGsCDl4GJJU "SvelteKit Full Stack Part-3-แนะนำการใช้ API ")
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/pGsCDl4GJJU/0.jpg)](https://www.youtube.com/watch?v=pGsCDl4GJJU&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=11 "SvelteKit Full Stack Part-3-แนะนำการสร้าง Web API ")
 
 SvelteKit รองรับการทำ Single Page Application(SPA) และ Multiple Page Application 
 การทำ SPA สามารถส่งข้อมูลกลับไปที่ Backend ผ่าน WEB API ซึ่งเป็นที่นิยมกันในปัจจุบัน นอกจาก Web App แล้ว ก็สามารถทำเป็น Backend ให้ Mobile App ก็ได้ 
