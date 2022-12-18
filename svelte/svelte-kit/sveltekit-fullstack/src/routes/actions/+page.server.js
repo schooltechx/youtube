@@ -25,7 +25,7 @@ const register = async ({  request }) => {
     email = data.get('email')?.toString()??"";
     password = data.get('password')?.toString()??"";
 
-    if (email=="oom@xxx.com") {
+    if (email==="oom@xxx.com") {
         return fail(400, { success: false,msg:"User exist" });
     }
 
