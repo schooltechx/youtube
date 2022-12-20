@@ -3,6 +3,11 @@
 
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/4tdfzpepxv4/0.jpg)](https://youtu.be/4tdfzpepxv4 "SvelteKit Full Stack Part-4 - Form Actions")
 
+
+https://youtu.be/i_kcfA8_4bQ
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/i_kcfA8_4bQ/0.jpg)](https://youtu.be/i_kcfA8_4bQ "SvelteKit Full Stack Part-5 - Form Actions and Prisma ORM")
+
+
 จะมีตัวอย่างโค้ดการใช้งาน Prisma [ORM](https://www.codesanook.com/advantages-of-object-relational-mapping-orm) ซึ่งเป็นเครื่องมือสำหรับใช้งานฐานข้อมูลโดยไม่จำเป็นต้องรู้คำสั่ง SQL
 
 ## ให้สร้างโปรเจ็กตามนี้ครับ  
@@ -36,7 +41,7 @@ model Post {
 
 ก็อปโค้ดจาก +page.svelte และ +page.server ไปใส่ที่ src/routes/prisma-actions
 โปรแกรมจะแสดงสร้าง(Create)และแสดง(Read)รายการ Posts จากฐานข้อมูล 
-ให้นักเรียนทำการ อัปเดต(Update)และ ลบ(Delete) เพื่อให้โปรแกรมสมบูรณ์
+ให้นักเรียนเขียนโค้ดสำหรับการ อัปเดต(Update)และ ลบ(Delete) เพื่อให้โปรแกรมสมบูรณ์
 
 ## อ่านเพิ่มเติม 
 
