@@ -24,7 +24,7 @@
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/pGsCDl4GJJU/0.jpg)](https://youtu.be/pGsCDl4GJJU "SvelteKit Full Stack Part-3-แนะนำการทำ Web API")
 
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/4tdfzpepxv4/0.jpg)](https://youtu.be/4tdfzpepxv4 "SvelteKit Full Stack Part-4 - Form Actions")
-ให้ศึกษาการใช้ Form Actions ให้เข้าใจ งานนี้จะใช้ฐานข้อมูลมาร่วมด้วย
+
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/i_kcfA8_4bQ/0.jpg)](https://youtu.be/i_kcfA8_4bQ "SvelteKit Full Stack Part-5 - Form Actions and Prisma ORM")
 
 ## ให้สร้างโปรเจ็กตามนี้ครับ  
