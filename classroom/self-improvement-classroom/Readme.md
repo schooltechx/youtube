@@ -58,5 +58,10 @@ New keys: Home row,New key drill 1,New key drill 2,New key drill 3
 - https://www.youtube.com/watch?v=-jzu5YH6OMQ
 - https://www.youtube.com/watch?v=HrbQMxZ2Ucs&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=2
 
-# การใช้ฐานข้อมูล 
+# ส่งข้อมูลผ่าน Form และ การใช้ฐานข้อมูล 
 ให้ทำงาน [Form Actions + Prisma ORM](./prisma-actions/) ให้สมบูรณ์(Update และ Delete ได้)
+
+# สร้าง Web App แบบใช้ Web API และฐานข้อมูล 
+ให้ทำงาน [Web App + Web API](./web-api/) เพื่อสร้าง Web Application ที่ใช้กับฐานข้อมูล SQLite ถ้านักเรียนได้เรียนหัวข้อ Docker แล้วให้ลองเปลี่ยนมาใช้ดาต้าเบสเซิร์ฟเวอร์จริงๆเช่น MySQL, MSSQL ฯลฯ 
+
+
