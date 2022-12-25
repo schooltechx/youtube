@@ -35,24 +35,21 @@ Share component in +layut.svelte
 - .env : 
 file for environment variable
 
-## Database
-
-Click link below document for each topics. You don't need +layout.svelte, +error.svelte to run this sample. Just follow Readme.md
-
-### [Mongodb](src/routes/mongodb/)
-### [Mongodb with mongoose](src/routes/mongoose/)
-### [Prisma SQLite](src/routes/prisma-sqlite/)
-### [Firestore](src/routes/firestore/)
-
 ## Form Actions
 copy sample code folder [actions ](src/routes/actions/) to src/routes. 
 Form Action is basic send data to backend by POST method, no javascript required.
+
+## Database
+
+Click link below link. You don't need +layout.svelte, +error.svelte to run this sample. Just copy all content in folder and follow Readme.me
+- [SQLite with Prisma](src/routes/actions-prisma/)
+
 ## Web API
-soon...
+Check this [page](src/routes/api/)
 
 # Sveltekit สำหรับ นักพัฒนาสาย Full Stack
 
-SvelteKit ใกล้ออกเวอร์ชั่นจริงแล้ว การใช้ [Route](https://kit.svelte.dev/docs/routing) เปลี่ยนไปจากเดิมพอสมควร แต่ก็ทำให้ใช้งานง่าย และชัดเจนขึ้นกว่าเวอร์ชั่นก่อนหน้ามาก. การประมวลผลก่อนแสดงหน้าจะทำในฟังก์ชั้น load() สามารถเรียนรู้การก้าวสู่นักพัฒนาสาย Full Stack โดยใช้ SvelteKit ได้จากวีดีโอนี้ครับ
+SvelteKit ออกเวอร์ชั่น 1.0 แล้ว จำเป็นใช้ Node 16.14+.สามารถเรียนรู้การก้าวสู่นักพัฒนาสาย Full Stack โดยใช้ SvelteKit ได้จากวีดีโอนี้ครับ
 
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/P5aJrzlK3ZM/0.jpg)](https://www.youtube.com/watch?v=0KENjveIbt0&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=8 "SvelteKit Full Stack Part0 - Intro")
 
@@ -77,22 +74,15 @@ use logo in about/+page.svelte
 Share component in +layut.svelte
 - .env ไฟล์สำหรับประกาศตัวแปรแวดล้อม
 
-## ตัวอย่างโค้ดสำหรับหัวข้อ Database
-
-การใช้งานฐานข้อมูล ให้อ่านเอกสารตามลิงค์ด้านล่าง เราไม่จำเป็นต้องใช้ไฟล์+layout.svelte, +error.svelte สำหรับตัวอย่างนี้ ก็อปปี้โฟลเดอร์แต่ละหัวข้อไปใช้ได้เลย ให้อ่าน Readme.md
-
-### [Mongodb](src/routes/mongodb/)
-### [Mongodb with mongoose](src/routes/mongoose/)
-### [Prisma SQLite](src/routes/prisma-sqlite/)
-### [Firestore](src/routes/firestore/)
-
-##  ตัวอย่างโค้ดสำหรับ Form Actions 
-ก็อปปี้โฟลเดอร์โค้ดตัวอย่าง [actions](src/routes/actions/) ไปไว้ที่ src/routes
-Form Action เป็นการส่งข้อมูลจากฟอร์มกลับไปที่ Backend ผ่าน method POST เป็นวิธีแบบดั้งเดิมโดยไม่ต้องใช้ JavaScript แต่จะมีการเปลี่ยนหน้าตอนส่งข้อมูล
-
 ## Web API
-soon...
+อ่านวิธีการใช้งานจาก[หน้านี้](src/routes/api/)
 
+## Form Actions 
+Form Action เป็นการส่งข้อมูลจากฟอร์มกลับไปที่ Backend ผ่าน method POST เป็นวิธีแบบดั้งเดิมโดยไม่ต้องใช้ JavaScript แต่จะมีการเปลี่ยนหน้าตอนส่งข้อมูล ดูตัวอย่างการใช้ได้ที่ [Form Actions](src/routes/actions/)
+
+## ตัวอย่างโค้ดสำหรับหัวข้อ Database
+การใช้งานฐานข้อมูล ให้อ่านเอกสารตามลิงค์ด้านล่าง 
+- [SQLite with Prisma](src/routes/actions-prisma/)
 
 ## อธิบายการทำงาน SvelteKit พื้นฐานทั่วไป Folder base routing
 
@@ -290,3 +280,5 @@ SvelteKit เพียงแค่เข้าใจการทำงาขอ�
 
 ## อ่านเพิ่มเติม
 - [เข้าใจฐานข้อมูลแบบต่างๆ(วีดีโอภาษาอังกฤษ)](https://www.youtube.com/watch?v=W2Z7fbCLSTw)
+- [SvelteKit PWA Plugin](https://vite-pwa-org.netlify.app/frameworks/sveltekit.html)
+- [Offline-first PWA with Svelte & Vite](https://blog.unixfy.net/offline-first-pwa-with-svelte-vite/) 
