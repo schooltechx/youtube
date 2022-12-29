@@ -123,7 +123,7 @@ environment variable สามารถใส่ในไฟล์ .env ไว�
 จะเรียกใช้ก่อนการเรนเดอร์หน้าเวป +page.js +page.server.js หรือ +layout.server.js แล้วทำการส่ง data ให้ +page.svelte 
 
 ไฟล์ +page.js
-
+``` js
     /** @type {import('./$types').PageLoad} */
     export function load({ }) {
         return {
@@ -131,48 +131,50 @@ environment variable สามารถใส่ในไฟล์ .env ไว�
         content: 'Welcome to <b>SvelteKit</b>'
         };  
     }
+```
 
 ไฟล์ +page.svelte
-
+``` js
     <script>
         /** @type {import('./$types').PageData} */
         export let data;
     </script>
     <h1>{data.title}</h1>
     <div>{@html data.content}</div>
-
+```
 ## Error 
 
 load() ที่อยู่ใน +page.js ถ้าพบปัญหาให้ใช้การ throw error ออกมา
-
+``` js
     import { error } from '@sveltejs/kit';
     export function load() {
         ...
         throw error(400, 'not found');
     }
-
+```
 ## Redirect ก็ใช้การ throw เหมือน error
-
+``` js
     import { redirect } from '@sveltejs/kit';
     export function load() {
     throw redirect(307, '/login');
     }
-
+```
 
 ## [Form Action](https://kit.svelte.dev/docs/form-actions)
 เป็นการส่งข้อมูลจากฟอร์ม(POST) ไปยัง Backend โดยจะมีฟังก์ชั้นของ actions ทำหน้าที่รับข้อมูล ตัวอย่างโค้ดเป็นดังข้างล่างแนะนำให้ดูในเอกสารด้วย
 
 ตัวอย่างไฟล์ +page.svelte
-
+``` html
     <form method="POST">
       <input name="email" type="email">
       <input name="password" type="password">
       <button>Log in</button>
       <button formaction="?/register">Register</button>
     </form>
+```
 
 ตัวอย่างไฟล์ +page.server.js
-
+``` js
     export const actions = {
       login: async ({ cookies, request }) => {
         const data = await request.formData();
@@ -185,7 +187,7 @@ load() ที่อยู่ใน +page.js ถ้าพบปัญหาให
         // TODO โค้ดสำหรับลงทะเบียนยุสเซอร์ในฐานข้อมุล
       }
     };
-
+```
 
 ## POST, PATCH, PUT และ DELETE
 
@@ -194,7 +196,7 @@ load() ที่อยู่ใน +page.js ถ้าพบปัญหาให
 +page.server.js ไม่สามารถรับค่าจากฟอร์มผ่านฟังก์ชัน POST,PUT,DELETE ได้อีกต่อไปแล้ว ให้ใช้ Form Actions แทน
 
 api/user/+server.js
-
+``` js
     /** @type {import('./$types').RequestHandler} */
     export async function GET({}) {
         const users = await prisma.user.findMany()
@@ -215,9 +217,9 @@ api/user/+server.js
         }
         return new Response(JSON.stringify(user),{status:201,statusText:"Create Success"})
     }
-
+```
 api/user/[id]/+server.js
-
+``` js
     /** @type {import('./$types').RequestHandler} */
     export async function GET({ params }) {
         let id = Number(params.id)
@@ -266,6 +268,7 @@ api/user/[id]/+server.js
         await prisma.$disconnect() 
         return new Response()
     }
+```
 
 ถ้า set-cookie มีหลายตัว ให้ใช้ออปเจ็ก Headers จัดการ
 

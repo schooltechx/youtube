@@ -7,6 +7,9 @@ Web Worker ทำงานได้ดีกับทุกweb browser ยกเ
 ที่ผมตกไปในวีดีโอจะให้ดีไฟล์ add.worker.js เราทำเป็น module ควรปิดท้ายด้วย
 export {}
 
+
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/yCrFkJKfiqg/0.jpg)](https://www.youtube.com/watch?v=yCrFkJKfiqg&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=14 "SvelteKit Full Stack Part-6 - Web Worker ")
+
 ## ติดตั้ง
 ให้ก็อปโฟลเดอร์ [web-worker](./) ไปใส่ใน src/routes ของ SvelteKit ได้เลย
 
