@@ -27,6 +27,15 @@ web-push generate-vapid-keys --json
 - ให้ก็อปเนื้อหาในโฟลเดอร์ [push](./) (+page.svelte, subscribe/+server.js) ไปใส่ใน src/routes/push 
 - ให้ก็อปเนื้อหาในโฟลเดอร์ [static](./static) (static/sw.js,static/schooltech.png) ไปใส่โฟลเดอร์ static ที่อยู่รูตของโปรเจ็ก
 
+## API
+- [ServiceWorkerRegistration](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration)
+- [ServiceWorkerRegistration.showNotification()](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
+
+- [PushManager](https://developer.mozilla.org/en-US/docs/Web/API/PushManager) ใช้ subscribe() getSubscription()
+- [PushSubscription.unsubscribe()](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/unsubscribe)
+- [PushEvent](https://developer.mozilla.org/en-US/docs/Web/API/PushEvent)
+
+
 ## เอกสาร
 - https://github.com/web-push-libs/web-push
 - https://web.dev/notifications/
