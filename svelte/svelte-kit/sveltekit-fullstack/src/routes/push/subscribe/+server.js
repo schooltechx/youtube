@@ -25,3 +25,28 @@ export async function POST({request}){
     }
     return json({},{status:201})
 }
+
+/**
+ * This code not in youtube tutorial. 
+ * Use Postman with POST method to use this API.
+ * Example for creating public/private key from code and save to json
+ * 
+ */
+import { writeFile } from 'fs/promises'
+import { fileURLToPath } from 'url'
+import path from 'path'
+/** @type {import('./$types').RequestHandler} */
+export async function PUT() {
+    try {
+        const codepath = path.dirname(fileURLToPath(import.meta.url))
+        const filepath = path.join(codepath, 'keys.json')
+        const keys = webpush.generateVAPIDKeys()
+        console.log("Write file ", filepath)
+        writeFile(filepath, JSON.stringify(keys, null, 2))
+        return json({ publicKey: keys.publicKey })
+    } catch (e) {
+        console.log("Write JSON fail", e)
+        return json({ message: "Write JSON fail" }, { status: 500 })
+    }
+}
+
