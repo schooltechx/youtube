@@ -14,8 +14,14 @@
 
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/y_FwlkxtrvA/0.jpg)](https://www.youtube.com/watch?v=y_FwlkxtrvA&list=PLWMbTFbTi55ODDrafKItIGpJZl8r3XpyT&index=15 "SvelteKit Full Stack Part-7- Web Push ")
 
-## ขั้นตอนการทำ
-- ใช้ Library web-push ในการจัดการทั้งหมดเพื่อลดขั้นตอนยุ่งยาก
+## อัปเดตเพิ่มจากวีดีโอ
+- โค้ดเดิมในวีดีโอตอน import web-push ถ้าไปใช้ '@sveltejs/adapter-node' มันมีปัญหา ผมแก้เป็นแบบนี้แทนครับ
+import webpush from 'web-push'
+- เพิ่ม PUT เพื่อเป็นตัวอย่างการสร้าง Public/Private Key ใหม่ ด้วยโค้ด
+- Build และ Deploy แอปของเราด้วย docker
+
+## ขั้นตอนการทำงาน
+- ใช้ Library web-push ในการจัดการ Push Notification เพื่อลดขั้นตอนยุ่งยาก
 - ใช้ web-push สร้าง Public/Private Key สำหรับแอปของเรา เพื่อการสื่อสารอย่างปลอดภัย
 - Frontend ลงทะเบียน Service Worker 
 - Frontend ได้ Public Key ไปใช้สมัครรับข้อความจากเซิร์ฟเวอร์ (Subscribe)
@@ -33,8 +39,22 @@ npm install web-push -g
 web-push generate-vapid-keys --json
 ```
 - ให้ก็อปเนื้อหาในโฟลเดอร์ [push](./) (+page.svelte, subscribe/+server.js) ไปใส่ใน src/routes/push 
-- ให้ก็อปเนื้อหาในโฟลเดอร์ [static](./static) (static/sw.js,static/schooltech.png) ไปใส่โฟลเดอร์ static ที่อยู่รูตของโปรเจ็ก
-
+- ให้ก็อปเนื้อหาในโฟลเดอร์ [static](./static) (static/sw.js,static/schooltech.png) ไปใส่โฟลเดอร์ static ที่อยู่รูตของโปรเจ็ก และทดสอบ
+``` sh
+npx vite --port=4000
+```
+- ทดสอบ node adapter เพื่อเตรียมตัว Deploy บน Docker ให้แก้ svelte.config.js จาก adapter-auto เป็น adapter-node
+import adapter from '@sveltejs/adapter-node'
+``` sh
+npm i -D @sveltejs/adapter-node
+npm run build
+npm run preview
+```
+- สร้า่ง Docker Image และรันผ่าน docker-compose ให้ก็อปเนื้อหาในโฟลเดอร์ [docker](./docker) ไปไว้ที่รูตของโปรเจ็ก
+``` sh
+docker build -t noti -f Dockerfile --target deploy-dev .
+docker-compose up -d
+```
 ## API
 - ในตัวอย่างไม่ได้แสดงการใช้งานปุ่ม(actions) และการปรับแต่ง Notificatin options สามารถอ่านเพิ่มเติมได้จากเอกสาร [Notification Click Event](https://web.dev/push-notifications-notification-behaviour/) ตัวอย่างการใช้เพิ่มลงในโค้ด sw.js แล้ว
 - [ServiceWorkerRegistration](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration)
@@ -51,4 +71,4 @@ web-push generate-vapid-keys --json
 - FAQ(https://web.dev/push-notifications-faq/)
 
 ## อื่นๆ
-- สามารถดูว่าเราได้ลงทะเบียน Service Worker ได้ได้ที่  chrome://serviceworker-internals/
+- สามารถดูว่าเราได้ลงทะเบียน Service Worker บน Chrome ได้ได้ที่  chrome://serviceworker-internals/
