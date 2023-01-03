@@ -1,5 +1,6 @@
-
-import * as webpush from 'web-push'
+//import * as webpush from 'web-push'
+//Fix problem with node adapter (above line) use this format(below)
+import webpush from 'web-push'
 import vapidKeys  from './keys.json'
 import {json} from '@sveltejs/kit'
 
