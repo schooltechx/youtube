@@ -2,47 +2,13 @@
 
 ตัวอย่างการทำใช้ Dotnet 6 Minimal สร้าง Web API เพื่อทำการ Authentication กับ Keycloak 
 มีประโยชน์ในการทำ Single Sign On (SSO) ระหว่าง Frontend กับ Backend หรือระหว่าง Backend ด้วยกัน
-ทำให้แยก Microservice ได้ง่ายแบ่งเป็นสองกรณี
-
-## กรณี 1 ใช้ แชร์ secret 
-
-จะมี secret ที่รู้กันระหว่าง keycloak และ ผู้ที่จะใช้ API  
-เมื่อทำ Authentication กับ Keycloak ด้วย secret จะได้ Access key กลับมา ให้เอาไปแนบตอนเรียก API
-วิธีนี้เหมาะกับการคุยกันระหว่าง Microservice ตัวอย่างนี้เอามาจาก  
-
-<https://www.mshowto.org/keycloak-server-ile-apilariniza-jwt-validasyonu-nasil-ekleyebilirsiniz-bolum-1.html>  
-
-<https://www.mshowto.org/keycloak-server-ile-apilariniza-jwt-validasyonu-nasil-ekleyebilirsiniz-bolum-2.html>
-
-### วิธีตั้งค่า
-
-- สร้าง realm (ตัวอย่างชื่อ frappet) ใน Realm Setting เก็บค่า RS256 kid ไว้ เป็น Public key ที่จะใช้ Verify token ใน appsetting.json
+ทำให้แยก Microservice ได้ง่าย สร้าง realm (ตัวอย่างชื่อ frappet) ใน Realm Setting เก็บค่า RS256 kid ไว้ เป็น Public key ที่จะใช้ Verify token ใน appsetting.json
 
  ![Realm Setting Keys](./realm-setting.png)
 
-- สร้าง client ชื่อ dotnet6-demo โดยมี root url เป็น https://keycloak.xxx.com 
-- เซ็ตค่าดังนี้  
-Access Type : confidential  
-Service Account Enabled : On  
-Access Token Lifespan : 20  
-Browser Flow: borwser
-Direct Grant Flow : direct grant 
-
-![Client Setting](./client-setting.png)
-
-- ในแทป Credentials  ก็อปค่า Secret เก็บไว้ (ถ้ายังไม่มี หรือต้องการเปลี่ยนให้กดปุ่มเพื่อสร้างใหม่)
-![Client Secret](./client-secret.png)
-
-## กรณี 2 Frontend ทำ Authentication ด้วย User/Password 
-
-กรณีนี้เราสามารถใช้ JavaScript Framework(Vue,React,Svelte) สร้างฟอร์มรับ ชื่อยูสซอร์ และรหัสผ่าน เพื่อ authen กับ keycloak client เก็บ token ใน storage ควรใช้ keycloak-js ในการทำเพราะจะจัดการ refresh token, cookie ให้ด้วย  
-- Realm frappet สร้าง keycloak client ชื่อ js-console 
-![Client Secret](https://github.com/schooltechx/youtube/raw/main/keycloak/sso-google/js-console-setting.png)
-
-
-## สร้าง API .NET
-
-สร้าง dotnet 6 minimal apiใช้โค้ดและเก็บ Public Key ใน appsetting.json ตามโค้ดด้านล่าง แล้วรันบน localhost ก็ได้
+ ## สร้าง API เซิร์ฟเวอร์ ด้วย .NET
+เมื่อ Authentication กับ Realms นี้ จะได้ Access Token 
+สร้าง dotnet 6 minimal apiใช้โค้ดและเก็บ Public Key ใน appsetting.json ตามโค้ดด้านล่าง แล้วรันบน localhost ก็ได้ มันจะรองรับ Token ของ Realms นี้
 
 ### คำสั่ง
 
@@ -58,7 +24,7 @@ Direct Grant Flow : direct grant
 
     {
     "Jwt": {    
-        "Key": "UHLdOu32L5TVCRF8AWRgu220joK3-acaDv6iAdUHC6k",    
+        "Key": "UHLdOu3xxxxxxxxxxWRgu220joK3-acaxxxxxUHC6k",    
         "Issuer": "https://keycloak.xxx.com/auth/realms/frappet"    
     },      
     "Logging": {
@@ -99,20 +65,54 @@ Direct Grant Flow : direct grant
     app.MapGet("/", () => "Hello World!").RequireAuthorization();
     app.Run();
 
-## Authentication กรณี 1 (share secret)
+## แบบ 1 Authentication ด้วย secret  
+
+จะมี secret ที่รู้กันระหว่าง client ของ keycloak และ ผู้ที่จะใช้ API  
+Client ทำ Authentication กับ Keycloak ด้วย secret จะได้ Access key กลับมา ให้เอาไปแนบตอนเรียก API
+วิธีนี้เหมาะกับการคุยกันระหว่าง Microservice ตัวอย่างนี้เอามาจาก  
+
+<https://www.mshowto.org/keycloak-server-ile-apilariniza-jwt-validasyonu-nasil-ekleyebilirsiniz-bolum-1.html>  
+
+<https://www.mshowto.org/keycloak-server-ile-apilariniza-jwt-validasyonu-nasil-ekleyebilirsiniz-bolum-2.html>
+
+### วิธีตั้งค่า ตั้งค่า client ของ keycloak
+
+
+- สร้าง client ชื่อ dotnet6-demo โดยมี root url เป็น https://keycloak.xxx.com 
+- เซ็ตค่าดังนี้  
+Access Type : confidential  
+Service Account Enabled : On  
+Access Token Lifespan : 20  
+Browser Flow: borwser
+Direct Grant Flow : direct grant 
+
+![Client Setting](./client-setting.png)
+
+- ในแทป Credentials  ก็อปค่า Secret เก็บไว้ (ถ้ายังไม่มี หรือต้องการเปลี่ยนให้กดปุ่มเพื่อสร้างใหม่)
+![Client Secret](./client-secret.png)
+
+### ทดสอบ Authentication ด้วย Postman
 
 - POST โดยแนบ Sercret ตามภาพจะได้ access_token
 
 ![Get Token](./access-token.png)
 
-- เอา Access Token ไปใช้เรียกใช้ API 
+- เอา Access Token ไปใช้เรียกใช้ API ของ .NET
 
 ![Use Token](./api-authen.png)
 
+## กรณี 2 Authentication ด้วย User/Password 
 
-## Frontend Authentication สำหรับกรณี 2 (User loin)
-ถ้าใช้ keycloak เป็น public url ตัว frontend ก็ต้อง public ด้วย เวลา login จะ redirect ไป Keycloak และ redirect กลับมาที่ frontend ตอนพัฒนาอาจจะใช้ ngrok หรือไม่ก็ตั้ง keycloak ที่ localhost ในตัวอย่างจะตั้ง frontend เป็น public 
-- ตั้ง webserver ด้วย nginx ใช้โต้ดตัวอย่าง [js-console](https://github.com/keycloak/keycloak/tree/main/examples/js-console/src/main/webapp) ไปใส่ไว้ใน wwwroot
+กรณีนี้เหมาะกับการใช้ JavaScript Framework(Vue,React,Svelte) สร้างฟอร์มรับ ชื่อยูสซอร์ และรหัสผ่าน เพื่อ authen กับ keycloak   
+
+
+- กรณีใช้ keycloak-js ในการทำเพราะจะจัดการ refresh token, cookie ให้ด้วย Realm frappet สร้าง keycloak client ชื่อ js-console 
+![Client Secret](https://github.com/schooltechx/youtube/raw/main/keycloak/sso-google/js-console-setting.png)
+- สำหรับการ development สามาถตั้ง Valid Redirect URL เป็น http://localhost:3000/* ได้
+
+
+## Frontend (มี User loin)
+- ตั้ง webserver ด้วย nginx ใช้โค้ดตัวอย่าง [js-console](https://github.com/keycloak/keycloak/tree/main/examples/js-console/src/main/webapp) ไปใส่ไว้ใน wwwroot
 
 - แก้ keycloak.json ให้ถูกต้อง
 
@@ -131,6 +131,16 @@ Direct Grant Flow : direct grant
 
 JavaScript Frontend ควรใช้ [keycloak-js](https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/oidc/javascript-adapter.adoc) จัดการจะทำให้ง่ายและปลอดภัยกว่า ดูโค้ดของ [js-console](https://github.com/keycloak/keycloak/tree/main/examples/js-console/src/main/webapp) เป็นตัวอย่างได้
 
+- ตัวอย่างการ curl เพื่อขอ access token โดยไม่ได้ใช้ login popup ของ keycloak
+``` sh 
+curl -X POST 'http://keycloak.xxx:com/auth/realms/frappet/protocol/openid-connect/token' \
+ --header 'Content-Type: application/x-www-form-urlencoded' \
+ --data-urlencode 'grant_type=password' \
+ --data-urlencode 'client_id=js-console' \
+ --data-urlencode 'client_secret=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx' \
+ --data-urlencode 'username=employee1' \
+ --data-urlencode 'password=mypassword'
+```
 ## Note
 
 ### ข้อมูลของ Realm
@@ -158,3 +168,4 @@ JavaScript Frontend ควรใช้ [keycloak-js](https://github.com/keycloak
 - [ASP.Net Core & Angular OpenID Connect using Keycloak](https://medium.com/@xavier.hahn/asp-net-core-angular-openid-connect-using-keycloak-6437948c008)
 - [Keycloak and Express](https://medium.com/keycloak/keycloak-and-express-7c71693d507a)
 
+- [ตัวอย่างของ node.js](https://medium.com/devops-dudes/securing-node-js-express-rest-apis-with-keycloak-a4946083be51)

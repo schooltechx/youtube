@@ -1,10 +1,10 @@
-# ทำการ Role base Authorization APIs ด้วย Keycloak และ .NET6
+# ทำการ Role base Authorization APIs ด้วย Keycloak และ .NET
 
-ตัวอย่างการทำใช้ Dotnet 6 Minimal API ที่จำกัดสิทธิ์ผ่าน Role ที่กำหนดไว้ใน Keycloak แนะนำให้ไปดูหัวข้อก่อนหน้า [JWT Authentication](https://github.com/schooltechx/youtube/blob/main/keycloak/api-jwt-auth/README.md) ห้วข้อนี้มีการเพิ่ม Authorization ด้วย Role เข้ามา
+ตัวอย่างการทำใช้ Dotnet Minimal API ที่จำกัดสิทธิ์ผ่าน Role ที่กำหนดไว้ใน Keycloak แนะนำให้ไปดูหัวข้อก่อนหน้า [JWT Authentication](https://github.com/schooltechx/youtube/blob/main/keycloak/api-jwt-auth/README.md) ห้วข้อนี้มีการเพิ่ม Authorization ด้วย Role เข้ามา
 
 ## Keycloak รันด้วย docker
 
-ในตัวอย่างนี้จะแสดงการพัฒนาโปรแกรมทั้งหมดใน localhost สำหรับนักพัฒนา จะไม่ได้ใช้ https (ดู docker-compose.yml)
+ในตัวอย่างนี้จะแสดงการพัฒนาโปรแกรมทั้งหมดใน localhost สำหรับนักพัฒนา จะไม่ได้ใช้ https (ดู [docker-compose.yml](./docker-compose.yml) )
 
     docker run --name keycloak -p 8080:8080 -e KEYCLOAK_USER=<USERNAME> -e KEYCLOAK_PASSWORD=<PASSWORD> jboss/keycloak
 
@@ -21,9 +21,11 @@
 ![Realm Key](./img/add_js-console.png)
 
 Roles จาก Realm กดปุ่ม "Add Role" เพิ่ม admin, dev
+
 ![Realm Roles](./img/realm_role.png)
 
 ตัวอย่าง Roles จาก Client กดปุ่ม "Add Role" เพิ่ม admin, dev
+
 ![Client Roles](./img/client_role.png)
 
 ดังนั้นการ Map Roles มาที่ Token Clame เลือกได้ว่าจะเอา Role จาก Realm หรือ Client ในตัวอย่างต่อไปทั้งหมดจะใช้จาก Roles ของ Realm  ให้สร้าง Mapper ใหม่ (เราสามารถแก้จาก mapper ตัวที่มีอยู่ก็ได้ ถ้าเข้าใจการทำงาน) .NET จะใช้ role(ไม่มี s)
@@ -39,6 +41,7 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
 ![Roles Mapper](./img/role-mapper.png)
 
 สร้างยูสเซอร์ super และ developer สำหรับทดสอบ 
+
 ![Add User](./img/add_users.png)
 
 กำหนด Role 
@@ -49,7 +52,7 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
 
 ## .NET6 
 
-แนะนำให้ใช้ VS Studion 2022 สร้าง
+แนะนำให้ใช้ VS Studio 2022 สร้าง
 - Template web API,แบบ minimal api, ไม่ใช้ https , Docker Support
 - สร้างโฟลเดอร์ wwwroot
 - เพิ่ม package Microsoft.AspNetCore.Authentication.JwtBearer 
@@ -69,7 +72,7 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
 
 ![Realm Key](./img/realm_key.png)
 
-เอาค่า Realm Key ไปใส่ใน appsetting.json
+เอาค่า Realm Key ID ไปใส่ใน appsetting.json สังเกตเอาแค่ key id ไป ตัว .NET จะทำการดึงค่า Public Key ออกมาจาก Issuer เอง
 
     {
     "Jwt": {
@@ -187,11 +190,17 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
 - รันโปรแกรม .NET แนะนำให้ใช้แบบ IIS Express ถ้าใช้  Docker ตั้งแก้เป็น IP Address เพราะ localhost ใน container มันเป็นคนละตัวกับ localhost เครื่องโฮส ซึ่งต้องใช้ IP Address แทน
 - http://localhost:28851/swagger/index.html เปิดไว้เพื่อทดสอบ API 
 - เข้าหน้า http://localhost:28851/ กดปุ่ม Login จะทำการ redirect ไปหน้า login ของ Keycloak ใช้ยูสเซอร์ super
+
 ![ID Token](./img/id_token.png)
+
 - เอา ID Token ที่ได้หลัง login มาใส่ใน Swagger เพื่อทำการทดสอบ API หรือทำผ่าน Postman ก็ได้
+
 ![Swagger Authorize](./img/swagger_authorize.png)
+
 - ทดสอบ API ด้วย Token ของยูสเซอร์ super
+
 ![Test API](./img/admin_dev_api.png)
+
 - เปลี่ยนเป็น developer แล้วทำการทดสอบ API อีกรอบเทียบกัน 
 - 401 Unauthorized แสดงว่าไม่ได้แนบ Token
 - 403 Forbidden เพราะ Role นั้นไม่มีสิทธ์เข้าถึง API ที่กำหนด
@@ -226,12 +235,8 @@ Client Scopes/roles/Mappers แล้วกดปุ่ม Create
     COPY --from=publish /app/publish .
     ENTRYPOINT ["dotnet", "webapi-keycloak.dll"]
 
-## การรับบน Docker
-
-TBD
-
 ## อ่านเพิ่มเติม
-
+- [.NET 7 Authentication Improvements & Automatic Configuration](../../webapp/dotnet7-jwt-auto-config/)
 - <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0>
 - <https://stackoverflow.com/questions/56327794/role-based-authorization-using-keycloak-and-net-core>
 - <https://medium.com/@xavier.hahn/adding-authorization-to-asp-net-core-app-using-keycloak-c6c96ee0e655>
