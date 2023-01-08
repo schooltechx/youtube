@@ -51,3 +51,25 @@ Youtube Play List สอนการใช้ Svelte และ SvelteKit งา�
     # อัปเดต SvelteKit ในโปรเจ็กที่ทำแล้ว
     npm update
 
+
+## Authentication
+
+- [Lucia](https://lucia-auth.vercel.app/sveltekit/start-here/getting-started)
+จัดการยูสเซอร์กับ Session ฐานข้อมูลใช้ Prisma Mongoose ฯลฯ
+- Pocketbase(https://pocketbase.io/)
+คล้าย Firebase มี Authen ในตัว
+
+
+[Authen.js(NextAuth.js)](https://vercel.com/templates/svelte/sveltekit-authentication)
+เป็นของ Next ตอนนี้รองรับ SvelteKit แล้ว รองรับ่หลาย Provider 
+
+[Keycloak](https://www.keycloak.org/docs/latest/securing_apps/) 
+รองรับหลาย Provider รองรับหลายภาษา JavaScript(Browser), Node.js ฯลฯ
+
+## UI
+- [Konsta UI](https://konstaui.com/)
+built with Tailwind CSS With iOS and Material Design components for React, Vue & Svelte
+- [Svelte-chartjs](https://github.com/SauravKanchan/svelte-chartjs)
+## Misc
+- [Free Svelte Accelerators](https://sveltekitstarter.com/) 
+โปรเจ็ก OpenSource ต่างๆ

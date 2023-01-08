@@ -17,4 +17,15 @@ npm create svelte@latest demo-api
 - src/routes/api/user/[id]/+server.js
 
 ## Note
-WEB API ของ SvelteKit เป็นฟีเจอร์หนึ่งที่มีการเปลี่ยนแปลง ตอนนี้ SvelteKit ออก 1.0 เรียบร้อยแล้ว ก็เลยทำวีดีโอสอนการใช้ API ออกมา
+
+- ตัวอย่าง Cache API 1 ชั่วโมง (TypeScript)
+``` js
+  const responseInit : ResponseInit =
+    {
+        headers : 
+            {
+                'cache-control' : 'public, max-age=3600'
+            }
+    }
+    return new Response(JSON.stringify(responseObject),responseInit);
+```
