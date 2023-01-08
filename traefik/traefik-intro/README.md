@@ -8,7 +8,10 @@
 - [โปรแกรมตัวอย่างเป็น node.js server.js](https://github.com/schooltechx/youtube/raw/main/traefik/traefik-intro/server.js)
 
 ## วีดีโอสอนการใช้งาน
-https://youtu.be/DgxRcFlccsU
+
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/DgxRcFlccsU/0.jpg)](https://youtu.be/DgxRcFlccsU "แนะนำการใช้ Traefik เบื้องต้น")
+
+
 วีดีโอนี้จะแสดงคอนเซ็บการใช้งานคร่าวๆ เพื่อให้เห็นประโยชน์และหลักการสำคัญๆ เท่านั้น ยังขาดฟีเจอร์หลักๆที่น่าสนใจอีกมาก ไว้ค่อยมาทำวีดีโอในภายหลัง ในตัวอย่างจะใช้ binary 
 ที่รันได้เลยและใช้ provider แบบไฟล์ จะได้ไม่ซับซ้อนนัก ความรู้แค่นี้นักพัฒนาสามารถเอาไปใช้จัดการ API Gatewayม Microservice และทำ Loadbalance ได้แล้ว 
 
