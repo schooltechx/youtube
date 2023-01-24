@@ -17,14 +17,15 @@ tools                   Utilities for use and interaction with the server.
 ```
 
 
-ใน docker-compose.yaml จะมีส่วนของ commandซ เพิ่มขึ้นมาหลักๆจะใช้ start กับ start-dev แนะนำให้อ่านเอกสาร 
+ใน docker-compose.yaml จะมีส่วนของ command เพิ่มขึ้นมาหลักๆจะใช้ start กับ start-dev แนะนำให้อ่านเอกสาร 
 - [Running Keycloak in a container](https://www.keycloak.org/server/containers)
 - [Enabling and disabling features](https://www.keycloak.org/server/features)
 - [เอกสารเซิร์ฟเวอร์ทั้งหมด](https://www.keycloak.org/guides#server)
 
 ควรใช้ Postgres หรือ CockroachDB เพื่อรองรับ [storage](https://www.keycloak.org/2022/07/storage-map.html) แบบใหม่
 ## Quick Development
-สำหรับการทดสอบ จะใช้ embeded database 
+docker-compose.yaml สำหรับนักพัฒนาในการการทดสอบโปรแกรม 
+
 ```yaml
 version: "3.1"
 services:
@@ -43,9 +44,16 @@ services:
     ports:
       - 9080:8080 
 ```
+จะใช้ embeded database ข้อมูลจะเก็บในโฟลเดอร์ data ถ้าต้องการล้างข้อมูลทั้งหมดให้ลบข้อมูลใน data ทิ้ง
+```bash
+docker compose down
+rm -Rf data/*
+```
 
-## แบบมีฐานข้อมูล Test/Production
-Test/Production แบบอยู่หลัง [reverse proxy](https://www.keycloak.org/server/reverseproxy) 
+## แบบมีฐานข้อมูล 
+docker-compose.yaml สำหรับ Test/Production ใช้ร่วมกับฐานข้อมูล PostgresQL
+
+แบบอยู่หลัง [reverse proxy](https://www.keycloak.org/server/reverseproxy) 
 ทำ https, กำหนดชื่อ sub domain ให้ และไม่มีการเข้ารหัสในเน็ตเวิร์กภายใน  
 ```yaml
 version: "3.1"
@@ -79,7 +87,7 @@ services:
       - ./pgtest-volume:/var/lib/postgresql/data
 
 ```
-สำหรับ Development ในสภาพแวดล้อมเดียวกัน 
+สำหรับ Development ในสภาพแวดล้อมเดียวกัน ให้แก้เป็น
 ```
 command: ["start-dev","--proxy edge", "--hostname-strict=false"]
 ```
@@ -88,5 +96,6 @@ command: ["start-dev","--proxy edge", "--hostname-strict=false"]
 วิธีถอนการติดตั้งทั้งหมด
 ```
 docker compose down
-sudo rm -Rf ./pgtest-volume
+sudo rm -Rf ./pgtest-volume/*
+rm -Rf data/*
 ```
