@@ -15,94 +15,88 @@ import                  Import data from a directory or a file.
 show-config             Print out the current configuration.
 tools                   Utilities for use and interaction with the server.
 ```
+Keycloak บน Docker เปลี่ยนวิธีการเรียกใช้งานด้วย จากคำสั่งข้างต้น จะมีโหมดการรันแบบนักพัฒนา(start-dev) และแบบใช้งานจริง(start) จำเป็นต้องมีขั้นตอนการ build ด้วยค่อนข้างน่าปวดหัวตอนอ่านเอกสาร เราสามารถเซ็ตค่าผ่าน พารามิเตอร์ของ command หรือ
+ตัวแปรแวดล้อมได้ ถ้ามีการเซ็ตที่เกี่ยวข้องกับการ build มันจะทำการ build ใหม่
 
-
-ใน docker-compose.yaml จะมีส่วนของ command เพิ่มขึ้นมาหลักๆจะใช้ start กับ start-dev แนะนำให้อ่านเอกสาร 
+แนะนำให้อ่านเอกสาร 
 - [Running Keycloak in a container](https://www.keycloak.org/server/containers)
 - [Enabling and disabling features](https://www.keycloak.org/server/features)
 - [เอกสารเซิร์ฟเวอร์ทั้งหมด](https://www.keycloak.org/guides#server)
 
 ควรใช้ Postgres หรือ CockroachDB เพื่อรองรับ [storage](https://www.keycloak.org/2022/07/storage-map.html) แบบใหม่
-## Quick Development
-docker-compose.yaml สำหรับนักพัฒนาในการการทดสอบโปรแกรม 
+## โหมดสำหรับนักพัฒนา
+จะใช้เป็น start-dev 
+- ใช้ http
+- โหมดนี้ theme จะไม่มีการ cache ไว้แก้แล้วเห็นเลยไม่ต้อง restart
+- embeded database จะเก็บในโฟลเดอร์ data ให้สิทธิ์ ในการเขียนด้วย
+- "--import-realm" ใส่ไฟล์ใน ./data/import เพื่อนำเข้า Realams ได้ ไฟล์เอามาจาก Realam settings/Action/Partial export เพื่อที่จะได้ตั้งค่าได้อย่างรวดเร็ว
+
+[docker-compose.dev.yaml](./sample/docker-compose.dev.yaml) สำหรับนักพัฒนาในการการทดสอบโปรแกรม ใช้เป็น embeded database
 
 ```yaml
+# docker compose -f docker-compose.dev.yaml up
 version: "3.1"
 services:
   keycloak:
-    container_name: keycloak
+    container_name: keycloak-dev
     image: quay.io/keycloak/keycloak:20.0.3
-    command: ["start-dev"]
+    command: start-dev --import-realm
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=changeme
-#      - KC_FEATURES=admin2
       - TZ=Asia/Bangkok
     volumes:
 #      - ./themes:/opt/keycloak/themes:rw
       - ./data:/opt/keycloak/data:rw
     ports:
-      - 9080:8080 
+      - 9080:8080
 ```
-จะใช้ embeded database ข้อมูลจะเก็บในโฟลเดอร์ data ให้สิทธิ์ ในการเขียนด้วย
+คำสั่งที่ใช้ 
 ```
 mkdir data
 chmod uo+w data/
-docker compose up -d
+docker compose -f docker-compose.dev.yaml up
 ```
 
-ถ้าต้องการล้างข้อมูลทั้งหมดให้ลบข้อมูลใน data ทิ้ง อย่าลืมลบ container ก่อน
+ถ้าต้องการล้างข้อมูลทั้งหมดลบ container ก่อน และ ลบข้อมูลใน data ทิ้ง 
 ```bash
-docker compose down
+docker compose -f docker-compose.dev.yaml down
 rm -Rf data/*
 ```
 
-## แบบมีฐานข้อมูล 
-docker-compose.yaml สำหรับ Test/Production ใช้ร่วมกับฐานข้อมูล PostgresQL
+## โหมดใช้งานจริงแต่ build คอนฟิกได้
+ในเอกสารวิธีการใช้บน Container บน Production จะทำ Optimized container 
+จะมีขั้นตอนการ build เพิ่มเข้ามา จะเป็นการเลือกชนิดฐานข้อมูล และเปิดใช้ฟีเจอร์ต่างๆ ค่าจากการ build จะอยู่ใน container
+การ build จะกินเวลาเพิ่มเล็กน้อย และมันจะเตือนให้ใส่พารามิเตอร์ "--optimized" ให้ดูวิธีใช้ในหัวข้อถัดไป (หัวข้อนี้ห้ามทำ) เหมาะกับการใช้สำหรับ Test/Production กรณีที่มีการแก้ไขค่าคอนฟิกอยู่ ตัวอย่างจะใช้ร่วมกับฐานข้อมูล PostgresQL 
 
-แบบอยู่หลัง [reverse proxy](https://www.keycloak.org/server/reverseproxy) 
-ทำ https, กำหนดชื่อ sub domain ให้ และไม่มีการเข้ารหัสในเน็ตเวิร์กภายใน  
-```yaml
-version: "3.1"
-services:
-  keycloak:
-    container_name: keycloak
-    image: quay.io/keycloak/keycloak:20.0.3
-    command: ["start","--optimized","--proxy edge", "--hostname-strict=false"]
-    environment:
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=changeme
-      - KC_FEATURES=admin2 #build option
-      - TZ=Asia/Bangkok
-    ports:
-      - 7080:8080 
-    volumes:
-#      - ./themes:/opt/keycloak/themes:rw
-      - ./data:/opt/keycloak/data:rw
-    depends_on:
-      - postgres
-  postgres:
-    image: postgres:13-alpine
-    environment:
-      - POSTGRES_DB=keycloak
-      - POSTGRES_USER=keycloak
-      - POSTGRES_PASSWORD=P@ssw0rd
-      - TZ=Asia/Bangkok
-#    ports:
-#      - 5432:5432
-    volumes:
-      - ./pgtest-volume:/var/lib/postgresql/data
-
-```
-สำหรับ Development ในสภาพแวดล้อมเดียวกัน ให้แก้เป็น
-```
-command: ["start-dev","--proxy edge", "--hostname-strict=false"]
-```
-
+[docker-compose.test.yaml](./sample/docker-compose.test.yaml)
+- "start" รันแบบใช้งาน Production
+- "--db-url-host postgres" ชื่อโดเมนของฐานข้อมูลในกรณีนี้เป็นชื่อของ service ใน docker-compose.yaml
+- "--proxy edge" ไม่ได้ทำ HTTPS ให้ Reverse Proxy เป็นตัวทำ
+- "--hostname-strict=false" ให้ reverse proxy กำหนดชื่อโฮสให้
+- ขั้นตอนการ build ใช้คอนฟิกเหล่านี้ KC_FEATURES, ENV KC_HEALTH_ENABLED,ENV KC_METRICS_ENABLED,KC_DB 
+- ถ้าไม่เซ็ต KC_DB ก็จะใช้ embeded database เป็นค่าตั้งต้น
+- จะเป็นตอนใช้งาน keycloak จะใช้ค่าจาก KC_DB_URL,KC_DB_USERNAME,KC_DB_PASSWORD และ command 
+- Health check endpoints https://localhost:9080/health, https://localhost:9080/health/ready และ https://localhost:9080/health/live.
 
 วิธีถอนการติดตั้งทั้งหมด
 ```
-docker compose down
+docker compose -f docker-compose.test.yaml down
 sudo rm -Rf ./pgtest-volume/*
-rm -Rf data/*
 ```
+
+## โหมดใช้งานจริง
+จะทำการสร้างอิมเมจใหม่ขึ้นมาค่าที่เกิดจากการ build จะอยู่ใน image เราควรฝังค่าตอนฟิกต่างๆไว้ในอิมเมจเลย ซึ่งอาจจะทำให้ไม่สามารถเอาไปใช้ที่อื่นหรือเปลี่ยนแปลงได้ เหมาะกับรันบน K8s หรือ Openshift ไม่ต้องมีคอนฟิกไฟล์ 
+ในตัวอย่างนี้จะฝังค่าคอนฟิกบางตัวใน image และแสดงการ overide ค่าคอนฟิกผ่าน command ใช้ Certificate ที่สร้างเอง
+เปิดใช้ HTTP/HTTPS
+### Note
+ใน production ไม่ควรป้อน command เพิ่มเติมใช้ Certificate ที่ถูกต้อง และเปิดแค่ HTTPS
+
+buld/Dockerfile](./sample/build/Dockerfile)
+- อิมเมจจะเป็นสำหรับ PostgresSQL 
+- มีค่าตั้งต้นไว้ที่เซ็ต KC_DB_URL,KC_DB_USERNAME,KC_DB_PASSWORD
+- ในตัวอย่างจะไม่เซ็ตค่า KC_HOSTNAME ให้เซ็ตผ่าน reverse proxy
+[docker-compose.yaml](./sample/docker-compose.yaml)
+- "start --optimized" เป็นการบอกว่าจะไม่ build ใหม่แล้ว
+- ถ้าจะคอนฟิกฐานข้อมูลใหม่ ให้ใช้พารามิเตอร์ผ่าน command --db-url, --db-username, --db-password
+- ตัวอย่างนี้ใช้ HTTP(http://localhost:9080/) และ HTTPS(https://localhost:9443/) ได้  
