@@ -64,10 +64,9 @@ docker compose -f docker-compose.dev.yaml down
 rm -Rf data/*
 ```
 
-## โหมดใช้งานจริงแต่ build คอนฟิกได้
-ในเอกสารวิธีการใช้บน Container บน Production จะทำ Optimized container 
-จะมีขั้นตอนการ build เพิ่มเข้ามา จะเป็นการเลือกชนิดฐานข้อมูล และเปิดใช้ฟีเจอร์ต่างๆ ค่าจากการ build จะอยู่ใน container
-การ build จะกินเวลาเพิ่มเล็กน้อย และมันจะเตือนให้ใส่พารามิเตอร์ "--optimized" ให้ดูวิธีใช้ในหัวข้อถัดไป (หัวข้อนี้ห้ามทำ) เหมาะกับการใช้สำหรับ Test/Production กรณีที่มีการแก้ไขค่าคอนฟิกอยู่ ตัวอย่างจะใช้ร่วมกับฐานข้อมูล PostgresQL 
+## โหมดใช้งาน
+ผลจากการ build จะอยู่ยังคงอยู่ใน container เหมาะกับการใช้สำหรับ Test/Production ในกรณีที่มีการแก้ไขค่าคอนฟิกอยู่เนืองๆ ตัวอย่างจะใช้ร่วมกับฐานข้อมูล PostgresQL จริงแต่ build ตามคอนฟิกที่กำหนดได้ จะเป็นการเลือกชนิดฐานข้อมูล และเปิดใช้ฟีเจอร์ต่างๆ 
+การ build จะกินเวลาเพิ่มเล็กน้อย และมันจะเตือนให้ใส่พารามิเตอร์ "--optimized" เป็นการปิดการ build ให้ดูวิธีใช้ในหัวข้อถัดไป (หัวข้อนี้ห้ามทำ) 
 
 [docker-compose.test.yaml](./sample/docker-compose.test.yaml)
 - "start" รันแบบใช้งาน Production
@@ -86,17 +85,22 @@ sudo rm -Rf ./pgtest-volume/*
 ```
 
 ## โหมดใช้งานจริง
-จะทำการสร้างอิมเมจใหม่ขึ้นมาค่าที่เกิดจากการ build จะอยู่ใน image เราควรฝังค่าตอนฟิกต่างๆไว้ในอิมเมจเลย ซึ่งอาจจะทำให้ไม่สามารถเอาไปใช้ที่อื่นหรือเปลี่ยนแปลงได้ เหมาะกับรันบน K8s หรือ Openshift ไม่ต้องมีคอนฟิกไฟล์ 
-ในตัวอย่างนี้จะฝังค่าคอนฟิกบางตัวใน image และแสดงการ overide ค่าคอนฟิกผ่าน command ใช้ Certificate ที่สร้างเอง
-เปิดใช้ HTTP/HTTPS
+จะทำการสร้างอิมเมจใหม่ขึ้นมาค่าที่เกิดจากการ build จะอยู่ใน image ค่าตอนฟิกต่างๆ อยู่ในอิมเมจเลย อาจจะทำให้ไม่สามารถแก้ไขเพื่อเอาไปใช้ที่อื่นหรือทำการเปลี่ยนแปลงได้ เหมาะกับรันบน K8s หรือ Openshift ไม่ต้องมีคอนฟิกไฟล์ 
+- ในตัวอย่างนี้จะฝังค่าคอนฟิกบางตัวใน image 
+- แสดงการ overide ค่าคอนฟิกผ่าน command 
+ใช้ Certificate ที่สร้างเอง
+- เปิดใช้ HTTP/HTTPS
 ### Note
 ใน production ไม่ควรป้อน command เพิ่มเติมใช้ Certificate ที่ถูกต้อง และเปิดแค่ HTTPS
 
-buld/Dockerfile](./sample/build/Dockerfile)
+### [buld/Dockerfile](./sample/build/Dockerfile)
 - อิมเมจจะเป็นสำหรับ PostgresSQL 
 - มีค่าตั้งต้นไว้ที่เซ็ต KC_DB_URL,KC_DB_USERNAME,KC_DB_PASSWORD
 - ในตัวอย่างจะไม่เซ็ตค่า KC_HOSTNAME ให้เซ็ตผ่าน reverse proxy
-[docker-compose.yaml](./sample/docker-compose.yaml)
-- "start --optimized" เป็นการบอกว่าจะไม่ build ใหม่แล้ว
+
+### [docker-compose.yaml](./sample/docker-compose.yaml)
+- "start --optimized" เป็นการบอกว่าจะไม่ build ใหม่แล้ว ใช้ HTTPS
 - ถ้าจะคอนฟิกฐานข้อมูลใหม่ ให้ใช้พารามิเตอร์ผ่าน command --db-url, --db-username, --db-password
+- "--hostname-strict=false" ให้ reverse proxy กำหนดชื่อให้
+- "--proxy edge" เปิดใช้ HTTP ให้ reverse proxy ทำ HTTPS แทนได้
 - ตัวอย่างนี้ใช้ HTTP(http://localhost:9080/) และ HTTPS(https://localhost:9443/) ได้  
