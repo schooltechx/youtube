@@ -44,7 +44,14 @@ services:
     ports:
       - 9080:8080 
 ```
-จะใช้ embeded database ข้อมูลจะเก็บในโฟลเดอร์ data ถ้าต้องการล้างข้อมูลทั้งหมดให้ลบข้อมูลใน data ทิ้ง
+จะใช้ embeded database ข้อมูลจะเก็บในโฟลเดอร์ data ให้สิทธิ์ ในการเขียนด้วย
+```
+mkdir data
+chmod uo+w data/
+docker compose up -d
+```
+
+ถ้าต้องการล้างข้อมูลทั้งหมดให้ลบข้อมูลใน data ทิ้ง อย่าลืมลบ container ก่อน
 ```bash
 docker compose down
 rm -Rf data/*
