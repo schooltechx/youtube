@@ -1,0 +1,77 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: my-registry
+  name: my-registry
+  namespace: my-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-registry
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: my-registry
+    spec:
+      containers:
+      - image: registry:2
+        name: registry
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: storage
+          mountPath: /var/lib/registry
+        resources: {}
+      volumes:
+      - name: storage
+        hostPath:
+          path: /home/oom/k8s/test/registry
+          type: DirectoryOrCreate
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: my-registry
+  name: my-registry
+  namespace: my-registry
+spec:
+  ports:
+  - name: "5000"
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: my-registry
+  type: ClusterIP
+status:
+  loadBalancer: {}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  creationTimestamp: null
+  name: my-registry
+  namespace: my-registry
+spec:
+  rules:
+  - host: registry.home.lan
+    http:
+      paths:
+      - backend:
+          service:
+            name: my-registry
+            port:
+              number: 5000
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer: {}
