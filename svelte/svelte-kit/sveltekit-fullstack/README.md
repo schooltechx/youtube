@@ -1,6 +1,5 @@
 # SvelteKit Fullstck Developer 
 
-Dear English developer. The [basic routing](https://kit.svelte.dev/docs/routing) can be read from oficial document. Thai developer please check video below (นักพัฒนาคนไทยให้ดูวีดีโอด้านล่าง). 
 
 
 ## Setup Sveltekit and carbon component svelte
@@ -13,40 +12,6 @@ Dear English developer. The [basic routing](https://kit.svelte.dev/docs/routing)
     npm i -D carbon-components-svelte
 ```
 
-## [Basic Routing](https://kit.svelte.dev/docs/introduction)
-
-The Sample source code. Click link to see code.
-- [Backend Processing,load()](src/routes/%2Bpage.server.js) : 
-How to use: url.searchParams, send data to frontend (+page.svelte), Private variable. Please check .env file.
-- [Frontend Processing](src/routes/%2Bpage.svelte) : 
-How to use: Read data from Backend, Read Public variable. Please check .env file. The prefix PUBLIC_ use for public variable.
-- [Layout](src/routes/%2Blayout.svelte):
-Apply layout to all page. The sample use carbon component
-- [Error Page](src/routes/%2Berror.svelte) : 
-Create custom error page use $page.
-- [Client side processing(prerender)](src/routes/about/) : 
-How to use: load() , params, pathname,routeId
-- $lib (.sveltekit/tsconfig.json) : 
-config this file to support  
-- [$lib/asset/logo.png](src/lib/asset/logo.png) : 
-use logo in about/+page.svelte
-- [$lib/Nav.svelte](src/lib/Nav.svelte) : 
-Share component in +layut.svelte
-- .env : 
-file for environment variable
-
-## Form Actions
-copy sample code folder [actions ](src/routes/actions/) to src/routes. 
-Form Action is basic send data to backend by POST method, no javascript required.
-
-## Database
-
-Click link below link. You don't need +layout.svelte, +error.svelte to run this sample. Just copy all content in folder and follow Readme.me
-- [SQLite with Prisma](src/routes/actions-prisma/)
-
-## Web API
-Check this [page](src/routes/api/)
-
 # Sveltekit สำหรับ นักพัฒนาสาย Full Stack
 
 SvelteKit ออกเวอร์ชั่น 1.0 แล้ว จำเป็นใช้ Node 16.14+.สามารถเรียนรู้การก้าวสู่นักพัฒนาสาย Full Stack โดยใช้ SvelteKit ได้จากวีดีโอนี้ครับ
@@ -55,6 +20,8 @@ SvelteKit ออกเวอร์ชั่น 1.0 แล้ว จำเป็�
 
 
 ## ตัวอย่างโค้ดสำหรับการใช้งานพื้นฐาน
+ตัวอย่างแรกจะอยู่หลายทีหลายโฟลเดอร์หน่อยนะครับเพื่อให้เห็นว่าไฟล์ที่อยู่ตำแหน่งต่างๆทำอะไรบ้าง ในวีดีโอหลังๆจะพยายามรวบให้อยู่ในโฟลเดอร์เดียวกัน โค้ดใน Git อาจจะมีโฟลเดอร์โค้ดที่ไม่ได้ใช้แล้ว เพราะว่าอัปเดตตัวที่เป็นเวอร์ชั่น 1 อาจจะไม่รองรับแบบนั้นแล้ว แต่ผมก็ยังเก็บโค้ดไว้อยู่ครับ แต่ก็อยากให้พยายามดูตามวีดีโอเห็นหลักนะครับ
+
 
 - [ส่วนการประมวลผลฝั้ง Backend การใช้ฟังก์ชั่น load()](src/routes/%2Bpage.server.js) :
 แสดงวิธีการใช้ url.searchParams, การส่ง data จาก Backend มาที่ frontend (+page.svelte), ตัวแปรแบบ Private ให้ดูไฟล์ .env ประกอบ.
@@ -83,6 +50,11 @@ Form Action เป็นการส่งข้อมูลจากฟอร�
 ## ตัวอย่างโค้ดสำหรับหัวข้อ Database
 การใช้งานฐานข้อมูล ให้อ่านเอกสารตามลิงค์ด้านล่าง 
 - [SQLite with Prisma](src/routes/actions-prisma/)
+
+## แยกการทำงานออกมาอีกเทรดเพื่อให้การทำงานลื่นไหลยิ่งขึ้น
+ 
+- [Web Worker](src/routes/web-worker/)
+- [Web Push](src/routes/push/)
 
 ## อธิบายการทำงาน SvelteKit พื้นฐานทั่วไป Folder base routing
 
@@ -281,7 +253,10 @@ api/user/[id]/+server.js
 
 SvelteKit เพียงแค่เข้าใจการทำงาของ load(),Form Actions และการทำงาน API ของ server.js ก็สามารถใช้ component ในส่วน Backend ได้เหมือนกับ Node.js เลย 
 
-## อ่านเพิ่มเติม
+
+
+
+## Misc
 - [เข้าใจฐานข้อมูลแบบต่างๆ(วีดีโอภาษาอังกฤษ)](https://www.youtube.com/watch?v=W2Z7fbCLSTw)
 - [SvelteKit PWA Plugin](https://vite-pwa-org.netlify.app/frameworks/sveltekit.html)
 - [Offline-first PWA with Svelte & Vite](https://blog.unixfy.net/offline-first-pwa-with-svelte-vite/) 

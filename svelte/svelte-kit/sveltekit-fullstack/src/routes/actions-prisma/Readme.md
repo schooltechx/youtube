@@ -14,6 +14,7 @@ npm install prisma --save-dev
 npx prisma init --datasource-provider sqlite
 code .
 # เพิ่ม model ใน prisma/schema.prisma แล้วค่อยรันคำสั่งต่อไป ดูหัวข้อด้านล่าง
+# pnpx prisma db push
 npx prisma migrate dev --name init
 npx prisma studio
 ``` 
