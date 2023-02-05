@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  dl:
+    image: nginx:latest
+    ports:
+      - 8080:80
+    volumes:
+      - ./files:/usr/share/nginx/html/files:ro
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.dl.rule=Host(`fe.com`) && Path(`/files/`)"
+    environment:
+      - TZ=Asia/Bangkok
+    networks:
+      - proxy
+networks:
+  proxy:
+    external: true

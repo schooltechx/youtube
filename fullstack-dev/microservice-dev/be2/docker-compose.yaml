@@ -1,0 +1,19 @@
+version: '3'
+services:
+  be2:
+    image: registry.home.lan/demo/be2:latest
+    ports:
+    - "8083:80"
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.be2.rule=Host(`fe.com`) && PathPrefix(`/api/be2`)"
+    environment:
+      - TZ=Asia/Bangkok
+    # deploy:
+    #   mode: replicated
+    #   replicas: 3
+    networks:
+     - proxy
+networks:
+  proxy:
+    external: true

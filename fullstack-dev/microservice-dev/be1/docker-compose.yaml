@@ -1,0 +1,16 @@
+version: '3'
+services:
+  be1:
+    image: registry.home.lan/demo/be1:latest
+    ports:
+    - "8082:80"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.be1.rule=Host(`fe.com`) && (Path(`/api/be1-1`)||Path(`/api/be1-2`)) 
+    environment:
+      - TZ=Asia/Bangkok
+    networks:
+     - proxy
+networks:
+  proxy:
+    external: true

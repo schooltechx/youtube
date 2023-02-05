@@ -1,0 +1,43 @@
+http:
+  routers:
+    dl-dev:
+      service: dl
+      rule: "Host(`fe.dev.com`) && PathPrefix(`/files/`)" 
+    be1-dev:
+      service: be1-dev
+      rule: "Host(`fe.dev.com`) && (Path(`/api/be1-1`)||Path(`/api/be1-2`))"   
+    be2-dev:
+      service: be2-dev
+      rule: "Host(`fe.dev.com`) && PathPrefix(`/api/be2`) " 
+    fe-dev:
+      service: fe-dev
+      rule: "Host(`fe.dev.com`)"
+  services:
+    dl:
+      loadBalancer:  
+        servers:
+        - url: 'http://dl'
+    fe:
+      loadBalancer:  
+        servers:
+        - url: 'http://fe'
+    be1:
+      loadBalancer:  
+        servers:
+        - url: 'http://be1'
+    be2:
+      loadBalancer:  
+        servers:
+        - url: 'http://be2'
+    fe-dev:
+      loadBalancer:  
+        servers:
+        - url: 'http://192.168.2.41:8081/'
+    be1-dev:
+      loadBalancer:  
+        servers:
+        - url: 'http://192.168.2.41:8082'
+    be2-dev:
+      loadBalancer:  
+        servers:
+        - url: 'http://192.168.2.41:8083'

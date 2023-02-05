@@ -1,0 +1,16 @@
+version: '3'
+services:
+  fe:
+    image: registry.home.lan/demo/fe:latest
+    ports:
+    - "8081:80"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.fe.rule=Host(`fe.com`) 
+    environment:
+      - TZ=Asia/Bangkok
+    networks:
+     - proxy
+networks:
+  proxy:
+    external: true
