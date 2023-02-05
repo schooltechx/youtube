@@ -1,4 +1,6 @@
 # Micro service development
+[![IMAGE ALT TEXT](https://img.youtube.com/vi/-zfABqdhmPg/0.jpg)](https://youtu.be/-zfABqdhmPg "การพัฒนา Microservice แบบเป็นทีม")
+
 รูปแบบการพัฒนา Micro service แบบเป็นทีม ผมวางโครงสร้างง่ายๆ 
 สำหรับการศึกษา ถ้ามีการปรับปรุงก็จะมาอัปเดตข้อมูลในหน้านี้ให้ครับ 
 - แสดงการพัฒนาแบบผสมผสาน หลาย Framework ร่วมกัน ตัวอย่างเป็น Vue, .NET และ SvelteKit ปรับใช้กับ Framework อื่นก็ได้
