@@ -1,0 +1,44 @@
+version: '3'
+services:
+  db:
+    image: mysql/mysql-server:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./init_mysql:/docker-entrypoint-initdb.d/:ro
+    environment:
+      MYSQL_ROOT_PASSWORD: P@ssw0rd!
+      MYSQL_DATABASE: my_web
+      MYSQL_USER: webmaster
+      MYSQL_PASSWORD: P@ssw0rd
+      TZ: Asia/Bangkok
+    ports:
+      - "9900:3306"
+  web:
+    container_name: php_web
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./php/html/:/var/www/html/
+    ports:
+      - "9901:80"
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    environment:
+        TZ: Asia/Bangkok
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - '9902:80'
+    restart: unless-stopped
+    environment:
+        PMA_HOST: db
+        TZ: Asia/Bangkok
+    depends_on:
+        - db
