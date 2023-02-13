@@ -1,0 +1,9 @@
+# docker-compose up -d
+version: "3.1"
+services:
+  myweb:
+    image: nginx
+    volumes:
+     - ./html:/usr/share/nginx/html:ro
+    ports:
+    - "9080:80"    

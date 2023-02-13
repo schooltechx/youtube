@@ -1,0 +1,25 @@
+apiVersion: v1
+data:
+  config.html: |-
+    <html>
+    <head>
+        <title>Config</title>
+    </head>
+    <body>
+        <h1>Welcome to Config</h1>
+    </body>
+    </html>
+  config1.html: |-
+    <html>
+    <head>
+        <title>Config 1</title>
+    </head>
+    <body>
+        <h1>Welcome to Config 1</h1>
+    </body>
+    </html>
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: myweb-configmap
+  namespace: my-web

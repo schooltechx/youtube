@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myweb
+  name: myweb
+  namespace: my-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myweb
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myweb
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+        volumeMounts:
+        - name: hostpath-volume
+          mountPath: /usr/share/nginx/html
+        - name: configmap-volume
+          mountPath: /usr/share/nginx/html/configmap
+        - name: secret-volume
+          mountPath: /usr/share/nginx/secret
+
+      volumes:
+      - name: hostpath-volume
+        hostPath:
+          path: /home/oom/k8s/myweb/html
+          type: Directory
+      - name: configmap-volume
+        configMap:
+          name: myweb-configmap
+      - name: secret-volume
+        secret:
+          secretName: myweb-secret
+
+status: {}
