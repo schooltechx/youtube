@@ -52,3 +52,8 @@ Microk8s มีคนใช้เยอะเลยตั้งแต่ Develop
 ### [Install Rancher สำหรับ บริหารจัดการ K8s Cluster](https://youtu.be/Q4eDDzNNlPY)
 GUI สำหรับ K8 ทำให้ใช้งานง่ายขึ้นมาเลย
 
+### VDI & Thinclient
+- [Apache Guacamole](https://guacamole.apache.org/) is a clientless remote desktop gateway. It supports standard protocols like VNC, RDP, and SSH. [Video1](https://www.youtube.com/watch?v=gsvS2M5knOw)
+- [Freenx](https://fedoranews.org/contributors/rick_stout/freenx/)
+- VNC 
+[x11vnc](https://www.lazysystemadmin.com/2009/08/real-x-display-of-workstation-can-be.html)

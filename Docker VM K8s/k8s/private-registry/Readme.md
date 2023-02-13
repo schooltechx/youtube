@@ -1,5 +1,5 @@
 # Docker Registry
-ใช้เก็บ docker image ส่วนตัว สามารถ Pull/Push รัวๆไม่ติด Rate limit เร็วกว่าใช้เซิร์ฟเวอร์จากข้างนอกมากๆ เหมาะกับใช้กันภายใน ผมทำตัวอย่างมีทั้ง docker compose และ K8s จะได้เห็นเทียบกัน ตัวอย่าง Docker จะใช้เป็น localhost:5000 
+ใช้เก็บ docker image ส่วนตัว(ว่ากันง่ายๆคือแทน dockerhub.com) สามารถ Pull/Push รัวๆไม่ติด Rate limit เร็วกว่าใช้เซิร์ฟเวอร์จากข้างนอกมากๆ เหมาะกับใช้กันภายใน ผมทำตัวอย่างมีทั้ง docker compose และ K8s จะได้เห็นเทียบกัน ตัวอย่าง Docker จะใช้เป็น localhost:5000 
 ส่วน K8s ผมจะใช้โดเมน registry.home.lan เนื่องจากไม่ได้ผ่าน DNS จะเพิ่มในไฟล์ hosts เป็นแบบโหนดเดียว(ไม่ได้ทำ cluster) เก็บอิมเมจใน hostPath และ ไม่มี security ใดๆ เหมาะสำหรับ developer หรือ tester ใช้ภายในเท่านั้น วีดีโอใช้ฟีเจอร์พื้นฐาน เพื่อง่ายต่อการเรียนรู้ ถ้าทำได้แล้วแนะนำให้ดูลิงค์เพิ่มเติมตอนท้ายหน้านี้ครับ
 
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/NJ5zcvvdL9o/0.jpg)](https://youtu.be/NJ5zcvvdL9o "Deploy Docker Registry บน K8s")

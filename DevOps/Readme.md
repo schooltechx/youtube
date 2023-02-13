@@ -1,49 +1,25 @@
-# การใช้งาน Github Action เบื้องต้น
+## DevOps
 
 
-``` sh
-dotnet --version
-dotnet --list-sdks
-dotnet new webapp -au Individual --no-https -n github-action  
-cd .\github-action
-code .
-dotnet add package Microsoft.EntityFrameworkCore.Sqlite
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet tool install --global dotnet-ef
-dotnet tool update --global dotnet-ef
-``` 
-แก้โค้ด Program.cs ให้ใช้ SQLite แทน MSSQL
-``` csharp
-builder.Services.AddSqlite<ApplicationDbContext>("Data Source=app.db");
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSqlServer(connectionString));
-```
 
-``` sh
-dotnet ef migrations add InitialCreate
-dotnet ef database update
-```
+## ลำดับการเรียน
+- เข้าใจการทำงาน Micro Serivce , API Gateway
+- Docker build ทุกบริการเป็นอิมเมจ
+- ArgoCD 
+- Github Action เอาโค้ดขึ้น Github แล้วทำการ build/test , nektos/act
+- GitOps อธิบาย
+- ทำแบบ local mock-github and act-js
+## 
 
-Dockerfile
-```
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+- [sparse-checkout](https://stackoverflow.com/questions/600079/how-do-i-clone-a-subdirectory-only-of-a-git-repository/52269934#52269934)
+- [Test Github action locally](https://www.redhat.com/en/blog/testing-github-actions-locally)
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["github-action-test/github-action-test.csproj", "github-action-test/"]
-RUN dotnet restore "github-action-test/github-action-test.csproj"
-COPY . .
-WORKDIR "/src/github-action-test"
-RUN dotnet build "github-action-test.csproj" -c Release -o /app/build
+- [Let's do GitOps in Kubernetes! ArgoCD Tutorial](https://www.youtube.com/watch?v=Yb3_4PZX0B0)
+- [CI/CD using GitOps using ArgoCD, Github Actions, Kubernetes, React/Node || Hands On](https://www.youtube.com/watch?v=IVuFJNBIguU&t=215s)
+- [ArgoCD Tutorial for Beginners | GitOps CD for Kubernetes](https://www.youtube.com/watch?v=MeU5_k9ssrs)
+- https://fleet.rancher.io/
 
-FROM build AS publish
-RUN dotnet publish "github-action-test.csproj" -c Release -o /app/publish
 
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "github-action-test.dll"]
-```
+- [self-hosted runners](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners)
+
+

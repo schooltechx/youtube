@@ -1,5 +1,5 @@
 # Micro service development
-[![IMAGE ALT TEXT](https://img.youtube.com/vi/-zfABqdhmPg/0.jpg)](https://youtu.be/-zfABqdhmPg "การพัฒนา Microservice แบบเป็นทีม")
+[![การพัฒนา Microservice แบบเป็นทีม](https://img.youtube.com/vi/-zfABqdhmPg/0.jpg)](https://youtu.be/-zfABqdhmPg "การพัฒนา Microservice แบบเป็นทีม")
 
 รูปแบบการพัฒนา Micro service แบบเป็นทีม ผมวางโครงสร้างง่ายๆ 
 สำหรับการศึกษา ถ้ามีการปรับปรุงก็จะมาอัปเดตข้อมูลในหน้านี้ให้ครับ 
@@ -38,8 +38,7 @@
 ``` 
 NET stop HTTP
 ```
-
-
+![NET stop HTTP](./img/stop-http.png "NET stop HTTP")
 คำสั่งที่ใช้
 ``` bash
 cd api-gateway
