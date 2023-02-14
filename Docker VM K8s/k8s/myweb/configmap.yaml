@@ -12,10 +12,10 @@ data:
   config1.html: |-
     <html>
     <head>
-        <title>Config 1 v1.0</title>
+        <title>Config 1</title>
     </head>
     <body>
-        <h1>Welcome to Config 1</h1>
+        <h1>Welcome to Config 1 v2.0</h1>
     </body>
     </html>
 kind: ConfigMap
