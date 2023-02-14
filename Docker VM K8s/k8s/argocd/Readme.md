@@ -1,9 +1,13 @@
+# ArgoCD
+เป็นเครื่องมือสำหรับ Deploy บน Kubernetes โดยดูจากคอนฟิกที่ GitHub 
 
 
+## Install
 ```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
+หลังติดตั้งแล้วเรายังไม่สามารถเข้าถึง UI ของโปรแกรมได้ ในตัวอย่างนี้จะใช้ผ่าน Intress
 เข้าถึง ArgoCD ผ่าน ingress ในตัวอย่างใช้ k3s ซึ่งเป็น traefik ให้[ก็อปปี้คอนฟิก](https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#traefik-v22)
 มาแก้ให้เป็น domain ของเรา 
 
