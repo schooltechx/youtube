@@ -1,6 +1,7 @@
 # ArgoCD
-เป็นเครื่องมือสำหรับ Deploy บน Kubernetes โดยดูจากคอนฟิกที่ GitHub 
+เป็นเครื่องมือสำหรับทำ continuous delivery บน Kubernetes โดยคอยดูการเปลี่ยนแปลงของไฟล์ yaml ที่เก็บไว้ Git ในตัวอย่างจะใช้ [myweb](../myweb/) ซึ่งเป็นตัวอย่างการ deploy nginx จากวีดีโอที่แล้ว
 
+[![Nginx deploy K8s](https://img.youtube.com/vi/c7sSQLuhht0/0.jpg)](https://www.youtube.com/watch?v=c7sSQLuhht0&list=PLWMbTFbTi55OtdeRGeerLFQSTw61cEGni&index=11 "Continuous continuous แบบหมูๆด้วย ArgoCD")
 
 ## Install
 ```
@@ -40,12 +41,12 @@ spec:
 
 เมื่อเข้าเวป https://argocd.home.lan/ มันจะขึ้น ERR_TOO_MANY_REDIRECTS เพราะว่า
 ArgoCD พยายาม redirect จาก http ไป https โดย Reverse proxy (Ingress Traefik) ก็ redirect เหมือนกัน
-ให้แก้คอนฟิกด้วยคำสั่งด้านล่างแล้วใส่ "--insecure" เพิ่มเข้าไป จะมีอีกวิธีแก้อีกวิธีหนึ่งคือเพิ่มผ่าน configMap แต่เราไม่ได้ใช้
+ให้แก้คอนฟิกด้วยคำสั่งด้านล่างแล้วใส่ "--insecure" เพิ่มเข้าไป จะมีอีกวิธีแก้อีกวิธีหนึ่งคือเพิ่มผ่าน configMap (เราไม่ได้ใช้วิธีนี้)
 ```
 kubectl -n argocd edit deployments.apps argocd-server
 ```
 มันจะเรียก editor กรณีบน Linux จะเป็น vi ใช้ยากหน่อย ให้เลื่อน curser ไปอยู่หลัง argocd-server กดปุ่ม "a" (คำสั่ง append)
-แล้วเพิ่ม "- --insecure" ลงไปให้เหมือนในด้านล่าง กด ESC แล้วกด ":" เพื่อกลับมารับคำสั่งแล้วกด "w"(คำสั่ง write) แล้ว กด ":" อีกรอบแล้วกด "q"(คำสั่ง quit) 
+แล้วเพิ่ม "- --insecure" ลงไปให้เหมือนในด้านล่าง กด ESC แล้วกด ":" เพื่อกลับมารับคำสั่งแล้วกด "wq"(คำสั่ง write and quit) 
 
  ``` json
       containers:
@@ -98,13 +99,11 @@ JmCZ2Bo13WdklJq4oom@Ubuntu22:~/k8s/argo-cd$
 ```
 จะได้ JmCZ2Bo13WdklJq4 เป็นระหัสผ่าน เมื่อเข้าระบบได้ก็ให้เปลี่ยนรหัสเป็นอย่างอื่น
 
+ให้เซ็ตค่าตามวีดีโอ โดยใช้ git repository ของตัวเองควรทดสอล deploy แบบ manual ให้ผ่านก่อนนะครับ
+
+# Note
 เวลาแก้คอนฟิกแล้วมันไม่ค่อยโหลดใหม่ให้ restart argocd-server
 ```
 k -n argocd rollout restart deployment argocd-server
 ```
-
-
-## Keycloak
-
-https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/keycloak/
 
