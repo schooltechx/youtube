@@ -1,5 +1,5 @@
 # ArgoCD
-เป็นเครื่องมือสำหรับทำ continuous delivery บน Kubernetes โดยคอยดูการเปลี่ยนแปลงของไฟล์ yaml ที่เก็บไว้ Git ในตัวอย่างจะใช้ [myweb](../myweb/) ซึ่งเป็นตัวอย่างการ deploy nginx จากวีดีโอที่แล้ว
+เป็นเครื่องมือ GitOps สำหรับทำ Continuous Celivery(CD) บน Kubernetes(K8s) โดยคอยดูการเปลี่ยนแปลงของ Git ในวีดีโอใช้ไฟล์ yaml จาก [myweb](../myweb/) ซึ่งเป็นตัวอย่างการ deploy nginx ขึ้น K8s จากวีดีโอที่แล้ว 
 
 [![Nginx deploy K8s](https://img.youtube.com/vi/c7sSQLuhht0/0.jpg)](https://www.youtube.com/watch?v=c7sSQLuhht0&list=PLWMbTFbTi55OtdeRGeerLFQSTw61cEGni&index=11 "Continuous continuous แบบหมูๆด้วย ArgoCD")
 
@@ -8,9 +8,9 @@
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
-หลังติดตั้งแล้วเรายังไม่สามารถเข้าถึง UI ของโปรแกรมได้ ในตัวอย่างนี้จะใช้ผ่าน Intress
-เข้าถึง ArgoCD ผ่าน ingress ในตัวอย่างใช้ k3s ซึ่งเป็น traefik ให้[ก็อปปี้คอนฟิก](https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#traefik-v22)
-มาแก้ให้เป็น domain ของเรา 
+หลังติดตั้งแล้วเรายังไม่สามารถเข้าถึง UI ของโปรแกรมได้ ในตัวอย่างนี้จะเซ็ต Intress เพื่อ
+เข้าถึง ArgoCD ในตัวอย่างใช้ k3s ซึ่งเป็น traefik ให้[ก็อปปี้คอนฟิก](https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#traefik-v22)
+มาแก้ให้เป็น domain ของเรา หลังแก้แล้วจะเป็นดังนี้
 
 ```
 apiVersion: traefik.containo.us/v1alpha1
@@ -48,7 +48,7 @@ kubectl -n argocd edit deployments.apps argocd-server
 มันจะเรียก editor กรณีบน Linux จะเป็น vi ใช้ยากหน่อย ให้เลื่อน curser ไปอยู่หลัง argocd-server กดปุ่ม "a" (คำสั่ง append)
 แล้วเพิ่ม "- --insecure" ลงไปให้เหมือนในด้านล่าง กด ESC แล้วกด ":" เพื่อกลับมารับคำสั่งแล้วกด "wq"(คำสั่ง write and quit) 
 
- ``` json
+ ``` yaml
       containers:
       - command:
         - argocd-server
@@ -106,4 +106,6 @@ JmCZ2Bo13WdklJq4oom@Ubuntu22:~/k8s/argo-cd$
 ```
 k -n argocd rollout restart deployment argocd-server
 ```
+วีดีโอนี้ทำให้ดูแบบเข้าใจง่ายไม่ซับซ้อน ยังมีอีกหลายฟีเจอร์ที่ไม่ได้แสดงให้ดู แนะนำให้คลิ้กเข้าไปดูในแต่ละไดอะแกรม 
+
 
