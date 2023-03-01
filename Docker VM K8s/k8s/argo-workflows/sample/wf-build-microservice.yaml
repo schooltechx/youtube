@@ -1,0 +1,116 @@
+# Add kernel.unprivileged_userns_clone=1 to /etc/sysctl.conf (or /etc/sysctl.d) and run sudo sysctl --system.
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: build-microservice-
+spec:
+  hostAliases:
+  - ip: "192.168.2.61"
+    hostnames:
+    - "registry.home.lan"
+  arguments:
+    parameters:
+      - name: repo
+        value: https://github.com/schooltechx/argo-ci-cd.git
+      - name: branch
+        value: main
+  entrypoint: main-steps
+  # We use a volume claim template so that we can have a shared workspace.
+  volumeClaimTemplates:
+    - metadata:
+        name: work
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1.5Gi 
+  templates:
+    - name: main-steps
+      steps:
+        - - name: clone
+            template: clone
+            arguments:
+              parameters:
+                - name: repo
+                  value: "{{workflow.parameters.repo}}"
+                - name: branch
+                  value: "{{workflow.parameters.branch}}"
+        - - name: image-be1
+            template: image
+            arguments:
+              parameters:
+                - name: path
+                  value: be1
+                - name: image
+                  value: demo/be1:v1
+        - - name: image-be2
+            template: image
+            arguments:
+              parameters:
+                - name: path
+                  value: be2
+                - name: image
+                  value: demo/be2:v1
+        - - name: image-fe
+            template: image
+            arguments:
+              parameters:
+                - name: path
+                  value: fe
+                - name: image
+                  value: demo/fe:v1
+    - name: clone
+      inputs:
+        parameters:
+          - name: repo
+          - name: branch
+      container:
+        volumeMounts:
+          - mountPath: /work
+            name: work
+        image: alpine/git:v2.26.2
+        workingDir: /work
+        # Do a shallow clone, which is the fastest way to clone, by using the
+        # --depth, --branch, and --single-branch options
+        args:
+          - clone
+          - --depth
+          - "1"
+          - --branch
+          - "{{inputs.parameters.branch}}"
+          - --single-branch
+          - "{{inputs.parameters.repo}}"
+          - .
+          
+    - name: image
+      inputs:
+        parameters:
+          - name: path
+          - name: image
+      # archiveLocation:
+      #   archiveLogs: true
+      container:
+        image: moby/buildkit:v0.11.3-rootless
+        volumeMounts:
+          - name: work
+            mountPath: /work
+        workingDir: /work/{{inputs.parameters.path}}
+        env:
+          - name: BUILDKITD_FLAGS
+            value: --oci-worker-no-process-sandbox
+          - name: BUILDCTL_CONNECT_RETRIES_MAX
+            value: "30"
+        command:
+          - buildctl-daemonless.sh
+        args:
+          - build
+          - --frontend
+          - dockerfile.v0
+          - --local
+          - context=.
+          - --local
+          - dockerfile=.
+          - --output
+          - type=image,name=registry.home.lan/{{inputs.parameters.image}},push=true,registry.insecure=true
+        securityContext:
+          privileged: true
