@@ -14,6 +14,7 @@ npm i --save-dev @fullcalendar/core
 npm i --save-dev @fullcalendar/common
 npm i --save-dev @fullcalendar/daygrid
 npm i --save-dev @fullcalendar/timegrid
+npm i --save-dev @fullcalendar/interaction
 ```
 ## +page.js
 ``` ts
