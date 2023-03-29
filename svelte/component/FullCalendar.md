@@ -3,13 +3,15 @@
 ![FullCalendar Buddist Calendar](img/FullCalendarTH.png)
 ## English Description
 Check [FullCalendar](https://fullcalendar.io) website for feature. It support buddist year! 
-It does not support Svelte by default. I use code from [here](https://github.com/YogliB/svelte-fullcalendar/issues/804#issuecomment-1471639707) 
+It does not support Svelte by default. I use code from [here](https://github.com/YogliB/svelte-fullcalendar/issues/804#issuecomment-1471639707). This is TypeScript code. I may need to modify to work with JavaScript.
 
 ### Thai Description
-รองรับ locale ไทยและอีกมากมาย  แสดงเป็น พ.ศ. ได้ ไม่รองรับ Svelte ตรงๆต้องทำเพิ่ม เอาตัวอย่างจาก[ที่นี้ั](https://github.com/YogliB/svelte-fullcalendar/issues/804#issuecomment-1471639707) 
+รองรับ locale ไทยและอีกมากมาย  แสดงเป็น พ.ศ. ได้ ไม่รองรับ Svelte ตรงๆ ต้องทำเพิ่ม เอาตัวอย่างจาก[ที่นี้ั](https://github.com/YogliB/svelte-fullcalendar/issues/804#issuecomment-1471639707) โค้ดเขียนด้วย TypeScript จำเป็นต้องปรับปรุงให้ใช้ได้กับ JavaScript.
 
 ## NPM Install
-```
+``` bash
+npm create svelte@latest calendar-test # เลือก Skeleton project เป็นแบบ TypeScript
+cd calendar-test
 npm i --save-dev @fullcalendar/core
 npm i --save-dev @fullcalendar/common
 npm i --save-dev @fullcalendar/daygrid
