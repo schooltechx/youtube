@@ -1,34 +1,9 @@
 # UI Component
-
-## [Daisy UI ](https://daisyui.com/) 
-UI Component ที่ใช้ TailWindCSS ใช้ได้ไม่จำกัด Framework
-```bash
-# ติดตั้ง Tailwindcss พร้อมเซ็ตค่าให้เรียบร้อย
-npx svelte-add@latest tailwindcss
-# เมื่อติดตั้ง daisyui ให้ดูวิธีการตั้งค่าเพิ่มจากในเวป 
-npm i daisyui
-```
-คอนฟิก plugin ใน tailwind.config.cjs
-```js
-const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
-	theme: {
-		extend: {}
-	},
-	plugins: [require("daisyui")],
-	daisyui: {
-		styled: true,
-		themes: ["cupcake","cmyk"],
-		base: true,
-		utils: true,
-		logs: true,
-		rtl: false,
-		prefix: "",
-		darkTheme: "dark",
-	  },
-};
-module.exports = config;
-```
-
+ที่รองรับ Svelte/SvelteKit เท่าที่เคยลองใช้ พยายามใช้เป็นแบบฟรี
+## [Daisy UI ](./DaisyUI.md) 
+เป็น UI Component ที่เป็น Plugin ของ Tailwind CSS. เป็น class สามารถใช้งานได้กับทุก JavaScript Framework
 ## [Full calendar](./FullCalendar.md)
-ปฎิทินรองรับพ.ศ. 
+ปฎิทินแสดงเป็น พ.ศ. ได้ปรับแต่งได้มาก รองรับ React, Vue, Angular, Javascript สำหรับ SvelteKit ต้องทำ component ให้รองรับเอง ถ้าไม่ใช้ premium plugins ก็จะฟรี [MIT license](https://fullcalendar.io/license)
+
+## WYSWYG Editor
+- [Tiptap](https://tiptap.dev/examples/default) license เป็นแบบ MIT ถ้าไม่ได้ใช้ [Pro Extension](https://tiptap.dev/pro-license) 
