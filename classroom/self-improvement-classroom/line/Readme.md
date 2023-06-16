@@ -15,11 +15,11 @@ Content-Type: application/x-www-form-urlencoded
 
 Authorization: Bearer [Token ที่สำเนาเก็บไว้]
 
-![Alt text](./notify/img/line-notify-token.png)line-notify-post.png)!
+![Alt text](./notify/img/line-notify-token.png)line-notify-post.png
 
 - ส่วน Body เลือก Form-encode แล้วใส่ message ตามต้องการ
 
-![Alt text](./notify/img/line-notify-token.png)line-notify-body.png)
+![Alt text](./notify/img/line-notify-token.png)line-notify-body.png
 
 หลังจากทำสำเร็จแล้วให้สร้างโปรเจ็ก Sveltekit ให้ก็อปปี้[ในโฟเดอร์ notify](./notify/) ไปไว้ในโฟลเดอร์ rout/notify แก้ตัวแปร notify_token ในไฟล์ [+page.server.js](./notify/%2Bpage.server.js) ให้เป็น token ที่เราทำการขอมา ก็จะใช้โปรแกรมได้แล้ว
 

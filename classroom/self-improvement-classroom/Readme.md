@@ -41,10 +41,10 @@ New keys: Home row,New key drill 1,New key drill 2,New key drill 3
 - Extra word drill
 
 # My Web
-ให้ไปเอาใบงาน[นี้มาทำ](../kookkai-IT-classroom/my-web/)
+สร้างเวปเบื้องต้นให้ลองทำตาม[ใบงานนี้](../kookkai-IT-classroom/my-web/)
 
-# Simple Web App with Svelte
-ดูใบสั่งงานได้[ที่นี้](./fruit-list/)
+# Simple Web App with SvelteKit
+สร้างเวปด้วย SvelteKit Framework ดูใบสั่งงานได้[ที่นี้](./fruit-list/)
 # CRUD สำหรับ Frontend เบื้องต้น
 ทำแบบฝึกหัดสองงานตามใบงานใน[หน้านี้ครับ](./fetch/)
 - Exercise CRUD
