@@ -1,0 +1,13 @@
+version: "3.2"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    environment:
+      - RABBITMQ_DEFAULT_USER=oom
+      - RABBITMQ_DEFAULT_PASS=Password
+    ports:
+        - 5672:5672
+        - 15672:15672 # UI
+    volumes:
+        - ./data/:/var/lib/rabbitmq/
