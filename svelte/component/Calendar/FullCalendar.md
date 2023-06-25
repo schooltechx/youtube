@@ -2,11 +2,11 @@
 # FullCalendar
 ![FullCalendar Buddist Calendar](img/FullCalendarTH.png)
 ## English Description
-I am Thai developer. I like [FullCalendar](https://fullcalendar.io) because it support [Buddhist calendar] (https://en.wikipedia.org/wiki/Buddhist_calendar) out of the box. It not
+I am Thai developer. I like [FullCalendar](https://fullcalendar.io) because it support [Buddhist calendar](https://en.wikipedia.org/wiki/Buddhist_calendar) out of the box. It not
 support Svelte by default. I use code from [here](https://github.com/YogliB/svelte-fullcalendar/issues/804#issuecomment-1471639707). This is TypeScript code. You need to modify to work with JavaScript.
 
 ### Thai Description
-ใช้ locale ไทยจะแสดงเป็น พ.ศ. ได้เลย ไม่รองรับ Svelte ตรงๆ ต้องทำเพิ่ม เอาตัวอย่างจาก[ที่นี้](https://github.com/YogliB/svelte-fullcalendar/issues/804#issuecomment-1471639707) โค้ดเขียนด้วย TypeScript จำเป็นต้องปรับปรุงให้ใช้ได้กับ JavaScript.
+ผมชอบ [FullCalendar](https://fullcalendar.io)  ใช้ locale ไทยจะแสดงเป็น พ.ศ. ได้เลย รองรับ React,Vue,Angular,JavaScrpt ยังไม่รองรับ Svelte ตรงๆ ที่หาเจอส่วนใหญ่ไม่เวิร์กเจอปัญหา Break change และไม่รองรับ TypeScript ค้นจนเจอตัวอย่างจาก[ที่นี้](https://github.com/YogliB/svelte-fullcalendar/issues/804#issuecomment-1471639707) ใช้ โค้ดเขียนด้วย TypeScript ถ้าใครจะใช้กับ JavaScript ต้องแก้จากโค้ด FullCalendar.svelte นะครับ ยังไม่เคยทดสอบกับ Svelte 4 นะครับแต่ก็น่าจะเวิร์ก
 
 ## NPM Install
 ``` bash
