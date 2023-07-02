@@ -13,7 +13,7 @@ import * as readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process'
 import { connect } from "amqplib";
 const rl = readline.createInterface({ input, output })
-const connection =  await connect("amqp://frappet:Password@localhost")
+const connection =  await connect("amqp://oom:Password@localhost")
 const channel = await connection.createChannel();
 await channel.assertExchange(exchange, exchange_type, {durable: false})
 console.log("Message format 'routingKey+message' or type q to quit)");

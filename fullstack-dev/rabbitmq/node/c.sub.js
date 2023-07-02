@@ -9,7 +9,7 @@ function help(){
     process.exit()
 }
 import { connect } from "amqplib";
-const connection =  await connect("amqp://frappet:Password@localhost")
+const connection =  await connect("amqp://oom:Password@localhost")
 const channel = await connection.createChannel();
 await channel.assertExchange(exchange, exchange_type, {durable: false})
 

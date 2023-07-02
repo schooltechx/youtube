@@ -1,5 +1,5 @@
 import { connect } from "amqplib"
-const connection =  await connect("amqp://frappet:Password@localhost")
+const connection =  await connect("amqp://oom:Password@localhost")
 const channel = await connection.createChannel()
 await channel.assertQueue("request-queue")
 const q = await channel.assertQueue("",{exclusive: true})
