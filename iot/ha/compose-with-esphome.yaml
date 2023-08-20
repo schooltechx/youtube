@@ -1,19 +1,20 @@
 version: '3'
 services:
   homeassistant:
-    container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
       - ./ha-config:/config
-      - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
+    environment:
+      TZ: Asia/Bangkok
     ports:
       - 8123:8123
   esphome:
     image: ghcr.io/esphome/esphome
+    restart: unless-stopped
     volumes:
       - ./esphome-config:/config:rw
-      - /etc/localtime:/etc/localtime:ro
-    restart: always
+    environment:
+      TZ: Asia/Bangkok
     ports:
       - 6052:6052
