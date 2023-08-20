@@ -13,10 +13,10 @@ logger:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "d62Y+ks1lwiN8xoBAQ8s1P+b0DhMncqPWHX+3DixC1E="
+    key: "please_use_auto_generate_or_your_own"
 
 ota:
-  password: "d2bba8c0bca30dc8217d2677ec06bf21"
+  password: "yyyyy"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -25,7 +25,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Bed-Room-Controller"
-    password: "oN3X6iZyYRqn"
+    password: "please_use_auto_generate_or_your_own"
 
 captive_portal:
 
