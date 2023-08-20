@@ -2,6 +2,13 @@
 
 [![Oracle DB in docker](https://img.youtube.com/vi/7tOBKEf-y-8/0.jpg)](https://youtu.be/7tOBKEf-y-8 "ติดตั้งฐานข้อมูล Oracle ฟรีๆ ด้วย Docker")
 
+- เหมือนรุ่น XE จำกัด RAM, core , ขนาดฐานข้อมูล งานทั่วๆไปไม่มีปัญหา  มันจะรับโหลดหนักๆไม่ได้ 
+- รันได้แค่ 1 Instant ต่อหนึ่ง VM แอปทั่วไปโหลดไม่หนักมากก็น่าไม่มีปัญหา หรือทำเป็น Microservice ที่รันฐานข้อมูลแยก service น่าจะได้แต่กิน RAM เยอะไปหน่อย
+- ไม่มี support กับ patches อัป docker image น่าจะทดแทนได้ระดับหนึ่ง บริษัทใหญ่อาจจะรับข้อนี้ไม่ได้
+- รองรับเฉพาะ Linux 
+- เท่าที่เข้าใจเป็นรุ่นเพื่อให้นักพัฒนาเข้าถึงได้ง่าย ไม่ต้องสมัครใช้ ฟรี มีฟีเจอร์ล่าสุดให้ลอง ค่อนข้างดีมาอยู่ครับ ใช้แล้วจะได้ใช้เสพติดฟีเจอร์ไม่อยากใช้ตัวอื่น หลังๆนักพัฒนาไปใช้ฐานข้อมูลอื่นกันไม่ใช่เพราะดีกว่า Oracle แต่มันสะดวกกว่ามาก
+- ภาพลักษณ์ใหม่ หลังๆก๊มีเริ่มของฟรีมาเรื่อยๆ
+
 ## Official image
 
 วิธีการใช้ไปที่ https://container-registry.oracle.com ดูหัวข้อ Database เลือกหัวข้อ free จะเป็นวิธีการใช้กับ Podman ปรับเป็น docker compose ถ้าจะ mount volume ออกมาใช้ มีปัญหานิดหน่อย ต้องมีขั้นตอนการทำที่ถูกต้อง error ที่แสดงจะไม่สื่อเท่าไหร่ทำให้สับสนตอนทำ 
@@ -178,6 +185,7 @@ DB_DATABASE=xe
 DB_USERNAME=system
 DB_PASSWORD=Oracle123
 ...
+
 ```
 
 oracle-test/config/database.php
@@ -196,7 +204,16 @@ oracle-test/config/database.php
         ],
 
 ...
+```
 
+ทดสอบ คอนฟิก
+```
+php artisan tinker
+DB::connection()->getPdo();
+```
+ถ้าผ่านแล้วทำการ migrate ได้
+```
+php artisan migrate
 ```
 
 โปรแกรมทดสอบ การเชื่อมต่อ และดู OCI
