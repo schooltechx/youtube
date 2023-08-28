@@ -1,0 +1,207 @@
+esphome:
+  name: t-display
+  friendly_name: t-display
+
+esp32:
+  board: featheresp32
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+  level: DEBUG
+  logs:
+    component: ERROR
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "put-your-key"
+
+ota:
+  password: "put-your-password"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "T-Display Fallback Hotspot"
+    password: "put-your-password"
+
+captive_portal:
+    
+### CUSTOM!!
+deep_sleep:
+  run_duration: 120s
+  sleep_duration: 60min
+  wakeup_pin: GPIO0
+
+color:
+  - id: my_red
+    red: 100%
+    green: 0%
+    blue: 0%
+  - id: my_yellow
+    red: 90%
+    green: 70%
+    blue: 0%
+  - id: my_green
+    red: 0%
+    green: 70%
+    blue: 0%
+  - id: my_blue
+    red: 0%
+    green: 0%
+    blue: 100%
+  - id: my_gray
+    red: 50%
+    green: 50%
+    blue: 50%
+  - id: my_white
+    red: 100%
+    green: 100%
+    blue: 100%
+  - id: my_black
+    red: 0%
+    green: 0%
+    blue: 0%
+  - id: my_orange
+    red: 100%
+    green: 50%
+    blue: 0%
+
+binary_sensor:
+  - platform: status
+    name: "Node Status"
+    id: system_status
+  - platform: gpio
+    pin:
+      number: GPIO0
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    name: "T-Display Button Input 0"
+    id: tdisplay_button_input_0
+
+    on_press:
+      then:
+        - light.turn_on: backlight
+    on_release:
+      then:
+        - light.turn_off: backlight
+
+  - platform: gpio
+    pin:
+      number: GPIO35
+      inverted: true
+    name: "T-Display Button Input 1"
+    id: tdisplay_button_input_1
+
+# Backlight
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: gpio4
+light:
+  - platform: binary
+    output: gpio4
+    name: "Backlight"
+    id: backlight
+
+image:
+  - file: "imgs/logo50x50.png"
+    id: logo
+    resize: 50x50
+    type: RGB24
+
+time:
+  - platform: homeassistant
+    id: esptime
+
+spi:
+  clk_pin: GPIO18
+  mosi_pin: GPIO19    
+
+sensor:
+  - platform: dht
+    pin: 22
+    temperature:
+      id: dht_tmp
+      name: "Temperature"
+    humidity:
+      id: dht_hum
+      name: "Room Humidity"
+    update_interval: 60s    
+
+  - platform: adc
+    pin: GPIO34
+    # attenuation: 11db
+    accuracy_decimals: 3
+    filters:
+      - multiply: 4.2
+    name: VBatt
+    id: vcc
+    update_interval: 60s
+    entity_category: diagnostic
+    unit_of_measurement: "V"  
+    device_class: battery
+
+  - platform: template
+    name: batterylevel
+    id: batterylevel
+    unit_of_measurement: '%'
+    update_interval: 60s
+    lambda: |-
+      // I did not find correct formula yet
+      // return ((id(vcc).state * 118) - 162);   
+      return ((id(vcc).state-3) /1.2 * 100.00);
+    device_class: battery 
+
+display:
+  - platform: st7789v
+    model: TTGO TDisplay 135x240
+    backlight_pin: GPIO4
+    cs_pin: GPIO5
+    dc_pin: GPIO16
+    reset_pin: GPIO23
+    rotation: 90°
+    #brightness: 0.5
+    update_interval: 5s
+    lambda: |-
+      it.filled_rectangle(0, 20, it.get_width(), it.get_height(), id(my_white));
+      it.filled_rectangle(0,  0, it.get_width(), 20, id(my_black));
+      it.image(190, 25, id(logo));
+      it.strftime((240 / 2), (140 / 3) * 1 + 5, id(font_topic), id(my_orange), TextAlign::CENTER, "%Y-%m-%d", id(esptime).now());
+      it.strftime((240 / 2), (140 / 3) * 2 + 5, id(font_big), id(my_orange), TextAlign::CENTER, "%H:%M:%S", id(esptime).now());
+      it.print(5, 5, id(font_normal), id(my_yellow), TextAlign::TOP_LEFT, "ESPHome");
+      
+      if (isnan(id(dht_tmp).raw_state)){
+        it.print(5, 115, id(font_normal), id(my_orange),TextAlign::TOP_LEFT, "Wait DHT...");
+      }else {
+        it.printf(5, 115, id(font_normal), id(my_orange), "%.2f C° %.2f hm", id(dht_tmp).state,id(dht_hum).state);
+      }
+
+      if (id(vcc).has_state()) {
+        it.printf(125, 115, id(font_normal), id(my_green), "%.2f V(%.2f %%)", id(vcc).state, id(batterylevel).state);
+      }
+
+      if (id(system_status).state) {
+        it.print(235, 5, id(font_normal), id(my_green), TextAlign::TOP_RIGHT, "Online");
+      }
+      else {
+        it.print(235, 5, id(font_normal), id(my_red), TextAlign::TOP_RIGHT, "Offline");
+      }
+
+font:
+  - file: "gfonts://Roboto"
+    id: font_normal
+    size: 14
+  - file: "gfonts://Roboto"
+    id: font_topic
+    size: 18    
+  - file: "gfonts://Roboto"
+    id: font_big
+    size: 32
+

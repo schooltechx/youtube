@@ -28,11 +28,13 @@ esphome run bed-room-controller.yaml
 - [This is SO Much Better! Getting Started with ESPHome 2021](https://www.youtube.com/watch?v=iufph4dF3YU)
 
 
-## TTGO T-Display
-บอร์ด TTGO T-Display เป็นบอร์ด ESP32 หนึ่งที่ผมชอบใช้งานเพราะ ราคาไม่แพงมาก ฟึเจอร์น่าสนใจ มีหน้าจอสวยงาม ต่อชาร์ตได้แบ็ตเตอรี่ในตัว มีตัวอ่านระดับแบ็ตเตอรรี่ มีปุ่มสองปุ่ม แต่ไม่มีหลอดไฟในตัว ผมเคยเขียนบทความเกี่ยวกับบอร์ดนี้เอาไว้นานแล้ว พอเห็นว่าใช้กับ ESPHome ได้ก็เลยเอามาลองใช้ 
+## TTGO T-Display (Comming Soon ...)
+บอร์ด TTGO T-Display เป็นบอร์ด ESP32 หนึ่งที่ผมชอบใช้งานเพราะ ราคาไม่แพงมาก ฟึเจอร์น่าสนใจ มีหน้าจอสวยงาม ต่อชาร์ตได้แบ็ตเตอรี่ในตัว มีตัวอ่านระดับแบ็ตเตอรรี่ มีปุ่มสองปุ่ม แต่ไม่มีหลอดไฟในตัว ผมเคยเขียนบทความเกี่ยวกับบอร์ดนี้เอาไว้นานแล้ว พอเห็นว่าใช้กับ ESPHome ได้ก็เลยเอามาลองใช้ ดูในคอนฟิกได้เลย[t-display.yaml](./t-display.yaml)
 - ดู[ตัวอย่าง](https://github.com/pulimento/TTGO-T-Display-esphome-sample) มาเป็นแนวทางปรับใช้ มันนานแล้วต้องแก้ไข
 - [platform: st7789v](https://esphome.io/components/display/st7789v.html) 
 - [บทความที่ผมเคยเขียนไว้](https://iot-thai.blogspot.com/2019/10/esp32-ttgo-T-Display.html)
 
 
+```
 
+```
