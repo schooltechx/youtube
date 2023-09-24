@@ -1,5 +1,9 @@
 # Install & setup Thai search
 
+
+[![Elasticsearch Thai](https://img.youtube.com/vi/c9KrbvAKZZI/0.jpg)](https://youtu.be/c9KrbvAKZZI "Elasticsearch ค้นทำไทยง่ายนิดเดียว")
+
+
 ในตัวอย่างจะติดตั้ง Elasticsearch, Kibana บน Docker [.env](../../../Docker%20VM%20K8s/docker-compose/elk/thai/.env),
 [docker-compose.yaml](../../../Docker%20VM%20K8s/docker-compose/elk/thai/docker-compose.yaml)
 และ [Dockerfile](../../../Docker%20VM%20K8s/docker-compose/elk/thai/Dockerfile) ผมใช้ Proxmox CT(LXC) เลย comment ตรง ulimits ไว้ เพราะไม่รองรับ 
