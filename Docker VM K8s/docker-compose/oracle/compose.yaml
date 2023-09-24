@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  oracle-db:
+#    image: container-registry.oracle.com/database/express:latest
+    image: container-registry.oracle.com/database/free:latest
+    environment:
+      - ORACLE_PWD=Oracle123
+      - ORACLE_CHARACTERSET=AL32UTF8
+    ports:
+      - 1521:1521
+#    volumes:
+#      - ./oracle-data:/opt/oracle/oradata
