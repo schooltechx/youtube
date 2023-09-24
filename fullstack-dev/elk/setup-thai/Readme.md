@@ -7,7 +7,7 @@
 
 ทดสอบ tokenizer thai
 
-``` json
+```
 POST _analyze
 {
   "tokenizer": "thai",
@@ -59,7 +59,7 @@ POST _analyze
 
 ```
 ผล
-```
+``` json
 {
   "tokens": [
     {
@@ -95,7 +95,7 @@ POST _analyze
 }
 ```
 
-```
+``` json
 {
   "tokens": [
     {
@@ -170,6 +170,10 @@ POST myindex/_doc/2
   "type": "hello"
 }
 
+
+```
+ลองเปลี่ยนการค้นหาหลายๆแบบดู "สวัสดีคุณครู" "สวัสดีปีใหม่ครับคุณครู" แล้วดู score เทียบกัน
+```
 GET myindex/_search
 {
   "query" : 
@@ -177,10 +181,4 @@ GET myindex/_search
       {"content" : "สวัสดี"}
     }
 }
-```
-
-
-
-```
-
 ```
