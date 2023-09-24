@@ -1,6 +1,8 @@
 # Kubernetes
 การติดตั้งและใช้งานดูที่ Play list นี้ครับ
+
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/L0C39xgWWKQ/0.jpg)](https://www.youtube.com/watch?v=L0C39xgWWKQ&list=PLWMbTFbTi55OtdeRGeerLFQSTw61cEGni&index=3 "Kubernates")
+
 สำหรับการทดสอบหัดใช้คำสั่งต่างๆแนะนำให้ลอง K3D ถ้าเอาไปใช้งานจริงแนะนำให้ใช้ [K3s](./k3s/) ควรติดตั้งเครื่องหรือ VM Linux แนะนำเป็น Debian การติดตั้ง container มีปัญหาค่อนข้างเยอะต้องปรับแต่งมาก เพราะจะโหลด Kernel Module บางตัวไม่ได้เพราะมันใช่ kernel กับ file system ร่วมกับเครื่อง Host 
 
 ## ติดตั้งเพิ่มเติม

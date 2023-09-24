@@ -1,9 +1,16 @@
 # Argo Workflows 
-ใช้จัดการงานที่มีขั้นต้อนบน Kubernetes เหมือนการเขียน Script แต่มีระบบการจัดการที่ดีกว่ามาก ถ้าเทียบกับ Github Action ผมว่าใช้ยากกว่าพอสมควรเลย แต่ถ้าเราหาไฟล์ Workflow ตัวอย่างที่ต้องการได้ก็ไม่ใช่ปัญหา หาได้ไม่ยากด้วย นอกจากนี้มันใช้ได้กับงานหลากหลายสายงาน แนะนำให้ลองใช้ครับ ไม่จำเป็นต้องเป็นนักเขียนโปรแกรมก็นำไปใช้ได้ 
+ใช้จัดการงานที่มีขั้นต้อนบน Kubernetes นำไปใช้ได้กับงานหลากหลายสายงาน  ไม่จำเป็นต้องเป็นนักเขียนโปรแกรมก็นำไปใช้ได้  
+การทำงานของ Workflow เป็น Infrastructure as Code ไม่ต้องเซ็ตเครื่องทุกครั้งที่ใช้งานสร้างระบบขึ้นมาใหม่ได้อย่างรวดเร็วเพื่อทดสอบ และใช้งาน ดังนั้นจะสร้าง container ขึ้นมาใหม่ในแต่ละ step ของการทำงาน ถึงจะเริ่มทำงานได้ช้ากว่า แต่ในระยะยาวแล้ว ดีกว่าการเซ็ตระบบด้วยมือสำหรับการทดสอบหรือ deploy เพราะมีความแม่นยำสูงกว่า
+
 
 [![Argo Workflows Basic](https://img.youtube.com/vi/Y32is2j_Ju0/0.jpg)](https://www.youtube.com/watch?v=Y32is2j_Ju0&list=PLWMbTFbTi55P6Vzv9a-un9oFZY-PwMj98&index=31 "งานเล็กหรือใหญ่จบได้ด้วย Argo Workflows")
 
-การทำงานของ Workflow เป็น Infrastructure as Code ไม่ต้องเซ็ตเครื่องทุกครั้งที่ใช้งานสร้างระบบขึ้นมาใหม่ได้อย่างรวดเร็วเพื่อทดสอบ และใช้งาน ดังนั้นจะสร้าง container ขึ้นมาใหม่ในแต่ละ step ของการทำงาน ถึงจะเริ่มทำงานได้ช้ากว่า แต่ในระยะยาวแล้ว ดีกว่าการเซ็ตระบบด้วยมือสำหรับการทดสอบหรือ deploy เพราะมีความแม่นยำสูงกว่า
+
+## เทียบเคียงได้กับ 
+- Github Actions ตัวเดียวทำได้หลายอย่างแต่ ผูกกับ GitHub เริ่มทำ Job โดยใช้กลไกใน Github  GitHub Actions การเขียน Workflow ทำง่ายมาก มี Market Place ช่วย ใช้ VM ในการเริ่มทำงาน รองรับ macOS
+- Argo Workflows ของ Argo จำเป็นต้องใช้ Argo Events ถ้าจะเริ่มทำงานอัตโนมัติค่อนข้างซับซ้อน แต่ก็จะ รองรับได้หลายแบบกว่า Github ใช้ Container ในการเริ่มทำงานใช้ได้แต่ Linux
+ใช้ยากพอสมควรเลย แต่ถ้าเราหาไฟล์ตัวอย่างที่ต้องการได้ก็ไม่ใช่ปัญหา (หาได้ไม่ยากด้วย) ทำงานได้ระดับลึกตรงไปตรงมา โค้ดของ Workflows ยาวกว่า Jenkins และ Actions มาก แต่ก็อ่านง่าย Pipe line ต่างกันตรงที่จะ สร้าง container ขึ้นมาใหม่ในแต่ละ step
+- Jenkins มีมานานรองรับได้หลายแบบ ต้องหา add on ที่เหมาะกับงาน ค่อนข้างซับซ้อน 
 
 
 ## Install argo cli
@@ -223,3 +230,5 @@ spec:
 - [Practical Argo Workflows Hardening](https://blog.argoproj.io/practical-argo-workflows-hardening-dd8429acc1ce)
 - [What is Buildkit?](https://earthly.dev/blog/what-is-buildkit-and-what-can-i-do-with-it/) 
 - [How To Run Docker in Docker Container [3 Easy Methods]](https://devopscube.com/run-docker-in-docker/)
+- [Build Docker Images with Github Actions](https://www.youtube.com/watch?v=Tx1UElRhELg)
+

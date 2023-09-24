@@ -1,8 +1,15 @@
 # ArgoCD
 เป็นเครื่องมือ GitOps สำหรับทำ Continuous Celivery(CD) บน Kubernetes(K8s) โดยคอยดูการเปลี่ยนแปลงของ Git ในวีดีโอใช้ไฟล์ yaml จาก [myweb](../myweb/) ซึ่งเป็นตัวอย่างการ deploy nginx ขึ้น K8s จากวีดีโอที่แล้ว 
 
-[![Nginx deploy K8s](https://img.youtube.com/vi/c7sSQLuhht0/0.jpg)](https://www.youtube.com/watch?v=c7sSQLuhht0&list=PLWMbTFbTi55OtdeRGeerLFQSTw61cEGni&index=11 "Continuous continuous แบบหมูๆด้วย ArgoCD")
+[![ArgoCD Basic](https://img.youtube.com/vi/c7sSQLuhht0/0.jpg)](https://www.youtube.com/watch?v=c7sSQLuhht0&list=PLWMbTFbTi55OtdeRGeerLFQSTw61cEGni&index=11 "Continuous continuous แบบหมูๆด้วย ArgoCD")
 
+ArgoCD จะอยู่ใน K8s Cluster เลยมันจะใช้การ Pull ดูการเปลี่ยนแปลงของ K8s manifests ซึ่งจะเป็นไฟล์ YAML,Helm Charts หรือ Kustomize ก็ได้ใน ตัวอย่างจะใช้ YAML ที่เก็บไว้ใน GitHub. ของดีของแบบ Pull 
+- คือมันรู้สถานะการใน Cluster แบบ Realtime มีหน้า GUI แสดงไดอะแกรมดูง่ายด้วย
+- ไม่มีการเข้าใช้ Cluster ตรงๆ ดีกับเรื่อง secrity 
+- Git as Single Source of Truth ค่าคอนฟิกต่างต่างคุมด้วย Git สามารถติดตามการเปลี่ยนแปลงหรือคืนค่าเดิมได้ง่าย ถ้าเทียบแบบเดิม DevOps จัดการ Cluster โดยตรงอาจจะจำไม่ได้แล้วว่าทำอะไรไปบ้าง
+
+ในทางปฎิบัติควรเก็บโค้ดของโปรแกรมกับ configuration ไว้คนละที่กัน ตัว ArgoCD ควรทำการ Monitor เฉพาะ configuration เท่านั้น 
+Junior ต้อง การเปลี่ยนแปลง configuration จะต้องทำ Pull/Merge Request จะต้องมี Senior มาตรวจและทดสอบก่อนที่จะขึ้น main branch ถึงจะขึ้น Production ได้ ซึ่งไม่มีใครต้องเข้าไปจัดการ Production ตรงๆเลย
 ## Install
 ```
 kubectl create namespace argocd
@@ -102,10 +109,14 @@ JmCZ2Bo13WdklJq4oom@Ubuntu22:~/k8s/argo-cd$
 ให้เซ็ตค่าตามวีดีโอ โดยใช้ git repository ของตัวเองควรทดสอล deploy แบบ manual ให้ผ่านก่อนนะครับ
 
 # Note
-เวลาแก้คอนฟิกแล้วมันไม่ค่อยโหลดใหม่ให้ restart argocd-server
+- เวลาแก้คอนฟิกแล้วมันไม่ค่อยโหลดใหม่ให้ restart argocd-server
 ```
 k -n argocd rollout restart deployment argocd-server
 ```
-วีดีโอนี้ทำให้ดูแบบเข้าใจง่ายไม่ซับซ้อน ยังมีอีกหลายฟีเจอร์ที่ไม่ได้แสดงให้ดู แนะนำให้คลิ้กเข้าไปดูในแต่ละไดอะแกรม 
+
+- วีดีโอนี้ทำให้ดูแบบง่ายๆ ไม่ซับซ้อน ยังมีอีกหลายฟีเจอร์ที่ไม่ได้แสดงให้ดู แนะนำที่ Web UI ให้คลิ้กเข้าไปดูในแต่ละไดอะแกรม 
+ผมได้ลองทำ [Single Sign On](https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sso) ก็ใช้ได้ดีครับ
 
 
+## อ่านเพิ่ม
+- [GitOps and Argo](https://100daysofkubernetes.io/tools/argo.html)
