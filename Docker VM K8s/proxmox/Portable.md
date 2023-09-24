@@ -33,7 +33,7 @@ update-grub
 dpkg-reconfigure locales
 dpkg-reconfigure tzdata
 # สร้างยูสเซอร์เพื่อจะใช้ ssh ได้
-apt install usdo
+apt install sudo
 adduser newuser
 usermod -aG sudo newuser
 # อัปเกรดโปรแกรม

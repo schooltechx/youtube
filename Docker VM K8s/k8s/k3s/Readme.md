@@ -27,6 +27,7 @@ sudo /usr/local/bin/k3s-agent-uninstall.sh
 
 
 ## อ่านเพิ่มเติม
+- [ตั้งค่า Static IP ให้ Ubuntu](https://tecadmin.net/how-to-configure-static-ip-address-on-ubuntu-22-04/)
 - [K3S Rocks](https://k3s.rocks)
 - ติดตั้ง [Rancher](https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli) 
 

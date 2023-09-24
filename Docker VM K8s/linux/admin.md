@@ -11,7 +11,11 @@ apt remove curl
 # ตั้งค่า Timezone และ Locales
 dpkg-reconfigure tzdata
 dpkg-reconfigure locales
-
+# หยุดระบบเพื่อปิดเครื่อง
+shutdown now
+้halt
+# ปิดแล้วเปิด Linux ใหม่
+reboot
 ```
 
 # การจัดการสิทธิ์

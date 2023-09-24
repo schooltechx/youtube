@@ -21,7 +21,7 @@ Kubenetes ค่อนข้างซับซ้อนอ่านเข้า�
 kubectl create ns my-web --dry-run=client -o yaml
 kubectl create deployment myweb --image=nginx -n my-web --dry-run=client -o yaml
 kubectl create service clusterip myweb --tcp=80:80 -n my-web --dry-run=client -o yaml 
-kubectl create ingress myweb --rule="bar.com/=nginx-svc:80" -n my-web --dry-run=client -o yaml 
+kubectl create ingress myweb --rule="myweb.home.lan/=nginx-svc:80" -n my-web --dry-run=client -o yaml 
 # ConfigMap และ Secret
 kubectl create configmap myweb-configmap --from-file=./config/config.html --from-file=config1.html=./config/config.txt -n my-web --dry-run=client -o yaml
 kubectl create secret generic myweb-secret --from-literal=username=oom --from-literal=password=123456 -n my-web --dry-run=client -o yaml
@@ -64,7 +64,12 @@ kubectl delete ns my-web
           secretName: myweb-secret
 ...
 ```
+ถ้าเปิดเวปแล้วไม่เห็นให้ลองวิเคราะห์ดูจาก Traefik dashboard หาชื่อ pod แล้ว forward port แล้วไปที่ลิงค์ลักษณะแบบนี้นี้ http://192.168.2.61:9000/dashboard/#/
 
+```
+kubectl -n kube-system get pods
+kubectl -n kube-system port-forward traefik-64b96ccbcd-t9k54 9000:9000 --address 0.0.0.0
+```
 ## อ่านเพิ่มเติม
 - [คิดตั้ง K3s](https://www.youtube.com/watch?v=L0C39xgWWKQ&list=PLWMbTFbTi55OtdeRGeerLFQSTw61cEGni&index=3)
 
