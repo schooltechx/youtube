@@ -1,0 +1,42 @@
+# disable ulimits for Proxmox LXC
+version: '3.8'
+services:
+  elasticsearch:
+    # image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    image: elasticsearch-icu 
+    container_name: elasticsearch
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    restart: always
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    # ulimits:
+    #   memlock:
+    #     soft: -1
+    #     hard: -1
+    networks:
+      - elastic
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
+    container_name: kibana
+    volumes:
+      - kibana-data:/usr/share/kibana/data
+    ports:
+     - 5601:5601
+    restart: always
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    networks:
+      - elastic
+volumes:
+  elasticsearch-data:
+    driver: local
+  kibana-data:
+    driver: local
+networks:
+  elastic:
