@@ -11,7 +11,7 @@
 POST _analyze
 {
   "tokenizer": "thai",
-  "text": "สวัสดีครับครู"
+  "text": "สวัสดีครับคุณครู"
 }
 ```
 ผล
