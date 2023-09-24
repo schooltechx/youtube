@@ -10,7 +10,7 @@
 ``` bash
 # Request
  curl "http://127.0.0.1:9180/apisix/admin/upstreams/web1" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" -X PUT -d '
+-H "X-API-KEY: edd1...5c8f1" -X PUT -d '
 {
   "type": "roundrobin",
   "nodes": {
@@ -21,7 +21,7 @@
 {"key":"/apisix/upstreams/1","value":{"type":"roundrobin","nodes":{"web1:80":1},"scheme":"http","hash_on":"vars","id":"1","pass_host":"pass","create_time":1688960902,"update_time":1688960902}}
 # Request
 curl "http://127.0.0.1:9180/apisix/admin/upstreams" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1"
+-H "X-API-KEY: edd1...5c8f1"
 # Reply
 {"total":1,"list":[{"value":{"type":"roundrobin","nodes":{"web1:80":1},"scheme":"http","hash_on":"vars","id":"1","create_time":1688960902,"pass_host":"pass","update_time":1688960902},"modifiedIndex":42,"createdIndex":42,"key":"/apisix/upstreams/1"}]}
 
@@ -35,7 +35,7 @@ curl "http://127.0.0.1:9180/apisix/admin/upstreams" \
 ``` bash
 # Request
 curl "http://127.0.0.1:9180/apisix/admin/routes/1" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" -X PUT -d '
+-H "X-API-KEY: edd1...5c8f1" -X PUT -d '
 {
   "methods": ["GET"],
   "host": "example.com",
@@ -46,7 +46,7 @@ curl "http://127.0.0.1:9180/apisix/admin/routes/1" \
 {"key":"/apisix/routes/1","value":{"methods":["GET"],"uri":"/web1/*","id":"1","status":1,"priority":0,"create_time":1688961105,"host":"example.com","upstream_id":"1","update_time":1688961105}}
 # Request
 curl "http://127.0.0.1:9180/apisix/admin/routes" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1"
+-H "X-API-KEY: edd1...5c8f1"
 # Reply
 {"total":1,"list":[{"value":{"methods":["GET"],"uri":"/web1/*","id":"1","status":1,"priority":0,"upstream_id":"1","host":"example.com","create_time":1688961105,"update_time":1688961105},"modifiedIndex":43,"createdIndex":43,"key":"/apisix/routes/1"}]}
 ```
@@ -62,7 +62,7 @@ hello web1
 ``` bash
 # Request create route "web2-route"
 curl "http://127.0.0.1:9180/apisix/admin/routes" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" -X PUT -d '
+-H "X-API-KEY: edd1...5c8f1" -X PUT -d '
 {
   "id": "web2-route",
   "methods": ["GET"],
@@ -90,7 +90,7 @@ upstream มีอันเดียวเพราะของ web2 มัน�
 
 ``` bash
 curl http://127.0.0.1:9180/apisix/admin/routes/1 \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PATCH -i -d '
+-H 'X-API-KEY: edd1...5c8f1' -X PATCH -i -d '
 {
     "status": 0
 }'
@@ -103,7 +103,7 @@ curl http://127.0.0.1:9180/apisix/admin/routes/1 \
 ``` bash
 # Request
 curl "http://127.0.0.1:9180/apisix/admin/routes" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" -X PUT -d '
+-H "X-API-KEY: edd1...5c8f1" -X PUT -d '
 {
   "id": "web-loadbalance",
   "methods": ["GET"],
@@ -122,7 +122,7 @@ curl "http://127.0.0.1:9180/apisix/admin/routes" \
 ```
 request ตามนี้จะได้ “hello web1” กับ “hello web2” สลับกัน
 
-```
+``` bash
 curl -X GET "http://127.0.0.1:9080/web" -H "Host: example.com"
 ```
 ใน Web UI จะไม่มี upstream เพิ่มเพราะมันฝังอยู่ใน route เลย
@@ -145,10 +145,11 @@ curl -X GET "http://127.0.0.1:9080/web" -H "Host: example.com"
 
 
 ตัวอย่างจำกัดให้ Request ได้สองครั้งในหนึ่งนาที
-```
+
+``` bash
 # สร้าง route แบบมี limit-count
 curl "http://127.0.0.1:9180/apisix/admin/routes/" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" -X PUT -d '
+-H "X-API-KEY: edd1...5c8f1" -X PUT -d '
 {
   "id": "web1-limit-count",
   "host": "example.com",

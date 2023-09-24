@@ -31,7 +31,7 @@ oom@debian12:~/docker/apisix-docker/example$ docker compose up -d
 - apisix เป็นส่วนของตัวหลักที่ทำงาน 
   - 9180 เป็นพอร์ตสำหรับ Management API ทดสอบการใช้งาน
   ``` bash
-  oom@debian12:~/docker/apisix-docker/example$ curl "http://127.0.0.1:9180/apisix/admin/services" -H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1"
+  oom@debian12:~/docker/apisix-docker/example$ curl "http://127.0.0.1:9180/apisix/admin/services" -H "X-API-KEY: edd1...5c8f1"
   {"total":0,"list":[]}
   ```
   - 9080/9443 เป็นช่องของ API Gateway แบบ http/https
@@ -61,9 +61,9 @@ authentication:
   expire_time: 3600     # jwt token expire time, in second
   users:                # yamllint enable rule:comments-indentation
     - username: admin   # username and password for login `manager api`
-      password: admin
+      password: admin_password
     - username: user
-      password: user
+      password: user_password
 
 plugins:                          # plugin list (sorted in alphabetical order)
   - api-breaker
@@ -73,8 +73,8 @@ plugins:                          # plugin list (sorted in alphabetical order)
 ```
 apisix_conf/config.yaml คอนฟิก admin API เพื่อความปลอดภัย แก้ IP ของ allow_admin, ip/port ที่ใช้, admin key
 
-```
-...
+``` yaml
+... 
 deployment:
   admin:
     allow_admin:   # https://nginx.org/en/docs/http/ngx_http_access_module.html#allow
@@ -84,7 +84,7 @@ deployment:
       port: 9180   # อาจะเปลี่ยนเป็นเลขอื่น
     admin_key:
       - name: "admin"
-        key: edd1c9f034335f136f87ad84b625c8f1 # แก้ API Key 
+        key: edd1...5c8f1 # แก้ API Key 
         role: admin                 # admin: manage all configuration data
 ...
 ```

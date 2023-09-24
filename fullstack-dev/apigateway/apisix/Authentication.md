@@ -11,7 +11,7 @@ TODO:ทำวีดีโอและเพิ่มเนื้อหาหั
 ``` bash
 # Request
 curl "http://127.0.0.1:9180/apisix/admin/consumers" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" -X PUT -d '
+-H "X-API-KEY: edd1c9.....5c8f1" -X PUT -d '
 {
   "username": "key_auth_web1",
   "plugins": {
@@ -25,7 +25,7 @@ curl "http://127.0.0.1:9180/apisix/admin/consumers" \
 
 # Request
 curl "http://127.0.0.1:9180/apisix/admin/consumers" \
--H "X-API-KEY: edd1c9f034335f136f87ad84b625c8f1" -X PUT -d '
+-H "X-API-KEY: edd1c9.....5c8f1" -X PUT -d '
 {
   "username": "key_auth_web2",
   "plugins": {
@@ -39,10 +39,10 @@ curl "http://127.0.0.1:9180/apisix/admin/consumers" \
 ```
 สร้าง Route โดยใช้ Key Auth
 
-```
+``` bash
 # Create route with key-auth plugin
 curl http://127.0.0.1:9180/apisix/admin/routes \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "id": "web1-key-auth",
     "uri": "/web1-key-auth",
@@ -77,9 +77,9 @@ hello web1
 
 สร้าง route web2 ไอดีเป็น web2-key-auth สำหรับ web2 ใช้ header เป็น secretkey(เดิม default เป็น apikey) จำกัดผู้ใช้งานด้วย  consumer-restriction เพื่อให้คอนซูมเมอร์ key_auth_web2 ได้ได้คนเดียว
 
-```
+```bash
 curl http://127.0.0.1:9180/apisix/admin/routes \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "id": "web2-key-auth",
     "uri": "/web2-key-auth",
@@ -118,10 +118,10 @@ Note: เมื่อสร้าง consumer ที่ใช้ plugin key-auth
 
 basic-auth เป็นการ authentication แบบดั้งเดิม ใช้งานค่อนข้างง่าย การใช้งานคล้ายกับ key-auth แค่มีชื่อผู้ใช้เพิ่มขึ้นมา ข้อเสียคือส่ง username:password ทุก request ดังนั้นต้องใช้ https เสมอ
 
-```
+```bash
 # สร้าง consumer web1_basic_auth
 curl http://127.0.0.1:9180/apisix/admin/consumers \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "username": "web1_basic_auth",
     "plugins": {
@@ -133,7 +133,7 @@ curl http://127.0.0.1:9180/apisix/admin/consumers \
 }'
 # สร้าง consumer web2_basic_auth
 curl http://127.0.0.1:9180/apisix/admin/consumers \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "username": "web2_basic_auth",
     "plugins": {
@@ -148,7 +148,7 @@ curl http://127.0.0.1:9180/apisix/admin/consumers \
 ``` bash
 # สร้าง route /web1-basic-auth
 curl http://127.0.0.1:9180/apisix/admin/routes \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "id": "web1-basic-auth",
     "uri": "/web1-basic-auth",
@@ -166,7 +166,7 @@ curl http://127.0.0.1:9180/apisix/admin/routes \
 }'
 # สร้าง route /web2-basic-auth ให้ basic_auth_web2 ใช้ได้เท่านั้น
 curl http://127.0.0.1:9180/apisix/admin/routes \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "id": "web2-basic-auth",
     "uri": "/web2-basic-auth",
@@ -206,7 +206,7 @@ curl -i -uweb1-basic:web1-password http://127.0.0.1:9080/web2-basic-auth -H 'Hos
 
 Consumer
 ``` bash
-curl http://127.0.0.1:9180/apisix/admin/consumers -H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+curl http://127.0.0.1:9180/apisix/admin/consumers -H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "username": "web1_jwt_auth",
     "plugins": {
@@ -219,9 +219,9 @@ curl http://127.0.0.1:9180/apisix/admin/consumers -H 'X-API-KEY: edd1c9f034335f1
 ```
 Route
 
-```
+``` bash
 curl http://127.0.0.1:9180/apisix/admin/routes \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "id": "web1-jwt-auth",
     "uri": "/web1-jwt-auth",
@@ -243,7 +243,7 @@ curl http://127.0.0.1:9180/apisix/admin/routes \
 
 ``` bash
 curl http://127.0.0.1:9180/apisix/admin/routes/jas \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "uri": "/apisix/plugin/jwt/sign",
     "plugins": {
@@ -252,9 +252,10 @@ curl http://127.0.0.1:9180/apisix/admin/routes/jas \
 }'
 ```
 สร้าง route สำหรับการ sign สะดวกไม่ต้องเขียนโค้ดเอง โดยใช้ public-api เปลี่ยน uri เป็น /jwtsign มีใส่ key-auth เพื่อความปลอดภัยด้วย จะใช้ของอันก่อนหน้าที่ทำไว้ของคอนซูมเมอร์ key_auth_web1
-```
+
+``` bash
 curl http://127.0.0.1:9180/apisix/admin/routes/jas \
--H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' -X PUT -d '
+-H 'X-API-KEY: edd1c9.....5c8f1' -X PUT -d '
 {
     "uri": "/jwtsign",
     "plugins": {
@@ -269,21 +270,21 @@ curl http://127.0.0.1:9180/apisix/admin/routes/jas \
 # Request token แบบไม่มี payload
 curl http://127.0.0.1:9080/jwtsign?key=web1-jwt -H "apikey: Password-web1"
 # Response
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODkwODAxMDgsImtleSI6IndlYjEtand0In0.fNCmRXNv6TNJhycU8AwsvOS_bOnFEOsBem69fdacZk4
+eyJxxxXVCJ9.eyJxxx0In0.fNCmRxxxcZk4
 # Request token แบบมี payload
 curl -G --data-urlencode 'payload={"uid":10000,"uname":"web1"}' \
 http://127.0.0.1:9080/jwtsign?key=web1-jwt -i -H "apikey: Password-web1"
 # Response
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJ3ZWIxLWp3dCIsInVpZCI6MTAwMDAsInVuYW1lIjoid2ViMSIsImV4cCI6MTY4OTA1OTMwNH0.QeVocHthq80-Y8TVeezXqu_UDX5FPJeByrmCskjk-2I
+eyJhbxxxXVCJ9.eyJrZXxxx4OTA1OTMwNH0.QeVocxxxjk-2I
 ```
 ทดสอบโดยใช้ token ที่ได้มา
 ```
 curl -i http://127.0.0.1:9080/web1-jwt-auth -H 'Host: example.com' \
--H 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJ3ZWIxLWp3dCIsInVpZCI6MTAwMDAsInVuYW1lIjoid2ViMSIsImV4cCI6MTY4OTA1OTMwNH0.QeVocHthq80-Y8TVeezXqu_UDX5FPJeByrmCskjk-2I'
+-H 'Authorization: eyJxxxXVCJ9.eyJxxx0In0.fNCmRxxxcZk4'
 ```
 
 ถ้าสร้าง token เองด้วยวิธีอื่น เช่น [jwt.io](https://jwt.io) ใน payload จำเป็นต้องมี key ของ consumer ด้วย
-![ภาพ  jwt.io]()
+
 
 ## openid-connect
 TODO: หัวข้อนี้ยังไม่เสร็จ
@@ -291,7 +292,7 @@ TODO: หัวข้อนี้ยังไม่เสร็จ
 
 
 ``` bash
-docker run -d -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:21.1.2 start-dev 
+docker run -d -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=secret_password quay.io/keycloak/keycloak:21.1.2 start-dev 
 ```
 
 
@@ -307,7 +308,7 @@ services:
       - start-dev
     environment:
       - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KEYCLOAK_ADMIN_PASSWORD=secret_password
       - PROXY_ADDRESS_FORWARDING=true
       - VIRTUAL_HOST=sso.example.com
       - VIRTUAL_PORT=8080
