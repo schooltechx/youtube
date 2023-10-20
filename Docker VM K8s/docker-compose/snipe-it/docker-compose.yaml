@@ -1,0 +1,35 @@
+version: "2.1"
+services:
+  snipe-it:
+    image: snipe/snipe-it
+    container_name: snipe-it
+    environment:
+      - APP_DEBUG=false
+      - APP_KEY=base64:XIhXhpwQTNlOq8VfA+706UJ/Ddkk9Z4b8T6Iqrh78bM=
+      - APP_TIMEZONE=Asia/Bangkok
+      - APP_LOCALE=en
+      - APP_URL=http://192.168.2.100:8080
+      - MYSQL_PORT_3306_TCP_ADDR=mysql
+      # - MYSQL_PORT_3306_TCP_PORT=
+      - MYSQL_DATABASE=snipeit
+      - MYSQL_USER=snipeit
+      - MYSQL_PASSWORD=snipeit
+    ports:
+      - 8080:80
+      - 8443:443
+    restart: unless-stopped
+  mysql:
+    image: mysql:5.6
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - sniteit_mysql_data:/var/lib/mysql
+    environment:
+      TZ: Asia/Bangkok
+      MYSQL_ROOT_PASSWORD: snipeit
+      MYSQL_DATABASE: snipeit
+      MYSQL_USER: snipeit
+      MYSQL_PASSWORD: snipeit
+volumes:
+  sniteit_mysql_data:
