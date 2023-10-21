@@ -3,7 +3,6 @@
 
 [![Elasticsearch Thai](https://img.youtube.com/vi/WGRKCnafBC4/0.jpg)](https://youtu.be/WGRKCnafBC4 "Elasticsearch ค้นทำไทยง่ายนิดเดียว")
 
-https://youtu.be/WGRKCnafBC4
 
 ในตัวอย่างจะติดตั้ง Elasticsearch, Kibana บน Docker [.env](../../../Docker%20VM%20K8s/docker-compose/elk/thai/.env),
 [docker-compose.yaml](../../../Docker%20VM%20K8s/docker-compose/elk/thai/docker-compose.yaml)

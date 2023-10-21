@@ -1,3 +1,8 @@
+# Just for test run not email
+# docker compose up snipe-it 
+# copy APP_KEY to compose file
+# docker compose up -d mysql 
+# docker compose up -d snipe-it 
 version: "2.1"
 services:
   snipe-it:
@@ -5,7 +10,7 @@ services:
     container_name: snipe-it
     environment:
       - APP_DEBUG=false
-      - APP_KEY=base64:XIhXhpwQTNlOq8VfA+706UJ/Ddkk9Z4b8T6Iqrh78bM=
+      - APP_KEY=YourKey
       - APP_TIMEZONE=Asia/Bangkok
       - APP_LOCALE=en
       - APP_URL=http://192.168.2.100:8080
