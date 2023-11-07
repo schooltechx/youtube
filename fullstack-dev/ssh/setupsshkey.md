@@ -1,3 +1,6 @@
+# การทำ ssh key
+ใช้ public/private เพื่อเข้าใช้งานแทน ยูสเซอร์/รหัสผ่าน ทำให้ไม่ต้องคอยป้อนรหัสใหม่ตอน session เชื่อมต่อซ้ำวิธีการทำเหมือน [การตั้งค่าของ github ](../github/Setup.md)
+
 ## สร้าง public/private key
 
 ```
@@ -52,11 +55,16 @@ Host *
   ServerAliveInterval 300
   ServerAliveCountMax 2
 ```
+
 ## เครื่องเซิร์ฟเวอร์ Linux(myserver)
 เอาเนื้อหาของ me.pub ไปใส่ไว้ใน ~/.ssh/authorized_keys ถ้าไม่มีให้สร้างขึ้นมากำหนดสิทธิ์ให้ตัวเราอ่านได้อย่างเดียว
 ```
 chmod og-rw ~/.ssh/authorized_keys
-ssh oom@myserver
-
 ```
 
+## ใช้งานจากเครื่องส่วนตัว
+สามารถใช้คำสั่งด้านล่างนี้เพื่อใช้งานโดยไม่ต้องใส่รหัสผ่าน
+```
+ssh myserver
+```
+โปรแกรมอื่นๆที่รองรับเช่น VS Code ก็ใช้ Remote SSH เพื่อเข้าใช้งานได้เลย
