@@ -1,0 +1,8 @@
+# docker run -it --rm llamafile-server-single
+# docker compose -f compose.single.yaml up -d
+version: '3.8'
+services:
+  llamafile-server-single:
+    image: llamafile-server-single
+    ports:
+      - "2020:8080"

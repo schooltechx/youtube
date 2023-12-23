@@ -1,0 +1,23 @@
+# docker run -it --rm -v ../models/mistral-7b-instruct-v0.1.Q5_K_M.gguf:/gguf-file llamafile-server -m /gguf-file
+version: '3.8'
+services:
+  llamafile-server:
+    command:
+      - "--log-disable"
+      - "-c"
+      - "2048"
+      - "-ngl"
+      - "43"
+      - "-m"
+      - "/models/wizardcoder-python-34b-v1.0.Q2_K.gguf"
+      # - "/models/ggml-model-q5_k.gguf"
+      # - "/models/ggml-model-f16.gguf"
+      # - "/models/ggml-model-q4_0.gguf"
+      # - "/models/llava-v1.5-7b-Q8_0.gguf"
+      # - "--mmproj"
+      # - "/models/llava-v1.5-7b-mmproj-Q8_0.gguf"
+    image: llamafile-server:latest
+    volumes:
+      - ./models:/models
+    ports:
+      - "2020:8080"
