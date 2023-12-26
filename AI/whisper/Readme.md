@@ -53,6 +53,6 @@ whisper whisper-colab.mp4 --language Thai --model small
 
 ที่ VRAM 2GB รันแบบ small และใช้ GPU ทำงานได้เร็วกว่ามาก แต่ข้อความผิดหลายคำ
 
-![Whisper GPU Small](img/whisper-cpu-medium.png)
+![Whisper GPU Small](img/whisper-gpu-small.png)
 
 
