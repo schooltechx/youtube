@@ -25,8 +25,9 @@ export COMMANDLINE_ARGS="--skip-torch-cuda-test --precision full --no-half --por
 ```
 sudo apt install --no-install-recommends google-perftools
 ```
-
-ผู้หญิงผิวขาว ใส่แว่น หน้าตาสวยหมดจด ชุดสูต เดินบนสนามหญ้า
+เวลาเรียกใช้งานจะเรียกคนละไฟล์ตามระบบปฎิบัติการ
+- Windows: webui-user.bat
+- Linux: webui.sh
 
 ### การตั้งค่า  Generation
 - Prompt: ใส่วงเล็บเพื่อเน้น คำอธิบายนั้น
@@ -36,7 +37,14 @@ sudo apt install --no-install-recommends google-perftools
 - Seed value: -1 จะสุ่มการสร้างภาพ กำนดเลขที่ต้องการจะได้ภาพเดิมตอนสร้างใหม่.
 
 ถึงจะใช้ Prompt เดียวกัน ขนาดภาพและ seed ก็มีผลต่อการสร้างภาพ
+```
+Japanese girl, black hair with bangs, thin, small breasts, white dress, purple eyes.
+Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 520769746, Size: 512x512, Model hash: d7465e52e1, Model: ghostmix_v12, Version: 1.6.0
+```
 ![Alt text](jgirl.png)
+
+ขนาด 512x1024 seed เป็นคนละค่า
+
 ![Alt text](jgirl2.png)
 
 - Batch Count จำนวนรอบต่อไปของการประมวลภาพครั้ง
