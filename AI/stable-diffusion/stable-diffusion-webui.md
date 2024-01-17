@@ -41,12 +41,29 @@ sudo apt install --no-install-recommends google-perftools
 Japanese girl, black hair with bangs, thin, small breasts, white dress, purple eyes.
 Steps: 20, Sampler: DPM++ 2M Karras, CFG scale: 7, Seed: 520769746, Size: 512x512, Model hash: d7465e52e1, Model: ghostmix_v12, Version: 1.6.0
 ```
-![Alt text](jgirl.png)
+![Alt text](img/jgirl.png)
 
 ขนาด 512x1024 seed เป็นคนละค่า
 
-![Alt text](jgirl2.png)
+![Alt text](img/jgirl2.png)
 
 - Batch Count จำนวนรอบต่อไปของการประมวลภาพครั้ง
 - Batch Size จำนวนภาพที่สร้างขึ้นแบบขนาน(ในเวลาเดียวกัน) ถ้าหน่วยความจำน้อยให้ใช้ Size น้อยแต่เพิ่ม Count แทน
 
+
+## ตัวอย่างอื่นๆ
+
+
+![Alt text](img/toonyou.png)
+ภาพออกมาดูดีแต่ไม่ค่อยได้ตามที่ต้องการเท่าไหร่
+```
+(best quality, masterpiece), Golden-haired, girl, in the sky , Evening time, with wing, ware pink dress
+Negative prompt: (worst quality, low quality, letterboxed)
+Steps: 40, Sampler: DPM++ SDE Karras, CFG scale: 8, 
+Seed: 950747716, Size: 512x512, Model hash: e8d456c42e, 
+Model: toonyou_beta6, Denoising strength: 0.35, Hires upscale: 2, 
+Hires steps: 14, Hires upscaler: R-ESRGAN 4x+ Anime6B, Version: 1.6.0
+```
+
+## Extension
+- [ReActor](./face-swap.md) ในเปลี่ยนหน้า ทำได้รวดเร็วและค่อนข้างแนบเนียนเลย

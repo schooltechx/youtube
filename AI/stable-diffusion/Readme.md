@@ -1,20 +1,21 @@
 # Stable Diffusion
-เป็น ML ที่ใช้สร้าง จริงๆแล้วมีหลายตัวเช่น DALLE, MidJourney ฯลฯ แต่ Stable Diffusion เป็นที่นิยมเพราะ OpenSource ใช้งานฟรี สามารถติดตั้งในเครื่องตัวเองได้ มีโปรแกรมให้ใช้ง่ายๆหลายตัว 
-- [Stable Diffusion Webui ตัวนี้นิยมและอัปเดตสุด (ดูเพิ่มเติมในลิงค์)](./stable-diffusion-webui.md) 
+AI สร้างภาพมีอยู่หลายตัวเช่น DALLE, MidJourney ฯลฯ ส่วน Stable Diffusion เป็นที่นิยมใช้กันมากเพราะ OpenSource ใช้งานฟรี มีโมเดลให้เลือกมากมาย สามารถติดตั้งในเครื่องตัวเองได้ มีโปรแกรมให้ใช้ง่ายๆหลายตัว แนะนำให้ลองตัวแรกก่อน
+- [Stable Diffusion Webui ตัวนี้นิยมและอัปเดตสุด (ดูวีดีโอ เพิ่มเติมในลิงค์)](./stable-diffusion-webui.md) 
+- [SD.Next](https://github.com/vladmandic/automatic) Stable Diffusion implementation with advanced features
 - [NMKD Stable Diffusion GUI](https://nmkd.itch.io/t2i-gui)
 
 ## Stable Diffusion Models
-หรือบางทีเรียก  checkpoint models จะเป็นโมเดลที่สร้างภาพโดยมีสไตล์เฉพาะเจาะจง เนื่องผ่านการเทรน(สอน)ด้วยภาพสไตล์ที่เจาะจงมา มันไม่สามารถสร้างภาพบางอย่างได้ถ้าไม่มีการเทรนมาก่อน เช่นถ้าไม่มีภาพสุนัขในการเทรนก็ไม่สามารถสร้างภาพสุนัขได้ หรือถ้ามีการเทรนเฉพาะภาพสุนัขก็จะสร้างได้แค่ภาพสุนับเท่านั้น เราสามารถผนวกรวมโมเดลหลายๆตัวเข้าด้วยกันได้เพื่อให้สามารถสร้างภาพได้หลากหลายขึ้น มีกานสร้างโมเดลให้ใช้งานฟรีมากมาย ภาพเหมือนจริง ภาพวาด ภาพการ์ตูน ฯลฯ
+หรือบางทีเรียก  checkpoint  จะเป็นโมเดลที่สร้างภาพโดยมีสไตล์เฉพาะเจาะจง เนื่องผ่านการเทรน(สอน)ด้วยภาพสไตล์ที่เจาะจงมา มันไม่สามารถสร้างภาพบางอย่างได้ถ้าไม่มีการเทรนมาก่อน เช่นถ้าไม่มีภาพสุนัขในการเทรนก็ไม่สามารถสร้างภาพสุนัขได้ หรือถ้ามีการเทรนเฉพาะภาพสุนัขก็จะสร้างได้แค่ภาพสุนับเท่านั้น เราสามารถผนวกรวมโมเดลหลายๆตัวเข้าด้วยกันได้เพื่อให้สามารถสร้างภาพได้หลากหลายขึ้น มีโมเดลให้เลือกใช้งานฟรีมากมาย ในแบบต่างๆเช่น ภาพเหมือนจริง ภาพวาด ภาพการ์ตูน ฯลฯ
 
-ถึงแม้จะใช้ prompt เดียวกันแต่ละ model จะให้ผลที่ต่างกัน 
-![dreamshaper_331BakedVae.safetensors](img/kid1.png) 
-![ghostmix_v12.safetensors](img/kid2.png)
-![v1-5-pruned-emaonly.safetensors](img/kid3.png) 
+ถึงแม้จะใช้ prompt เดียวกันแต่ละ model จะให้ผลที่ต่างกัน
 
+<img src="img/kid1.png" width="200">
+<img src="img/kid2.png" width="200">
+<img src="img/kid3.png" width="200">
 
 ## ผลงาน
 งานจะออกมาดีได้นั้นขึ้นกับหลายปัจจัย
-- การสร้าง Prompt ที่ดี มีรายละเอียดและเจาะจง เหมือนการบอกเล่าให้คนอื่นฟัง ไม่มีใครเห็นภาพที่เราคิด จำเป็นต้องอธิบายให้ชัดเจน
+- การสร้าง Prompt ที่ดี มีรายละเอียดและเจาะจง เหมือนการบอกเล่าให้คนอื่นฟัง  ไม่มีใครเห็นภาพที่เราคิดในหัวได้ จำเป็นต้องอธิบายให้ชัดเจน
 ตัวอย่าง prompt ที่เขียนผิดกำกวมจะได้ภาพแปลกๆออกมา
 
 "A realistic drawing of a beautiful girl in a blue shirt and blonde hair, wearing a swimsuit, sitting on the beach.""
@@ -26,10 +27,12 @@
 
 ## Download Model
 
-ส่วนใหญ่สามารถดาว์นโหลดได้ฟรื จาก [huggingface.co](https://huggingface.co/)เก็บไว้ที่ แต่จะค้นหายากเพราะรวมโมเดล AI หลายประเภท ต้องไปเวปอื่นๆที่มีภาพตัวอย่าง บางที่อาจจำเป็นต้องสมัครสมาชิกก่อน 
-- [stabilityai/stable-diffusion-xl-base-1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/sd_xl_base_1.0.safetensors) โมเดลรุ่นใหม่ XL
-
-- [Civitai](https://civitai.com) เวปรวมโมเดล
+ส่วนใหญ่สามารถดาว์นโหลดได้ฟรื จาก [huggingface.co](https://huggingface.co/)  แต่จะค้นหายากเพราะรวมโมเดล AI เกือบทุกแบบเอาไว้ ถ้าต้องการโมเดลสำหรับ Stable Diffusion ต้องไปเวปที่ทำโดยเฉพาะ จะมีภาพและ prompt ตัวอย่างให้ศึกษา บางที่อาจจำเป็นต้องสมัครสมาชิกก่อน 
+- โมเดลรุ่นใหม่ XL
+  - [stabilityai/stable-diffusion-xl-base-1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/sd_xl_base_1.0.safetensors), 
+  - [stabilityai/sdxl-turbo](https://huggingface.co/stabilityai/sdxl-turbo/blob/main/sd_xl_turbo_1.0_fp16.safetensors
+)
+- [Civitai](https://civitai.com) เวปรวมโมเดลค้นหาได้ง่าย
 - [Stable Diffusion Art](https://stable-diffusion-art.com/)
 
 
@@ -45,8 +48,10 @@
 
 - [สอนใช้ Ideogram.ai UX/UI ง่ายมากๆ เหมาะสำหรับหัดเจน เจนฟรีวันละ 100 ภาพ ไม่ต้องกดสะสมเครดิต!](https://www.youtube.com/watch?v=XjNKgmAn0VU)
 
+- สอนใช้ Playgroundai.com สรัางได้ 500 ภาพต่อวัน แบบจุก ๆ ฟีเจอร์เพียบ!
+[PART1](https://www.youtube.com/watch?v=iAZwf5z8lgo)
 
-
-
+- [สอนใช้ getimg.ai สร้างภาพฟรี 100 ภาพต่อเดือน มาพร้อมฟังก์ชันจัดเต็ม](https://www.youtube.com/watch?v=gqBArkP2D9k)
+- [สอนใช้ Ideogram.ai UX/UI ง่ายมากๆ เหมาะสำหรับหัดเจน เจนฟรีวันละ 100 ภาพ ไม่ต้องกดสะสมเครดิต!](https://www.youtube.com/watch?v=XjNKgmAn0VU&t=351s) 
 
 
