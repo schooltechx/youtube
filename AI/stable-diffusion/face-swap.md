@@ -16,6 +16,7 @@
 ## ReActor for Stable Diffusion
 
 เลือกใช้ ReActor เพราะอัปเดตสม่ำเสมอและยืดหยุ่นในการใช้งานมากว่า 
+[![ReActor Face Swap](https://img.youtube.com/vi/lmGs0qO3TZQ/0.jpg)](https://youtu.be/lmGs0qO3TZQ "Face Swap บน Stable Diffusion WebUI")
 
 ### ติดตั้ง ReActor
 - ติดตั้ง Stable Diffusion WebUI 
