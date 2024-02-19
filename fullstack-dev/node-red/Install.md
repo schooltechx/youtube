@@ -37,5 +37,6 @@ docker compose up -d
 เหมาะสำหรับนักพัฒนาเพื่อใช้ Workflow ร่วมกับโปรแกรมที่พัฒนา ดู [embedding](https://nodered.org/docs/user-guide/runtime/embedding)
 
 ## Authentication
-https://nodered.org/docs/user-guide/runtime/securing-node-red
+ติดตั้งปกติจะไม่มีการเวลาเข้าหน้า Editor จะไม่มีการ Authentication ใดๆ สำหรับการใช้งานผ่านอินเตอร์เน็ตควรมีการป้องกันอย่างน้อยรหัสผ่าน ดูวิธีการได้[ที่นี้](https://nodered.org/docs/user-guide/runtime/securing-node-red)
+
 
