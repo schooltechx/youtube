@@ -21,7 +21,7 @@ Kubenetes ค่อนข้างซับซ้อนอ่านเข้า�
 kubectl create ns my-web --dry-run=client -o yaml
 kubectl create deployment myweb --image=nginx -n my-web --dry-run=client -o yaml
 kubectl create service clusterip myweb --tcp=80:80 -n my-web --dry-run=client -o yaml 
-kubectl create ingress myweb --rule="myweb.home.lan/=nginx-svc:80" -n my-web --dry-run=client -o yaml 
+kubectl create ingress myweb --rule="myweb.home.lan/*=myweb:80" -n my-web --dry-run=client -o yaml 
 # ConfigMap และ Secret
 kubectl create configmap myweb-configmap --from-file=./config/config.html --from-file=config1.html=./config/config.txt -n my-web --dry-run=client -o yaml
 kubectl create secret generic myweb-secret --from-literal=username=oom --from-literal=password=123456 -n my-web --dry-run=client -o yaml
