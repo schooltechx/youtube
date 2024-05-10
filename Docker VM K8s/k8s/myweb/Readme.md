@@ -35,6 +35,7 @@ ls /usr/share/nginx/secret
 kubectl delete ns my-web
 ```
 
+
 ## Mount
 ตัวอย่างโค้ดการ Mount ดูใน [deploy.yaml](./deploy.yaml) 
 ``` yaml
