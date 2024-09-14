@@ -115,6 +115,7 @@ touch .gitignore
 git add .
 git commit -m "first commit"
 # create git repo from web ui and link to local
+git branch -M main
 git remote add origin git@github.com:schooltechx/coding-project.git
 git push -u origin main
 ```
@@ -122,7 +123,7 @@ git push -u origin main
 หรือเริ่มจากโปรเจ็กที่มีอยู่แล้ว
 ```
 git remote add origin git@github.com:schooltechx/coding-project.git
-git brach -M main
+git branch -M main
 git push -u origin main
 ```
 
