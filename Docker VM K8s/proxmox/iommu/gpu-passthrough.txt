@@ -1,0 +1,77 @@
+
+Proxmox GPU PassThrough
+
+1. Bios
+Intel : VT-d,IOMMU,
+AMD: AMD-Vi
+2. Install Proxmox
+check GRUB or systemd
+3. Edit modprobe configuration
+echo "blacklist nouveau" >> /etc/modprobe.d/blacklist.conf
+echo "blacklist nvidia" >> /etc/modprobe.d/blacklist.conf
+echo "blacklist radeon" >> /etc/modprobe.d/blacklist.conf
+
+4.  Update the GRUB bootloader
+/etc/default/grub
+#Intel
+GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on"
+#AMD
+GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on"
+
+update-grub reboot
+
+5. Edit the kernel modules
+# /etc/modules add 4 line
+vfio
+vfio_iommu_type1
+vfio_pci
+vfio_virqfd
+
+
+6. Identify and isolate the GPU
+lspci -v
+
+Nvidia has 2 id video and audio. Check vendor id codes for each
+lspci -nn | grep -i nvidia
+lspci -n -s 0000:03:00
+0000:03:00.0 0300: 10de:128b (rev a1)
+0000:03:00.1 0403: 10de:0e0f (rev a1)
+
+
+echo "options vfio-pci ids=10de:128b,10de:0e0f disable_vga=1"> /etc/modprobe.d/vfio.conf
+update-initramfs -u
+reboot
+
+7. Create and configure your virtual machine (win 11)
+OVMF (UEFI) firmware
+virtio
+change boot order
+not start yet
+
+8. config vm
+nano /etc/pve/qemu-server/<vmid>.conf
+machine: q35
+cpu: host,hidden=1,flags=+pcid
+args: -cpu 'host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_vendor_id=NV43FIX,kvm=off'
+
+
+Add PCI Devices (Your GPU) to VM
+All Functions: YES
+Rom-Bar: YES
+Primary GPU: NO
+PCI-Express: YES (requires 'machine: q35' in vm config file)
+
+9. Install Windows
+during install use virtio vioscsi for storage
+
+
+10 config windows
+enable RDP
+
+
+
+
+
+
+
+
