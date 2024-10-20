@@ -1,0 +1,49 @@
+
+
+###
+PUT http://localhost:9180/apisix/admin/routes HTTP/1.1
+content-type: application/json
+X-API-KEY: edd1c9f034335f136f87ad84b625c8f2
+
+{
+  "id": "open-webui",
+  "host": "open-webui.oom.home",
+  "uri": "/*",
+  "upstream": {
+    "type": "roundrobin",
+    "nodes": {
+      "open-webui:8080": 1
+    }
+  }
+}
+###
+
+POST http://localhost:11434/api/generate
+
+{
+  "model": "llama3.2",
+  "prompt": "Why is the sky blue?",
+  "stream": false
+}
+###
+POST http://localhost:11434/api/generate
+content-type: application/json
+
+{
+  "model": "llama3.2",
+  "prompt":"'ขอลาป่วยตั้งแต่วันที่ 21 ถึงวันที่ 23' วันนี้คือวันที่ 19 ตุลาคม ปี 2024 ให้สรุปวันเริ่มต้นและวันสิ้นสุดในรูปแบบของ JSON ดังนี้: {'beginDate':'YYYY-MM-DD','endDate':'YYYY-MM-DD'}",
+  "format":"json",
+  "stream": false
+}
+
+
+###
+POST http://localhost:11434/api/chat
+
+{
+  "model": "llama3.2",
+  "messages": [
+    { "role": "user", "content": "Hello" }
+  ],
+  "stream": false
+}
