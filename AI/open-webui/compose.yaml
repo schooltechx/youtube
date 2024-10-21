@@ -1,52 +1,16 @@
 services:
-  ollama:
-    image: ollama/ollama
+  ollamaweb:
+    image: ghcr.io/open-webui/open-webui:ollama
     restart: unless-stopped
-    # stop_grace_period: 30s
-    ports:
-      - 11434:11434
-    environment:
-      - TZ=Asia/Bangkok
     volumes:
       - ./ollama:/root/.ollama
-    networks:
-      - hrms
-    deploy:
-      resources:
-        limits:
-          # cpus: '18'
-          memory: 32G
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-  open-webui:
-    image: ghcr.io/open-webui/open-webui:main
-    restart: unless-stopped
-    # stop_grace_period: 30s
+      - ./open-webui:/app/backend/data
     ports:
       - 9901:8080
-    depends_on:
-      - ollama
-    environment:
-      - OLLAMA_BASE_URL=http://ollama:11434
-      - WHISPER_MODEL=medium
-      - TZ=Asia/Bangkok
-    volumes:
-      - ./open-webui:/app/backend/data
-    networks:
-      - hrms    
     deploy:
       resources:
-        limits:
-          # cpus: '18'
-          memory: 32G
         reservations:
           devices:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-networks:
-  hrms:
-    external: true

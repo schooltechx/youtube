@@ -1,49 +1,48 @@
-
-
-###
-PUT http://localhost:9180/apisix/admin/routes HTTP/1.1
-content-type: application/json
-X-API-KEY: edd1c9f034335f136f87ad84b625c8f2
-
-{
-  "id": "open-webui",
-  "host": "open-webui.oom.home",
-  "uri": "/*",
-  "upstream": {
-    "type": "roundrobin",
-    "nodes": {
-      "open-webui:8080": 1
-    }
-  }
-}
-###
-
 POST http://localhost:11434/api/generate
 
 {
   "model": "llama3.2",
-  "prompt": "Why is the sky blue?",
+  "prompt": "หนึ่งบวกสองได้เท่าไหร่?",
+  "stream": false
+}
+
+###
+GET http://192.168.2.101:9901/ollama/v1/models
+accept: application/json
+Authorization: Bearer xxx
+
+###
+POST http://192.168.2.101:9901/ollama/api/generate
+accept: application/json
+Authorization: Bearer xxx
+
+{
+  "model": "llama3.2:3b",
+  "prompt": "หนึ่งบวกสองได้เท่าไหร่?",
   "stream": false
 }
 ###
-POST http://localhost:11434/api/generate
-content-type: application/json
+
+POST http://192.168.2.101:9901/ollama/api/generate
+accept: application/json
+Authorization: Bearer xxx
 
 {
-  "model": "llama3.2",
-  "prompt":"'ขอลาป่วยตั้งแต่วันที่ 21 ถึงวันที่ 23' วันนี้คือวันที่ 19 ตุลาคม ปี 2024 ให้สรุปวันเริ่มต้นและวันสิ้นสุดในรูปแบบของ JSON ดังนี้: {'beginDate':'YYYY-MM-DD','endDate':'YYYY-MM-DD'}",
-  "format":"json",
+  "model": "llama3.2:3b",
+  "prompt": "สมชายเดินทางไปลาววันที่ 13 สิงหาคม 2567. please summarize in JSON this format: {'traveler':string,country,string,'departure_date':'dd-mm-yyyy'}",
+  "format": "json",
   "stream": false
 }
-
-
 ###
-POST http://localhost:11434/api/chat
+
+POST http://192.168.2.101:9901/ollama/api/generate
+accept: application/json
+Authorization: Bearer xxx
 
 {
-  "model": "llama3.2",
-  "messages": [
-    { "role": "user", "content": "Hello" }
-  ],
+  "model": "llama3.2:3b",
+  "prompt": "Create Node.js game. Guess random number 1-10. Hint with word more or less if not correct guess.",
   "stream": false
 }
+###
+
