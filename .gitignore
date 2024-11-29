@@ -1,2 +1,4 @@
 ./PlatformEngineer
 ./AI
+node_modules
+data_*

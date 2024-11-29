@@ -1,0 +1,17 @@
+services:
+  reduct-storage:
+    image: reduct/store:latest
+    volumes:
+      - ./data_reduct_store:/data
+    ports:
+      - "8383:8383"
+
+  mqtt-broker:
+    image: eclipse-mosquitto:1.6
+    volumes:
+      - ./config/mosquitto:/mosquitto/config
+      - ./data_mosquitto:/data
+      # - ./mosquitto_log:/mosquitto/log
+    ports:
+      - "1883:1883"
+
