@@ -10,3 +10,7 @@ Git เป็นเครื่องมือที่จำเป็นอย�
 # [Github Project]
 ใช้บริหารจัดการโปรเจ็ก 
 
+
+## อ่านเพิ่ม
+- [Using Git with Visual Studio Code (Official Beginner Tutorial)](https://www.youtube.com/watch?v=i_23KUAEtUM)
+- [Working with GitHub in VS Code](https://code.visualstudio.com/docs/sourcecontrol/github)
