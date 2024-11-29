@@ -1,0 +1,44 @@
+services:
+  reduct-storage:
+    image: reduct/store:latest
+    volumes:
+      - ./data_reduct_store:/data
+    ports:
+      - "8383:8383"
+
+  mqtt-broker:
+    image: eclipse-mosquitto:1.6
+    volumes:
+      - ./config/mosquitto:/mosquitto/config
+      - ./data_mosquitto:/data
+      # - ./mosquitto_log:/mosquitto/log
+    ports:
+      - "1883:1883"
+
+  # mqtt-exporter:
+  #   image: kpetrem/mqtt-exporter
+  #   ports:
+  #     - 9000:9000
+  #   environment:
+  #     - MQTT_ADDRESS=mqtt-broker
+  #     - PROMETHEUS_PREFIX=sensor_
+  #     - TOPIC_LABEL=sensor
+  #   restart: unless-stopped
+
+  # prometheus:
+  #   image: prom/prometheus:latest
+  #   volumes:
+  #     - ./config/prometheus/:/etc/prometheus/config/:ro
+  #     - ./data_prometheus:/prometheus
+  #   command:
+  #     - '--config.file=/etc/prometheus/config/prometheus.yml'
+
+
+  # grafana:
+  #   image: grafana/grafana
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3060:3000"
+  #   volumes:
+  #     - ./data_grafana:/var/lib/grafana
+
