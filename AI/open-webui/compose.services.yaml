@@ -7,7 +7,7 @@ services:
     environment:
       - TZ=Asia/Bangkok
     volumes:
-      - ./ollama:/root/.ollama
+      - ./data_ollama:/root/.ollama
     deploy:
       resources:
         limits:
@@ -19,7 +19,7 @@ services:
               count: 1
               capabilities: [gpu]
   open-webui:
-    image: ghcr.io/open-webui/open-webui:main
+    image: ghcr.io/open-webui/open-webui:cuda
     restart: unless-stopped
     ports:
       - 9901:8080
@@ -27,10 +27,11 @@ services:
       - ollama
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
+      - USE_CUDA_DOCKER=true
       - WHISPER_MODEL=medium
       - TZ=Asia/Bangkok
     volumes:
-      - ./open-webui:/app/backend/data
+      - ./data_open-webui:/app/backend/data
     deploy:
       resources:
         limits:
