@@ -1,0 +1,12 @@
+services:
+  trainee-minio:
+    image: quay.io/minio/minio
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - './data_minio:/data'
+    command: server --console-address ":9001" /data
+    environment:
+      - MINIO_ROOT_USER=trainee
+      - MINIO_ROOT_PASSWORD=P@ssw0rd
