@@ -25,5 +25,6 @@
 
 ## ข้อมูลเพิ่มเติม
 - [compose.yaml](./compose.yaml)
+- [prompthero-SD](https://prompthero.com/stable-diffusion-prompts)
 - [Chaputri - AI Girlfriend](https://openwebui.com/m/dotslashgabut/chaputri:latest)
 - [ขาหมู.docx](./ขาหมู.docx)
