@@ -1,0 +1,57 @@
+services:
+  ollama:
+    image: ollama/ollama
+    restart: unless-stopped
+    ports:
+      - 11434:11434
+    environment:
+      - TZ=Asia/Bangkok
+    volumes:
+      - ./ollama:/root/.ollama
+    deploy:
+      resources:
+        limits:
+          # cpus: '18'
+          memory: 32G
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    restart: unless-stopped
+    ports:
+      - 9901:8080
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - WHISPER_MODEL=medium
+      - TZ=Asia/Bangkok
+    volumes:
+      - ./open-webui:/app/backend/data
+    deploy:
+      resources:
+        limits:
+          # cpus: '18'
+          memory: 32G
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  openai-edge-tts:
+    image: travisvn/openai-edge-tts:latest
+    restart: unless-stopped
+    ports:
+      - 5050:5050
+    environment:
+      - DEFAULT_LANGUAGE=th-TH
+      # - DEFAULT_VOICE=th-TH-PremwadeeNeural
+      - DEFAULT_VOICE=th-TH-NiwatNeural
+      - API_KEY=your_api_key_here
+      # - PORT=5050
+      - DEFAULT_RESPONSE_FORMAT=mp3
+      - DEFAULT_SPEED=1.1
+      - REQUIRE_API_KEY=False
