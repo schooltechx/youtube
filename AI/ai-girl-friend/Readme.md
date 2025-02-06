@@ -22,6 +22,7 @@
       - DEFAULT_SPEED=1.1
       - REQUIRE_API_KEY=False
 ```
+
 ## ข้อมูลเพิ่มเติม
 - [compose.yaml](./compose.yaml)
 - [Chaputri - AI Girlfriend](https://openwebui.com/m/dotslashgabut/chaputri:latest)

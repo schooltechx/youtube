@@ -54,4 +54,4 @@ services:
       # - PORT=5050
       - DEFAULT_RESPONSE_FORMAT=mp3
       - DEFAULT_SPEED=1.1
-      - REQUIRE_API_KEY=False
+      - REQUIRE_API_KEY=False 
