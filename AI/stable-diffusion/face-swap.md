@@ -10,7 +10,7 @@
 
 - [Roop](https://github.com/s0md3v/roop) เลิกพัฒนาแล้วใช้ผ่าน Python
 - [roop for StableDiffusion](https://github.com/s0md3v/sd-webui-roop) พัฒนาจาก Roop เป็น extension ของ Stable Diffusion WebUI 
-- [ReActor for Stable Diffusion](https://github.com/Gourieff/sd-webui-reactor)  พัฒนาจาก Roop เป็น extension ของ Stable Diffusion WebUI ไม่มี NSFW filter (uncensored)
+- [ReActor for Stable Diffusion](https://github.com/Gourieff/sd-webui-reactor-sfw)  พัฒนาจาก Roop เป็น extension ของ Stable Diffusion WebUI ไม่มี NSFW filter (uncensored)
 
 
 ## ReActor for Stable Diffusion
