@@ -8,8 +8,8 @@ http:
     blogService:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.35:8082"
-#          - url: "http://simple-web"
+          # - url: "http://192.168.2.35:8082"
+          - url: "http://simple-web"
   middlewares:
     secureHeaders:
       headers:

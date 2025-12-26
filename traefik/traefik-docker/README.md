@@ -14,6 +14,25 @@ NPM เพราะต้องเขียนคอนฟิกเอง แต
 - simple-web/html/index.html  หน้าเวปที่แสดงมีหน้าเดียว
 - whoami  แสดงข้อมูลของระบบ เปิดพอร์ตบนโฮสต์ 8081 ตัว traefik ดูว่าจะใช้คอนฟิกยังไงจาก label ใน docker-compose.yml
 
+## Install
+- ก็อปปี้ไฟล์ทั้งหมดตามโครงสร้าง
+- สร้างโฟลเดอร์ traefik/data/ssl/ แล้วนำ certificate มาเก็บไว้ที่นี้
+- ติดตั้ง [mkcert](https://github.com/FiloSottile/mkcert) ให้ดู[วีดีโอก่อนหน้า](https://www.youtube.com/watch?v=pyJF2DnPv7Y) 
+หรือ
+สำหรับ Linux ทำตามด้านล่างนี้
+```
+traefik/data/ssl/
+curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
+chmod +x mkcert-v*-linux-amd64
+sudo cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
+rm mkcert-v*-linux-amd64
+mkcert -install
+mkcert "*.oom.lan" oom.lan
+mv _wildcard.oom.lan+1-key.pem _wildcard-key.pem
+mv _wildcard.oom.lan+1.pem _wildcard.pem
+```
+- docker compose up -d สำหรับ traefik, simple-web, whoami
+
 ## วีดีโอการใช้งาน
 
 [![IMAGE ALT TEXT](https://img.youtube.com/vi/z3TqJImsXPQ/0.jpg)](https://youtu.be/z3TqJImsXPQ "ใช้งาน Docker Provider และ Self-signed Certificate")

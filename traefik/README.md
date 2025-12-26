@@ -1,9 +1,16 @@
 # Traefik
-Traefik เป็นอีกทางเลือกหนึ่งในการทำ API Gateway ซึ่งรองรับ Reverse Proxy, Load Balancer, Rate Limit, Authentication ฯลฯ 
+[Traefik](https://doc.traefik.io/traefik/) 
+เป็นอีกทางเลือกหนึ่งในการทำ API Gateway ซึ่งรองรับ Reverse Proxy, Load Balancer, Rate Limit, Authentication ฯลฯ 
 ซึ่งเป็นส่วนสำคัญของระบบ เพราะเป็นประตูทางเข้าจากข้างนอกสู่เซิร์ฟเวอร์ในระบบเรา Traefik รองรับได้หลายระบบทั้งแบบทั่วไป Docker Cluster Microservice  
 จนถึง K8 สามารถเพิ่มความสามารถผ่าน Middleware ก็ได้ 
 วิธีการตั้งค่าระบบดูเข้าใจได้ง่ายกว่า Nginx และยืดหยุ่นมาจนคนเริ่มต้นใช้งานก็งงว่าจะใช้การตั้งค่าวิธีไหนดี เนื่องจากมีหลายวิธีแล้วให้ผลเหมือนกันด้วย 
 ให้เข้าไปดูโฟลเดอร์ต่างๆจะมีลิงค์วีดีโอสอนการใช้ โค้ดและคอนฟิกที่ใช้ในวีดีโอ ในการตั้งค่าแบบต่างๆ
 
-## เวปที่เกี่ยวข้อง
-https://doc.traefik.io/traefik/
+- [Intro](./traefik-intro/) การใช้งานเบื้องต้น
+- [docker](./traefik-docker/) การใช้งานผ่าน Docker แบบเน็ตเวิร์กภายใน 
+- [Let's Encrypt](./traefik-letencrypt/) การใช้งานจริงบนเวป Let's Encrypt
+
+
+## Note
+
+Docker Engine v29(late 2025) มีข้อกำหนดในการใช้ API เวอร์ชั่นต่ำสุดคือ 1.44+ ถ้าอัปเดต docker แล้วทำให้ Traefik รุ่นเก่าใช้งานไม่ได้ ต้องอัปเกรดเป็นรุ่น v3.6.1

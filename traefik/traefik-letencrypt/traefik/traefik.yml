@@ -1,0 +1,31 @@
+api:
+  dashboard: true # Optional can be disabled
+  insecure: true # Optional can be disabled
+  debug: false # Optional can be Enabled if needed for troubleshooting 
+entryPoints:
+  web:
+    address: ":80"
+  # Optional if you want to redirect all HTTP to HTTPS
+  #  http:
+  #    redirections:
+  #      entryPoint:
+  #        to: websecure
+  #        scheme: https
+  websecure:
+    address: ":443"
+serversTransport:
+  insecureSkipVerify: true
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+
+certificatesResolvers:
+  letencrypt:
+    acme:
+      email: me@domaincom
+      storage: /certs/acme.json
+      # caServer: https://acme-v02.api.letsencrypt.org/directory # prod (default)
+      caServer: https://acme-staging-v02.api.letsencrypt.org/directory # staging
+      httpChallenge:
+        entryPoint: web

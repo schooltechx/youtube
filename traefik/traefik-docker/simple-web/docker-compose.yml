@@ -1,4 +1,3 @@
-version: "3"
 services:
   simple-web:
     image: nginx
@@ -12,6 +11,19 @@ services:
     #   - traefik.http.routers.simple-web.rule=Host(`www.oom.lan`)
     networks:
      - proxy
+
+  simple-web2:
+    image: nginx
+    volumes:
+     - ./html:/usr/share/nginx/html:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.simple-web2.entrypoints=websecure
+      - traefik.http.routers.simple-web2.rule=Host(`www2.oom.lan`)
+    networks:
+     - proxy
+
+
 networks:
   proxy:
     external: true
