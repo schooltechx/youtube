@@ -1,5 +1,9 @@
 # Cluster Demo
-เรียนรู้และทดสอบคลัสเตอร์ จะใช้ Load Test ด้วย K6
+เรียนรู้ Thread และ คลัสเตอร์ เบื้องต้น แบบไม่ซับซ้อนบน VM หนึ่งตัว จะใช้ K6 ในการทดสอบ
+
+[![Thread & Cluster](https://img.youtube.com/vi/p_vJI8P5z8c/0.jpg)](https://youtu.be/p_vJI8P5z8c "Cluster demo")
+
+ใช้เป็นแนวทางในการทำคลัสเตอร์บนหลาย VM และ K8s ในตอนต่อๆไป
 
 ## 1 VM
 เหมาะสำหรับ Node.js เพื่อให้ใช้ได้ทุก CPU core
