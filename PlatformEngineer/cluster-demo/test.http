@@ -1,0 +1,28 @@
+
+
+### Node without docker
+GET http://localhost:3000/node/api/fast HTTP/1.1
+###
+GET http://localhost:3000/node/api/work?iterations=50000000 HTTP/1.1
+
+### Node
+GET http://localhost/node/api/fast HTTP/1.1
+###
+GET http://localhost/node/api/work HTTP/1.1
+
+### .NET
+GET http://localhost/dotnet/api/fast HTTP/1.1
+###
+GET http://localhost/dotnet/api/work HTTP/1.1
+
+### GO
+GET http://localhost/go/api/fast HTTP/1.1
+###
+GET http://localhost/go/api/work HTTP/1.1
+
+
+### JAVA
+GET http://localhost/java/api/fast HTTP/1.1
+###
+GET http://localhost/java/api/work HTTP/1.1
+

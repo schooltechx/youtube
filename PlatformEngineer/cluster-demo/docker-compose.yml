@@ -1,0 +1,77 @@
+services:
+  traefik:
+    image: traefik:v3
+    container_name: traefik
+    restart: unless-stopped
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - app-network
+
+  app-node:
+    build: ./node
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app-node.rule=PathPrefix(`/node`)"
+      - "traefik.http.routers.app-node.entrypoints=web"
+      - "traefik.http.services.app-node.loadbalancer.server.port=3000"
+    networks:
+      - app-network
+
+  app-dotnet:
+    build: ./dotnet
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app-dotnet.rule=PathPrefix(`/dotnet`)"
+      - "traefik.http.routers.app-dotnet.entrypoints=web"
+      - "traefik.http.services.app.loadbalancer.server.port=3000"
+    networks:
+      - app-network
+
+  app-go:
+    build: ./go 
+
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app-go.rule=PathPrefix(`/go`)"
+      - "traefik.http.routers.app-go.entrypoints=web"
+      - "traefik.http.services.app-go.loadbalancer.server.port=3000"
+    networks:
+      - app-network
+
+  app-java:
+    build: ./java 
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app-java.rule=PathPrefix(`/java`)"
+      - "traefik.http.routers.app-java.entrypoints=web"
+      - "traefik.http.services.app-java.loadbalancer.server.port=3000"
+    networks:
+      - app-network
+
+  k6:
+    image: grafana/k6:latest
+    volumes:
+      - ./k6:/scripts
+    networks:
+      - app-network
+    profiles:
+      - tools
+
+networks:
+  app-network:
+    driver: bridge

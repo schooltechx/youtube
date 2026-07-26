@@ -1,0 +1,13 @@
+{
+  "name": "express-bun-traefik-demo",
+  "version": "1.0.0",
+  "description": "Express.js on Bun with PM2, Traefik and k6 Load Testing",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "bun run src/app.js",
+    "pm2:start": "pm2-runtime start ecosystem.config.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
